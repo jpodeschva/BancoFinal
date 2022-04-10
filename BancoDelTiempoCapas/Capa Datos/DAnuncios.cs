@@ -19,8 +19,14 @@ namespace CapaDatos
 
             try
             {
+                SqlCommand comando = new SqlCommand("spinsertar_anuncios", conexion)
+                {
 
+                    CommandType = CommandType.StoredProcedure,
+                    Transaction = transaccion
 
+                };
+                comando.Parameters.AddWithValue();
             }
             catch (Exception) {
 
