@@ -13,10 +13,20 @@ namespace CapaDatos
     public class DAnuncios
     {
 
-        // Metodo insertar anuncio
+        public string PublicarAnuncios(EAnuncios anuncios, ref SqlConnection conexion, ref SqlTransaction transaccion)
+        {
+            string respuesta;
 
-        public string InsertarAnuncio(EAnuncios anuncios, ref SqlConnection conexion, ref SqlTransaction transaccion);
-     
-   
+            try
+            {
+
+
+            }
+            catch (Exception) {
+
+                throw;
+            }
+
+        }
     }
 }
