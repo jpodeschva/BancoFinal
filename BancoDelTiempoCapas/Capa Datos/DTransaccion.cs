@@ -8,8 +8,8 @@ using System.Data.SqlClient;
 
 namespace Capa_Entidades
 {
-    public class ERegistro
+    public class DTransaccion
     {
-        public int idUsuario { get; set; }
+     
     }
 }

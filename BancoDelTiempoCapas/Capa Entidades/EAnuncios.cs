@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace Capa_Entidades
 {
-    class EAnuncios
+    public class EAnuncios
     {
 
         public int idAnuncio { get; set; }

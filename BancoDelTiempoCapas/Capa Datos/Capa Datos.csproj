@@ -75,6 +75,14 @@
     <Compile Include="Contacto.cs">
       <DependentUpon>BBDD.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAnuncios.cs" />
+    <Compile Include="DCategoriaDeServicio.cs" />
+    <Compile Include="DContacto.cs" />
+    <Compile Include="DLogin.cs" />
+    <Compile Include="DRegistro.cs" />
+    <Compile Include="DSugerencia.cs" />
+    <Compile Include="DTransaccion.cs" />
+    <Compile Include="DUsuario.cs" />
     <Compile Include="Login.cs">
       <DependentUpon>BBDD.tt</DependentUpon>
     </Compile>

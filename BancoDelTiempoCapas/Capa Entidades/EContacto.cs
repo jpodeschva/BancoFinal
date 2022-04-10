@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace Capa_Entidades
 {
-    class EContacto
+    public class EContacto
     {
         public int idMensaje { get; set; }
         public Nullable<int> idEmisor { get; set; }

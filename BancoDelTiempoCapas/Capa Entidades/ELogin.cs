@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace Capa_Entidades
 {
-    class ELogin
+    public class ELogin
     {
         public string idUsername { get; set; }
         public string idPassword { get; set; }

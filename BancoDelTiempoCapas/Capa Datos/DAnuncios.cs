@@ -8,8 +8,13 @@ using System.Data.SqlClient;
 
 namespace Capa_Entidades
 {
-    public class ERegistro
+    public class DAnuncios
     {
-        public int idUsuario { get; set; }
+    
+        // Metodo insertar anuncio
+
+        public string InsertarAnuncio(EAnuncio)
+     
+   
     }
 }

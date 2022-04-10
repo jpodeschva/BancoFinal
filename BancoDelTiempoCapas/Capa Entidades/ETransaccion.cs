@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace Capa_Entidades
 {
-    class ETransaccion
+    public class ETransaccion
     {
         public int idTransaccion { get; set; }
         public Nullable<System.DateTime> fechaSolicitud { get; set; }
