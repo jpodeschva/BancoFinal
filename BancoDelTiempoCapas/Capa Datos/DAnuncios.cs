@@ -15,7 +15,7 @@ namespace CapaDatos
 
         // Metodo insertar anuncio
 
-        public string InsertarAnuncio(CapaEntiades.)
+        public string InsertarAnuncio(EAnuncios anuncios, ref SqlConnection conexion, ref SqlTransaction transaccion);
      
    
     }

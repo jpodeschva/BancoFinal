@@ -7,8 +7,8 @@
     <ProjectGuid>{75FD000F-4724-4FC6-BA15-C42A583B9009}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Capa_Datos</RootNamespace>
-    <AssemblyName>Capa Datos</AssemblyName>
+    <RootNamespace>CapaDatos</RootNamespace>
+    <AssemblyName>CapaDatos</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

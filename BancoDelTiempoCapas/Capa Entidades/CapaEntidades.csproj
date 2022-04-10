@@ -7,8 +7,8 @@
     <ProjectGuid>{D53E9CCA-E91C-4FCB-B3E5-42F4B79671E9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Capa_Entidades</RootNamespace>
-    <AssemblyName>Capa Entidades</AssemblyName>
+    <RootNamespace>CapaEntidades</RootNamespace>
+    <AssemblyName>CapaEntidades</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
