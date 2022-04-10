@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace Capa_Entidades
+using CapaEntidades;
+
+namespace CapaDatos
 {
     public class DAnuncios
     {
-    
+
         // Metodo insertar anuncio
 
-        public string InsertarAnuncio(EAnuncio)
+        public string InsertarAnuncio(EAnuncios);
      
    
     }

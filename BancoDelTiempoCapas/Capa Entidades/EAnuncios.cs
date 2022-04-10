@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace Capa_Entidades
+namespace CapaEntidades
 {
     public class EAnuncios
     {
