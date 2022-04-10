@@ -15,7 +15,7 @@ namespace CapaDatos
 
         // Metodo insertar anuncio
 
-        public string InsertarAnuncio(EAnuncios);
+        public string InsertarAnuncio(CapaEntiades.)
      
    
     }

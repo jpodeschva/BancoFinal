@@ -9,7 +9,7 @@ using CapaEntidades;
 
 namespace CapaDatos
 {
-    public class ECategoriaDeServicio
+    public class DCategoriaDeServicio
     {
     
     }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Capa_Datos
+namespace CapaDatos
 {
     using System;
     using System.Collections.Generic;
