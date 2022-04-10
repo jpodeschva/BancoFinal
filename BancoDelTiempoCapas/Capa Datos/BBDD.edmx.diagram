@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="56bbb6bc26c14a148728e63f88e60f81" Name="Diagram1" ZoomLevel="46">
+        <EntityTypeShape EntityType="BancoDelTiempoModel.Anuncio" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BancoDelTiempoModel.CategoriaDeServicio" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BancoDelTiempoModel.Contacto" Width="1.5" PointX="7.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BancoDelTiempoModel.Registro" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BancoDelTiempoModel.Sugerencia" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BancoDelTiempoModel.Transaccion" Width="1.5" PointX="10.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BancoDelTiempoModel.Usuario" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BancoDelTiempoModel.Login" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <AssociationConnector Association="BancoDelTiempoModel.fkidAnuncio_AnuncioContacto" ManuallyRouted="false" />
+        <AssociationConnector Association="BancoDelTiempoModel.fkidAnuncio_AnuncioTransaccion" ManuallyRouted="false" />
+        <AssociationConnector Association="BancoDelTiempoModel.fkidCategoria_AnuncioCategoriaDeServicio" ManuallyRouted="false" />
+        <AssociationConnector Association="BancoDelTiempoModel.fkidUsuario_AnuncioUsuario" ManuallyRouted="false" />
+        <AssociationConnector Association="BancoDelTiempoModel.fkidUsuario_UsuarioRegistro" ManuallyRouted="false" />
+        <AssociationConnector Association="BancoDelTiempoModel.fkidUsuario_UsuarioSugerencias" ManuallyRouted="false" />
+        <AssociationConnector Association="BancoDelTiempoModel.fkidUsuarioProporciona_UsuarioTransaccion" ManuallyRouted="false" />
+        <AssociationConnector Association="BancoDelTiempoModel.fkidUsuarioSolicita_UsuarioTransaccion" ManuallyRouted="false" />
+        <AssociationConnector Association="BancoDelTiempoModel.fkidUsuario_UsuarioLogin" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
