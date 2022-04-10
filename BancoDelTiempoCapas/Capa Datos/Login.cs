@@ -16,5 +16,8 @@ namespace Capa_Datos
     {
         public string idUsername { get; set; }
         public string idPassword { get; set; }
+        public Nullable<int> idUsuario { get; set; }
+    
+        public virtual Usuario Usuario { get; set; }
     }
 }

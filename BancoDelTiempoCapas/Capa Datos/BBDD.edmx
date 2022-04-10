@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BancoDelTiempoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BancoDelTiempoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Anuncio">
           <Key>
             <PropertyRef Name="idAnuncio" />
@@ -50,6 +50,7 @@ advertencia 6002: La tabla o vista 'BancoDelTiempo.dbo.Login' no tiene definida 
           </Key>
           <Property Name="idUsername" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="idPassword" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idUsuario" Type="int" />
         </EntityType>
         <EntityType Name="Registro">
           <Key>
@@ -148,6 +149,18 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fkidUsuario_UsuarioLogin">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Login" Type="Self.Login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Login">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fkidUsuario_UsuarioRegistro">
           <End Role="Registro" Type="Self.Registro" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -211,7 +224,8 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
           <EntitySet Name="Login" EntityType="Self.Login" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Login].[idUsername] AS [idUsername], 
-    [Login].[idPassword] AS [idPassword]
+    [Login].[idPassword] AS [idPassword], 
+    [Login].[idUsuario] AS [idUsuario]
     FROM [dbo].[Login] AS [Login]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="fkidAnuncio_AnuncioContacto" Association="Self.fkidAnuncio_AnuncioContacto">
@@ -230,6 +244,10 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Anuncio" EntitySet="Anuncio" />
           </AssociationSet>
+          <AssociationSet Name="fkidUsuario_UsuarioLogin" Association="Self.fkidUsuario_UsuarioLogin">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Login" EntitySet="Login" />
+          </AssociationSet>
           <AssociationSet Name="fkidUsuario_UsuarioRegistro" Association="Self.fkidUsuario_UsuarioRegistro">
             <End Role="Registro" EntitySet="Registro" />
             <End Role="Usuario" EntitySet="Usuario" />
@@ -247,8 +265,7 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
             <End Role="Transaccion" EntitySet="Transaccion" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BancoDelTiempoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -342,6 +359,7 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
           <NavigationProperty Name="Sugerencias" Relationship="Self.fkidUsuario_UsuarioSugerencias" FromRole="Usuario" ToRole="Sugerencias" />
           <NavigationProperty Name="Transaccions" Relationship="Self.fkidUsuarioProporciona_UsuarioTransaccion" FromRole="Usuario" ToRole="Transaccion" />
           <NavigationProperty Name="Transaccions1" Relationship="Self.fkidUsuarioSolicita_UsuarioTransaccion" FromRole="Usuario" ToRole="Transaccion" />
+          <NavigationProperty Name="Logins" Relationship="BancoDelTiempoModel.fkidUsuario_UsuarioLogin" FromRole="Usuario" ToRole="Login" />
         </EntityType>
         <EntityType Name="Login">
           <Key>
@@ -350,6 +368,8 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
           </Key>
           <Property Name="idUsername" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="idPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idUsuario" Type="Int32" />
+          <NavigationProperty Name="Usuario" Relationship="BancoDelTiempoModel.fkidUsuario_UsuarioLogin" FromRole="Login" ToRole="Usuario" />
         </EntityType>
         <Association Name="fkidAnuncio_AnuncioContacto">
           <End Role="Anuncio" Type="Self.Anuncio" Multiplicity="0..1" />
@@ -494,7 +514,23 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
             <End Role="Usuario" EntitySet="Usuarios" />
             <End Role="Transaccion" EntitySet="Transaccions" />
           </AssociationSet>
+          <AssociationSet Name="fkidUsuario_UsuarioLogin" Association="BancoDelTiempoModel.fkidUsuario_UsuarioLogin">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Login" EntitySet="Logins" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="fkidUsuario_UsuarioLogin">
+          <End Type="BancoDelTiempoModel.Usuario" Role="Usuario" Multiplicity="0..1" />
+          <End Type="BancoDelTiempoModel.Login" Role="Login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Login">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -586,6 +622,7 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
           <EntitySetMapping Name="Logins">
             <EntityTypeMapping TypeName="BancoDelTiempoModel.Login">
               <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
                 <ScalarProperty Name="idUsername" ColumnName="idUsername" />
                 <ScalarProperty Name="idPassword" ColumnName="idPassword" />
               </MappingFragment>

@@ -71,7 +71,7 @@
     <Compile Include="CategoriaDeServicio.cs">
       <DependentUpon>BBDD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DConexion.cs" />
     <Compile Include="Contacto.cs">
       <DependentUpon>BBDD.tt</DependentUpon>
     </Compile>

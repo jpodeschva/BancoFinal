@@ -21,6 +21,7 @@ namespace Capa_Datos
             this.Sugerencias = new HashSet<Sugerencia>();
             this.Transaccions = new HashSet<Transaccion>();
             this.Transaccions1 = new HashSet<Transaccion>();
+            this.Logins = new HashSet<Login>();
         }
     
         public int idUsuario { get; set; }
@@ -45,5 +46,7 @@ namespace Capa_Datos
         public virtual ICollection<Transaccion> Transaccions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Transaccion> Transaccions1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Login> Logins { get; set; }
     }
 }

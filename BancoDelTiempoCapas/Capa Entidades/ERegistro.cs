@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace Capa_Datos
+namespace Capa_Entidades
 {
-    public class DConexion
+    class ERegistro
     {
-
-        public static string conexion = Properties.Settings.Default.Conexion;
+        public int idUsuario { get; set; }
     }
 }
