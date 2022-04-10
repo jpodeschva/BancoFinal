@@ -50,18 +50,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Anuncio.cs">
+      <DependentUpon>BBDD.tt</DependentUpon>
+    </Compile>
     <Compile Include="BBDD.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BBDD.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BBDD.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BBDD.tt</DependentUpon>
     </Compile>
     <Compile Include="BBDD.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BBDD.edmx</DependentUpon>
     </Compile>
+    <Compile Include="CategoriaDeServicio.cs">
+      <DependentUpon>BBDD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Class1.cs" />
+    <Compile Include="Contacto.cs">
+      <DependentUpon>BBDD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <DependentUpon>BBDD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Registro.cs">
+      <DependentUpon>BBDD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sugerencia.cs">
+      <DependentUpon>BBDD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Transaccion.cs">
+      <DependentUpon>BBDD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario.cs">
+      <DependentUpon>BBDD.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="BBDD.edmx">
@@ -75,11 +109,21 @@
       <DependentUpon>BBDD.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="BBDD.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>BBDD.Context.cs</LastGenOutput>
+      <DependentUpon>BBDD.edmx</DependentUpon>
+    </Content>
+    <Content Include="BBDD.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BBDD.edmx</DependentUpon>
+      <LastGenOutput>BBDD.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

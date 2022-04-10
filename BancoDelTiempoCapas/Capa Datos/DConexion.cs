@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Capa_Datos
 {
-    public class Class1
+    public class DConexion
     {
+
+        public static string conexion = Properties.Settings.Default.Conexion;
     }
 }
