@@ -11,8 +11,9 @@ using System.Collections;
 namespace CapaDatos
 {
     public class DUsuario
-    { 
-      // Añadir usuario
+    {
+
+        // Añadir usuario
         public void addUsuario(Usuario usuario)
         {
             //Usuario usuario = new Usuario();
@@ -43,7 +44,7 @@ namespace CapaDatos
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
                 //Usuario usuario = db.Usuarios.Find(id);
-               
+
                 db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
             }
@@ -83,7 +84,7 @@ namespace CapaDatos
         public Boolean checkUsuario(String username)
         {
             bool existe = false;
-            
+
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
                 var lst = db.Usuarios;
@@ -111,7 +112,7 @@ namespace CapaDatos
                 {
                     if (usuario.idUsername == username)
                     {
-                        if(usuario.idPassword == password)
+                        if (usuario.idPassword == password)
                         {
                             correcto = true;
                         }
@@ -120,6 +121,7 @@ namespace CapaDatos
             }
             return correcto;
         }
+
 
     }
 }
