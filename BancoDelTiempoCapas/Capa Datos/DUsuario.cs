@@ -13,15 +13,12 @@ namespace CapaDatos
     public class DUsuario
     { 
       // Añadir usuario
-        public void addUsuario()
+        public void addUsuario(Usuario usuario)
         {
-            Usuario usuario = new Usuario();
+            //Usuario usuario = new Usuario();
 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
-                usuario.nombre = "";
-                // TODO: añadir todos los parámetros
-
                 db.Usuarios.Add(usuario);
                 db.SaveChanges();
             }
@@ -41,14 +38,12 @@ namespace CapaDatos
         }
 
         // Actualizar usuario
-        public void updateUsuario(int id)
+        public void updateUsuario(Usuario usuario)
         {
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
-                Usuario usuario = db.Usuarios.Find(id);
-                // TODO: modificar los parámetros necesarios
-                //usuario.nombre = "";
-
+                //Usuario usuario = db.Usuarios.Find(id);
+               
                 db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
             }
@@ -83,6 +78,48 @@ namespace CapaDatos
             return list;
         }
 
+
+        // Comprobar si existe usuario en la BD con un username dado
+        public Boolean checkUsuario(String username)
+        {
+            bool existe = false;
+            
+            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            {
+                var lst = db.Usuarios;
+                foreach (var usuario in lst)
+                {
+                    if (usuario.idUsername == username)
+                    {
+                        existe = true;
+                    }
+                }
+            }
+            return existe;
+        }
+
+
+        // Comprobar password de un usuario dado
+        public Boolean checkPassword(String username, String password)
+        {
+            bool correcto = false;
+
+            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            {
+                var lst = db.Usuarios;
+                foreach (var usuario in lst)
+                {
+                    if (usuario.idUsername == username)
+                    {
+                        if(usuario.idPassword == password)
+                        {
+                            correcto = true;
+                        }
+                    }
+                }
+            }
+            return correcto;
+        }
 
     }
 }
