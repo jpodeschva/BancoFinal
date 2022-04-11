@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using System.Configuration;
 
 //ponemos las librerias necesarias
@@ -14,6 +15,18 @@ using CapaEntidades;
 
 namespace CapaDatos
 {
+
+
+    public class DAnuncios
+    {
+        //
+        SqlConnection conectar = new SqlConnection();
+
+
+
+
+
+    /*
     public class DAnuncios
     {
         //creamos un metodo tipo string para insertar anuncios
@@ -54,5 +67,5 @@ namespace CapaDatos
             }
             return respuesta;
         }
-    }
+    }*/
 }
