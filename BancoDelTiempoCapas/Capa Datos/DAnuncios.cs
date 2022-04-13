@@ -87,17 +87,17 @@ namespace CapaDatos
         }
 
 
-        // Comprobar si existe usuario en la BD con un username dado
-        public Boolean checkUsuario(String username)
+        // Comprobar si existe un anuncio en la BD con la id dada
+        public Boolean checkAnuncio(int idAnuncio)
         {
             bool existe = false;
 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
-                var lst = db.Usuarios;
-                foreach (var usuario in lst)
+                var lst = db.Anuncios;
+                foreach (var anuncio in lst)
                 {
-                    if (usuario.idUsername == username)
+                    if (anuncio.idAnuncio == idAnuncio)
                     {
                         existe = true;
                     }
@@ -105,31 +105,6 @@ namespace CapaDatos
             }
             return existe;
         }
-
-
-        // Comprobar password de un usuario dado
-        public Boolean checkPassword(String username, String password)
-        {
-            bool correcto = false;
-
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
-            {
-                var lst = db.Usuarios;
-                foreach (var usuario in lst)
-                {
-                    if (usuario.idUsername == username)
-                    {
-                        if (usuario.idPassword == password)
-                        {
-                            correcto = true;
-                        }
-                    }
-                }
-            }
-            return correcto;
-        }
-
-
 
 
 
