@@ -86,6 +86,71 @@ namespace CapaDatos
             return list;
         }
 
+        // Mostrar todos los anuncios de una categoría concreta
+        public ArrayList listAnunciosPorCategoria(int idCategoria)
+        {
+            ArrayList list = new ArrayList();
+
+            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            {
+                var lst = db.Anuncios;
+                foreach (var anuncio in lst)
+                {
+                    if (anuncio.idCategoria.Equals(idCategoria))
+                    {
+                        //Console.WriteLine(anuncio.ToString());
+                        list.Add(anuncio);
+                    }
+                    
+                }
+            }
+
+            return list;
+        }
+
+        // Mostrar todos los anuncios de una localidad concreta
+        public ArrayList listAnunciosPorLocalidad(String localidad)
+        {
+            ArrayList list = new ArrayList();
+
+            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            {
+                var lst = db.Anuncios;
+                foreach (var anuncio in lst)
+                {
+                    if (anuncio.localidad.Equals(localidad))
+                    {
+                        //Console.WriteLine(anuncio.ToString());
+                        list.Add(anuncio);
+                    }
+
+                }
+            }
+
+            return list;
+        }
+
+        // Mostrar todos los anuncios de un usuario concreto
+        public ArrayList listAnunciosPorUsuario(int idUsuario)
+        {
+            ArrayList list = new ArrayList();
+
+            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            {
+                var lst = db.Anuncios;
+                foreach (var anuncio in lst)
+                {
+                    if (anuncio.idUsuario == idUsuario)
+                    {
+                        //Console.WriteLine(anuncio.ToString());
+                        list.Add(anuncio);
+                    }
+
+                }
+            }
+
+            return list;
+        }
 
         // Comprobar si existe un anuncio en la BD con la id dada
         public Boolean checkAnuncio(int idAnuncio)
@@ -106,7 +171,27 @@ namespace CapaDatos
             return existe;
         }
 
-        
+        // Mostrar todos los anuncios dentro de unas fechas determinadas
+        public ArrayList listAnunciosPorFecha(DateTime fechaInicio, DateTime fechaFin)
+        {
+            ArrayList list = new ArrayList();
+
+            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            {
+                var lst = db.Anuncios;
+                foreach (var anuncio in lst)
+                {
+                    if (anuncio.fechaPublicacion > fechaInicio && anuncio.fechaPublicacion < fechaFin)
+                    {
+                        //Console.WriteLine(anuncio.ToString());
+                        list.Add(anuncio);
+                    }
+
+                }
+            }
+
+            return list;
+        }
 
 
         /*
