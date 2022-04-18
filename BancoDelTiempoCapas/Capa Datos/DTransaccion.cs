@@ -12,7 +12,7 @@ namespace CapaDatos
     public class DTransaccion
     {
 
-        // Añadir transaccion
+        // Añadir transacción
         public void addTransaccion(Transaccion transaccion)
         {
     
@@ -24,7 +24,7 @@ namespace CapaDatos
             }
         }
 
-        // Eliminar transaccion
+        // Eliminar transacción
         public void deleteTransaccion(int id)
         {
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
@@ -37,7 +37,7 @@ namespace CapaDatos
             }
         }
 
-        // Actualizar transaccion
+        // Actualizar transacción
         public void updateTransaccion(Transaccion transaccion)
         {
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
@@ -48,7 +48,7 @@ namespace CapaDatos
             }
         }
 
-        // Mostrar una transaccion
+        // Mostrar una transacción
         public Transaccion getTransaccion(int id)
         {
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
@@ -59,7 +59,7 @@ namespace CapaDatos
         }
 
 
-        // Mostrar toas las transacciones
+        // Mostrar todas las transacciones
         public ArrayList listTransacciones()
         {
             ArrayList list = new ArrayList();
@@ -78,25 +78,80 @@ namespace CapaDatos
         }
 
 
-        // Comprobar si existe transaccion en la BD con un username dado
-        public Boolean checkTransaccion(int id)
+        // Mostrar todas las transacciones de un usuario
+        public ArrayList listTransaccionesPorUsuario(int idUsuario)
         {
-            bool existe = false;
+            ArrayList list = new ArrayList();
 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
                 var lst = db.Transacciones;
                 foreach (var transaccion in lst)
                 {
-                    if (transaccion.idTransaccion == id)
+                    if (transaccion.idUsuarioSolicita == idUsuario)
                     {
-                        existe = true;
+                        //Console.WriteLine(transaccion.ToString());
+                        list.Add(transaccion);
                     }
+                    
                 }
             }
-            return existe;
+
+            return list;
         }
 
+        // Mostrar todas las transacciones de un usuario por fecha de solicitud
+        public ArrayList listTransaccionesPorFecha(int idUsuario, DateTime fechaSolicitud)
+        {
+            ArrayList list = new ArrayList();
+
+            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            {
+                var lst = db.Transacciones;
+                foreach (var transaccion in lst)
+                {
+                    if (transaccion.idUsuarioSolicita == idUsuario)
+                    {
+                        if (transaccion.fechaSolicitud == fechaSolicitud)
+                        {
+                            //Console.WriteLine(transaccion.ToString());
+                            list.Add(transaccion);
+                        }
+                        
+                    }
+
+                }
+            }
+
+            return list;
+        }
+
+
+        // Mostrar todas las transacciones de un usuario realizadas a un mismo usuarioProporciona
+        public ArrayList listTransaccionesPorUsuarioProporciona(int idUsuario, int idUsuarioProporciona)
+        {
+            ArrayList list = new ArrayList();
+
+            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            {
+                var lst = db.Transacciones;
+                foreach (var transaccion in lst)
+                {
+                    if (transaccion.idUsuarioSolicita == idUsuario)
+                    {
+                        if (transaccion.idUsuarioProporciona == idUsuarioProporciona)
+                        {
+                            //Console.WriteLine(transaccion.ToString());
+                            list.Add(transaccion);
+                        }
+
+                    }
+
+                }
+            }
+
+            return list;
+        }
 
     }
 }

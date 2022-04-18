@@ -11,7 +11,7 @@ namespace CapaDatos
 {
     public class DCategoriaDeServicio
     {
-
+        // Añadir categoría
         public void addCategoria(CategoriaDeServicio categoriaDeServicio)
         {
 
@@ -23,7 +23,7 @@ namespace CapaDatos
             }
         }
 
-        // Eliminar usuario
+        // Eliminar categoría
         public void deleteCategoria(int id)
         {
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
@@ -36,7 +36,7 @@ namespace CapaDatos
             }
         }
 
-        // Actualizar Categoria
+        // Actualizar categoría
         public void updateCategoria(CategoriaDeServicio categoriaDeServicio)
         {
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
@@ -48,7 +48,7 @@ namespace CapaDatos
             }
         }
 
-        // Mostrar una categoria
+        // Mostrar una categoría
         public CategoriaDeServicio getCategoria(int id)
         {
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
@@ -59,7 +59,7 @@ namespace CapaDatos
         }
 
 
-        // Mostrar todas las categorias
+        // Mostrar todas las categorías
         public ArrayList listCategoriasDeServicio()
         {
             ArrayList list = new ArrayList();
@@ -78,8 +78,8 @@ namespace CapaDatos
         }
 
 
-        // Comprobar si existe usuario en la BD con un username dado
-        public Boolean checkCategoria(int categoria)
+        // Comprobar si existe una categoría con un nombre dado
+        public Boolean checkCategoria(String nombreCat)
         {
             bool existe = false;
 
@@ -88,7 +88,7 @@ namespace CapaDatos
                 var lst = db.CategoriaDeServicios;
                 foreach (var categoriaDeServicio in lst)
                 {
-                    if (categoriaDeServicio.idCategoria == categoria)
+                    if (categoriaDeServicio.nombreCategoria == nombreCat)
                     {
                         existe = true;
                     }
@@ -98,7 +98,26 @@ namespace CapaDatos
         }
 
 
-  
+        // Mostrar todas las categorías que contengan una palabra en su descripción
+        public ArrayList listCategoriasDeServicioQueContiene(String palabra)
+        {
+            ArrayList list = new ArrayList();
+
+            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            {
+                var lst = db.CategoriaDeServicios;
+                foreach (var categoriaDeServicio in lst)
+                {
+                    if (categoriaDeServicio.descripcion.StartsWith(palabra, System.StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        //Console.WriteLine(categoriaDeServicio.ToString());
+                        list.Add(categoriaDeServicio);
+                    }
+                }
+            }
+
+            return list;
+        }
 
 
     }

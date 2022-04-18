@@ -57,7 +57,7 @@ namespace CapaDatos
         }
 
 
-        // Mostrar todos los sugerencias
+        // Mostrar todas las sugerencias
         public ArrayList listSugerencias()
         {
             ArrayList list = new ArrayList();
@@ -75,24 +75,68 @@ namespace CapaDatos
             return list;
         }
 
-
-        // Comprobar si existe una sugerencia en la BD con una id dada
-        public Boolean checkSugerencia(int id)
+        // Mostrar todas las sugerencias por usuario que la realiza
+        public ArrayList listSugerenciasPorUsuario(int idUsuario)
         {
-            bool existe = false;
+            ArrayList list = new ArrayList();
 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
                 var lst = db.Sugerencias;
                 foreach (var sugerencia in lst)
                 {
-                    if (sugerencia.idSugerencia == id)
+                    if (sugerencia.idUsuario == idUsuario)
                     {
-                        existe = true;
+                        //Console.WriteLine(sugerencia.ToString());
+                        list.Add(sugerencia);
                     }
                 }
             }
-            return existe;
+
+            return list;
+        }
+
+        // Mostrar todas las sugerencias por fecha
+        public ArrayList listSugerenciasPorFecha(DateTime fecha)
+        {
+            ArrayList list = new ArrayList();
+
+            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            {
+                var lst = db.Sugerencias;
+                foreach (var sugerencia in lst)
+                {
+                    if (sugerencia.fechaHora == fecha) 
+                    {
+                        //Console.WriteLine(sugerencia.ToString());
+                        list.Add(sugerencia);
+                    }
+                }
+            }
+
+            return list;
+        }
+
+        // Mostrar todas las sugerencias que contengan una palabra en su descripción
+        public ArrayList listSugerenciasQueContiene(String palabra)
+        {
+            ArrayList list = new ArrayList();
+
+            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            {
+                var lst = db.Sugerencias;
+                foreach (var sugerencia in lst)
+                {
+                    if (sugerencia.descripcion.StartsWith(palabra, System.StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        //Console.WriteLine(sugerencia.ToString());
+                        list.Add(sugerencia);
+                    }
+                    
+                }
+            }
+
+            return list;
         }
 
     }

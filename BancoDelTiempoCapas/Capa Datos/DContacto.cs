@@ -77,7 +77,7 @@ namespace CapaDatos
         }
 
         // Mostrar todos los mensajes de un usuario (where idEmisor = x)
-        public ArrayList listMensajesPorEmisor(String idEmisor)
+        public ArrayList listMensajesPorEmisor(int idEmisor)
         {
             ArrayList list = new ArrayList();
 
@@ -86,7 +86,7 @@ namespace CapaDatos
                 var lst = db.Contactos;
                 foreach (var mensaje in lst)
                 {
-                    if (mensaje.idEmisor.Equals(idEmisor))
+                    if (mensaje.idEmisor == idEmisor)
                     {
                         //Console.WriteLine(contacto.ToString());
                         list.Add(mensaje);
@@ -99,7 +99,7 @@ namespace CapaDatos
         }
 
         // Mostrar todos los mensajes de un usuario con el mismo receptor
-        public ArrayList listMensajesPorReceptor(String idEmisor, String idReceptor)
+        public ArrayList listMensajesPorReceptor(int idEmisor, int idReceptor)
         {
             ArrayList list = new ArrayList();
 
@@ -108,9 +108,9 @@ namespace CapaDatos
                 var lst = db.Contactos;
                 foreach (var mensaje in lst)
                 {
-                    if (mensaje.idEmisor.Equals(idEmisor))
+                    if (mensaje.idEmisor == idEmisor)
                     {
-                        if (mensaje.idReceptor.Equals(idReceptor))
+                        if (mensaje.idReceptor == idReceptor)
                         {
                             //Console.WriteLine(contacto.ToString());
                             list.Add(mensaje);
@@ -123,7 +123,7 @@ namespace CapaDatos
         }
 
         // Mostrar todos los mensajes de un usuario que contengan una palabra concreta en el mensaje
-        public ArrayList listMensajesPorPalabra(String idEmisor, String palabraBuscada)
+        public ArrayList listMensajesPorPalabra(int idEmisor, String palabraBuscada)
         {
             ArrayList list = new ArrayList();
 
@@ -132,7 +132,7 @@ namespace CapaDatos
                 var lst = db.Contactos;
                 foreach (var mensaje in lst)
                 {
-                    if (mensaje.idEmisor.Equals(idEmisor))
+                    if (mensaje.idEmisor == idEmisor)
                     {
                         if (mensaje.mensaje.StartsWith(palabraBuscada, System.StringComparison.CurrentCultureIgnoreCase))
                         {
