@@ -23,7 +23,7 @@ namespace CapaDatos
         // Añadir anuncio
         public void addAnuncio(Anuncio anuncio)
         {
-            
+
 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
@@ -32,13 +32,13 @@ namespace CapaDatos
             }
         }
 
-        // Eliminar usuario
+        // Eliminar anuncio
         public void deleteAnuncio(int id)
         {
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
                 Anuncio anuncio = db.Anuncios.Find(id); // Si buscamos el anuncio por su id
-              
+
                 db.Anuncios.Remove(anuncio);
                 db.SaveChanges();
 
@@ -50,7 +50,7 @@ namespace CapaDatos
         {
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
-               
+
 
                 db.Entry(anuncio).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
@@ -106,6 +106,7 @@ namespace CapaDatos
             return existe;
         }
 
+        
 
 
         /*
