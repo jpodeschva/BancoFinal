@@ -11,7 +11,7 @@ namespace CapaDatos
 {
     public class DContacto
     {
-
+        // Añadir mensaje
         public void addMensaje(Contacto contacto)
         {
 
@@ -23,7 +23,7 @@ namespace CapaDatos
             }
         }
 
-        // Eliminar usuario
+        // Eliminar mensaje
         public void deleteMensaje(int id)
         {
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
@@ -48,7 +48,7 @@ namespace CapaDatos
             }
         }
 
-        // Mostrar un contacto
+        // Mostrar un mensaje
         public Contacto getMensaje(int id)
         {
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
@@ -58,49 +58,97 @@ namespace CapaDatos
             }
         }
 
-
-        // Mostrar todos los contactos
-        public ArrayList listContactos()
+        // Mostrar todos los mensajes de la BD
+        public ArrayList listMensajes()
         {
             ArrayList list = new ArrayList();
 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
                 var lst = db.Contactos;
-                foreach (var contacto in lst)
+                foreach (var mensaje in lst)
                 {
                     //Console.WriteLine(contacto.ToString());
-                    list.Add(contacto);
+                    list.Add(mensaje);
                 }
             }
 
             return list;
         }
 
-
-        // Comprobar si existe usuario en la BD con un mensaje dado
-        public Boolean checkMensaje(int idMensaje)
+        // Mostrar todos los mensajes de un usuario (where idEmisor = x)
+        public ArrayList listMensajesPorEmisor(String idEmisor)
         {
-            bool existe = false;
+            ArrayList list = new ArrayList();
 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
                 var lst = db.Contactos;
-                foreach (var contacto in lst)
+                foreach (var mensaje in lst)
                 {
-                    if (contacto.idMensaje == idMensaje)
+                    if (mensaje.idEmisor.Equals(idEmisor))
                     {
-                        existe = true;
+                        //Console.WriteLine(contacto.ToString());
+                        list.Add(mensaje);
+                    }
+
+                }
+            }
+
+            return list;
+        }
+
+        // Mostrar todos los mensajes de un usuario con el mismo receptor
+        public ArrayList listMensajesPorReceptor(String idEmisor, String idReceptor)
+        {
+            ArrayList list = new ArrayList();
+
+            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            {
+                var lst = db.Contactos;
+                foreach (var mensaje in lst)
+                {
+                    if (mensaje.idEmisor.Equals(idEmisor))
+                    {
+                        if (mensaje.idReceptor.Equals(idReceptor))
+                        {
+                            //Console.WriteLine(contacto.ToString());
+                            list.Add(mensaje);
+                        }
                     }
                 }
             }
-            return existe;
+
+            return list;
         }
 
+        // Mostrar todos los mensajes de un usuario que contengan una palabra concreta en el mensaje
+        public ArrayList listMensajesPorPalabra(String idEmisor, String palabraBuscada)
+        {
+            ArrayList list = new ArrayList();
 
-      
+            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            {
+                var lst = db.Contactos;
+                foreach (var mensaje in lst)
+                {
+                    if (mensaje.idEmisor.Equals(idEmisor))
+                    {
+                        if (mensaje.mensaje.StartsWith(palabraBuscada, System.StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            //Console.WriteLine(contacto.ToString());
+                            list.Add(mensaje);
+                        }
+                    }
+                }
+            }
 
+            return list;
+        }
 
+        // TODO: Enviar mensaje
+
+        // TODO: Responder mensaje
 
     }
 }

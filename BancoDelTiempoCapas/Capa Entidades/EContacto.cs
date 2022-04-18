@@ -11,11 +11,11 @@ namespace CapaEntidades
     public class EContacto
     {
         public int idMensaje { get; set; }
-        public Nullable<int> idEmisor { get; set; }
-        public Nullable<int> idReceptor { get; set; }
+        public int idEmisor { get; set; }
+        public int idReceptor { get; set; }
         public string mensaje { get; set; }
         public Nullable<System.DateTime> fechaHora { get; set; }
-        public Nullable<int> idAnuncio { get; set; }
+        public int idAnuncio { get; set; }
 
     }
 }
