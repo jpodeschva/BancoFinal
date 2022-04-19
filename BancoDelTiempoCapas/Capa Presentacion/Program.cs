@@ -20,14 +20,6 @@ namespace CapaPresentacion
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
 
-            // Prueba 1
-            //DConexion dc = new DConexion();
-            //dc.pruebaConexion();
-
-
-           
-
-
         }
 
            }

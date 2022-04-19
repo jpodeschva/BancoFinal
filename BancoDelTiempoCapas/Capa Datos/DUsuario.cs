@@ -7,7 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using CapaEntidades;
 using System.Collections;
-
+using System.Windows.Forms;
 
 namespace CapaDatos
 {
@@ -21,46 +21,83 @@ namespace CapaDatos
         {
             //Usuario usuario = new Usuario();
 
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                db.Usuarios.Add(usuario);
-                db.SaveChanges();
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+                {
+                    db.Usuarios.Add(usuario);
+                    db.SaveChanges();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Entrada duplicada en la Base de Datos. Ese Usuario ya existe.\n\n" + ex.Message);
+                return;
+            }
+
+            
         }
 
         // Eliminar usuario
         public void deleteUsuario(int id)
         {
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                Usuario usuario = db.Usuarios.Find(id); // Si buscamos al usuario por su id
-                //Usuario usuario = db.Usuarios.Where(u => u.email == usuario.email); // Si queremos buscar por email
-                db.Usuarios.Remove(usuario);
-                db.SaveChanges();
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+                {
+                    Usuario usuario = db.Usuarios.Find(id); // Si buscamos al usuario por su id
+                                                            //Usuario usuario = db.Usuarios.Where(u => u.email == usuario.email); // Si queremos buscar por email
+                    db.Usuarios.Remove(usuario);
+                    db.SaveChanges();
 
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al borrar Usuario.\n\n" + ex.Message);
+                return;
+            }
+            
         }
 
         // Actualizar usuario
         public void updateUsuario(Usuario usuario)
         {
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                //Usuario usuario = db.Usuarios.Find(id);
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+                {
+                    //Usuario usuario = db.Usuarios.Find(id);
 
-                db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
+                    db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha podido actualizar el Usuario.\n\n" + ex.Message);
+                return;
+            }
+            
         }
 
         // Mostrar un usuario
         public Usuario getUsuario(int id)
         {
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                Usuario usuario = db.Usuarios.Find(id);
-                return usuario;
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+                {
+                    Usuario usuario = db.Usuarios.Find(id);
+                    return usuario;
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Categoría no encontrada.\n\n" + ex.Message);
+                return null;
+            }
+            
         }
 
 
