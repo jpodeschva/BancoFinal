@@ -8,10 +8,13 @@ using System.Data.SqlClient;
 using CapaEntidades;
 using System.Collections;
 
+
 namespace CapaDatos
 {
+
     public class DUsuario
     {
+      
 
         // Añadir usuario
         public void addUsuario(Usuario usuario)
@@ -121,6 +124,20 @@ namespace CapaDatos
             }
             return correcto;
         }
+
+
+        public DataTable MostrarClientes() {
+            DConexion dc = new DConexion();
+            dc.pruebaConexion();
+
+            SqlDataAdapter da = new SqlDataAdapter("SP_MOSTRARUSUARIOS", DConexion.conexion.ToString());
+            da.SelectCommand.CommandType = CommandType.StoredProcedure;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            return dt;
+        
+        }
+        
 
 
     }

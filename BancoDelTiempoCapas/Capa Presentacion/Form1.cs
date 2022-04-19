@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using CapaNegocio;
+using CapaDatos;
 
 namespace Capa_Presentacion
 {
@@ -24,9 +25,11 @@ namespace Capa_Presentacion
             InitializeComponent();
         }
 
+        DUsuario us = new DUsuario();
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            //instanciamos clase cliente
+            dataGridView1.DataSource = us.MostrarClientes();
         }
 
         private void importBtn_Click(object sender, EventArgs e)
@@ -50,7 +53,11 @@ namespace Capa_Presentacion
 
         private void exportBtn_Click(object sender, EventArgs e)
         {
-            SaveFileDialog sfd = new SaveFileDialog();
+
+          /*  ds.WriteXml(@"C:\Users\jordi\OneDrive\Escritorio\DAM\BaseDeDatosXML.xml", XmlWriteMode.WriteSchema);
+            MessageBox.Show("EXPORTADO");*/
+
+           SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "XML|*.xml";
             if (sfd.ShowDialog() == DialogResult.OK)
             {
