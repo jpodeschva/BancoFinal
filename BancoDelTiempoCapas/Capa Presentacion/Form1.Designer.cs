@@ -32,6 +32,7 @@ namespace Capa_Presentacion
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.importBtn = new System.Windows.Forms.Button();
             this.exportBtn = new System.Windows.Forms.Button();
+            this.addUserBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +48,7 @@ namespace Capa_Presentacion
             // 
             // importBtn
             // 
-            this.importBtn.Location = new System.Drawing.Point(208, 346);
+            this.importBtn.Location = new System.Drawing.Point(444, 346);
             this.importBtn.Name = "importBtn";
             this.importBtn.Size = new System.Drawing.Size(114, 40);
             this.importBtn.TabIndex = 4;
@@ -57,7 +58,7 @@ namespace Capa_Presentacion
             // 
             // exportBtn
             // 
-            this.exportBtn.Location = new System.Drawing.Point(457, 346);
+            this.exportBtn.Location = new System.Drawing.Point(586, 346);
             this.exportBtn.Name = "exportBtn";
             this.exportBtn.Size = new System.Drawing.Size(114, 40);
             this.exportBtn.TabIndex = 3;
@@ -65,11 +66,22 @@ namespace Capa_Presentacion
             this.exportBtn.UseVisualStyleBackColor = true;
             this.exportBtn.Click += new System.EventHandler(this.exportBtn_Click);
             // 
+            // addUserBtn
+            // 
+            this.addUserBtn.Location = new System.Drawing.Point(82, 346);
+            this.addUserBtn.Name = "addUserBtn";
+            this.addUserBtn.Size = new System.Drawing.Size(114, 40);
+            this.addUserBtn.TabIndex = 5;
+            this.addUserBtn.Text = "Añadir a BD";
+            this.addUserBtn.UseVisualStyleBackColor = true;
+            this.addUserBtn.Click += new System.EventHandler(this.addUserBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.addUserBtn);
             this.Controls.Add(this.importBtn);
             this.Controls.Add(this.exportBtn);
             this.Controls.Add(this.dataGridView1);
@@ -85,6 +97,7 @@ namespace Capa_Presentacion
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button importBtn;
         private System.Windows.Forms.Button exportBtn;
+        private System.Windows.Forms.Button addUserBtn;
     }
 }
 

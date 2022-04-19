@@ -126,7 +126,7 @@ namespace CapaDatos
         }
 
 
-        public DataTable MostrarClientes() {
+        /*public DataTable MostrarClientes() {
             DConexion dc = new DConexion();
             dc.pruebaConexion();
 
@@ -136,7 +136,7 @@ namespace CapaDatos
             da.Fill(dt);
             return dt;
         
-        }
+        }*/
         
 
 
