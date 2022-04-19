@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Collections;
+using System.Windows.Forms;
 
 namespace CapaDatos
 {
@@ -14,13 +15,20 @@ namespace CapaDatos
         // Añadir categoría
         public void addCategoria(CategoriaDeServicio categoriaDeServicio)
         {
-
-
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                db.CategoriaDeServicios.Add(categoriaDeServicio);
-                db.SaveChanges();
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+                {
+                    db.CategoriaDeServicios.Add(categoriaDeServicio);
+                    db.SaveChanges();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Entrada duplicada en la Base de Datos. Esa Categoría ya existe." + ex.Message);
+                return;
+            }
+            
         }
 
         // Eliminar categoría

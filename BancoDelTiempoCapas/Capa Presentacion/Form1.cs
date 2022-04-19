@@ -127,6 +127,8 @@ namespace Capa_Presentacion
 
             DCategoriaDeServicio categoria = new DCategoriaDeServicio();
             categoria.addCategoria(categ1);
+            //categoria.deleteCategoria(4);
+
 
         }
     }
