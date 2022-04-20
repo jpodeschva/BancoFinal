@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Collections;
+using System.Windows.Forms;
 
 namespace CapaDatos
 {
@@ -16,46 +17,77 @@ namespace CapaDatos
         public void addUsuario(Usuario usuario)
         {
             //Usuario usuario = new Usuario();
-
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                db.Usuarios.Add(usuario);
-                db.SaveChanges();
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+                {
+                    db.Usuarios.Add(usuario);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha podido registrar el usuario.\n\n" + ex.Message);
+                return;
             }
         }
 
         // Eliminar usuario
         public void deleteUsuario(int id)
         {
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                Usuario usuario = db.Usuarios.Find(id); // Si buscamos al usuario por su id
-                //Usuario usuario = db.Usuarios.Where(u => u.email == usuario.email); // Si queremos buscar por email
-                db.Usuarios.Remove(usuario);
-                db.SaveChanges();
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+                {
+                    Usuario usuario = db.Usuarios.Find(id); // Si buscamos al usuario por su id
+                                                            //Usuario usuario = db.Usuarios.Where(u => u.email == usuario.email); // Si queremos buscar por email
+                    db.Usuarios.Remove(usuario);
+                    db.SaveChanges();
 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha podido eliminar el registro.\n\n" + ex.Message);
+                return;
             }
         }
 
         // Actualizar usuario
         public void updateUsuario(Usuario usuario)
         {
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                //Usuario usuario = db.Usuarios.Find(id);
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+                {
+                    //Usuario usuario = db.Usuarios.Find(id);
 
-                db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
+                    db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("El registro no se ha actualizado.\n\n" + ex.Message);
+                return;
             }
         }
 
         // Mostrar un usuario
         public Usuario getUsuario(int id)
         {
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                Usuario usuario = db.Usuarios.Find(id);
-                return usuario;
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+                {
+                    Usuario usuario = db.Usuarios.Find(id);
+                    return usuario;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se puede mostrar el usuario.\n\n" + ex.Message);
+                return null;
             }
         }
 
@@ -64,15 +96,22 @@ namespace CapaDatos
         public ArrayList listUsuarios()
         {
             ArrayList list = new ArrayList();
-
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                var lst = db.Usuarios;
-                foreach (var usuario in lst)
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
                 {
-                    //Console.WriteLine(usuario.ToString());
-                    list.Add(usuario);
+                    var lst = db.Usuarios;
+                    foreach (var usuario in lst)
+                    {
+                        //Console.WriteLine(usuario.ToString());
+                        list.Add(usuario);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No hay usuarios por mostrar.\n\n" + ex.Message);
+                return null;
             }
 
             return list;
@@ -83,17 +122,24 @@ namespace CapaDatos
         public Boolean checkUsuario(String username)
         {
             bool existe = false;
-
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                var lst = db.Usuarios;
-                foreach (var usuario in lst)
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
                 {
-                    if (usuario.idUsername == username)
+                    var lst = db.Usuarios;
+                    foreach (var usuario in lst)
                     {
-                        existe = true;
+                        if (usuario.idUsername == username)
+                        {
+                            existe = true;
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("no existe el usuario.\n\n" + ex.Message);
+                return false;
             }
             return existe;
         }
@@ -103,21 +149,29 @@ namespace CapaDatos
         public Boolean checkPassword(String username, String password)
         {
             bool correcto = false;
-
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                var lst = db.Usuarios;
-                foreach (var usuario in lst)
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
                 {
-                    if (usuario.idUsername == username)
+                    var lst = db.Usuarios;
+                    foreach (var usuario in lst)
                     {
-                        if (usuario.idPassword == password)
+                        if (usuario.idUsername == username)
                         {
-                            correcto = true;
+                            if (usuario.idPassword == password)
+                            {
+                                correcto = true;
+                            }
                         }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(" No hemos podido comprobar la contraseña.\n\n" + ex.Message);
+                return false;
+            }
+
             return correcto;
         }
 
