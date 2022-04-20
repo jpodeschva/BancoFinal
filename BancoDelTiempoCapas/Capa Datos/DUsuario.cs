@@ -130,7 +130,7 @@ namespace CapaDatos
             DConexion dc = new DConexion();
             dc.pruebaConexion();
 
-            SqlDataAdapter da = new SqlDataAdapter("SP_MOSTRARUSUARIOS", DConexion.conexion.ToString());
+            SqlDataAdapter da = new SqlDataAdapter("SP_MOSTRARUSUARIOS", DConexion.conexion);
             da.SelectCommand.CommandType = CommandType.StoredProcedure;
             DataTable dt = new DataTable();
             da.Fill(dt);

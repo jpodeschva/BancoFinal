@@ -54,10 +54,10 @@ namespace Capa_Presentacion
         private void exportBtn_Click(object sender, EventArgs e)
         {
 
-          /*  ds.WriteXml(@"C:\Users\jordi\OneDrive\Escritorio\DAM\BaseDeDatosXML.xml", XmlWriteMode.WriteSchema);
-            MessageBox.Show("EXPORTADO");*/
+            ds.WriteXml(@"C:\Users\jordi\OneDrive\Escritorio\DAM\BaseDeDatosXML.xml", XmlWriteMode.WriteSchema);
+            MessageBox.Show("EXPORTADO");
 
-           SaveFileDialog sfd = new SaveFileDialog();
+           /*SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "XML|*.xml";
             if (sfd.ShowDialog() == DialogResult.OK)
             {
@@ -69,7 +69,7 @@ namespace Capa_Presentacion
                 {
                     Console.WriteLine(ex);
                 }
-            }
+            }*/
         }
     }
 }
