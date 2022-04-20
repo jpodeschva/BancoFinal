@@ -10,11 +10,11 @@ namespace CapaNegocio
     public class NLogin
     {
         // Prueba funcionamiento BD
-        DConexion dConexion = new DConexion();
+        //DConexion dConexion = new DConexion();
 
-        public void conectarSQL()
+        /*public void conectarSQL()
         {
             dConexion.pruebaConexion();
-        }
+        }*/
     }
 }

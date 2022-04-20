@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Collections;
+using System.Windows.Forms;
 
 namespace CapaDatos
 {
@@ -14,48 +15,80 @@ namespace CapaDatos
         // Añadir categoría
         public void addCategoria(CategoriaDeServicio categoriaDeServicio)
         {
-
-
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                db.CategoriaDeServicios.Add(categoriaDeServicio);
-                db.SaveChanges();
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+                {
+                    db.CategoriaDeServicios.Add(categoriaDeServicio);
+                    db.SaveChanges();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Entrada duplicada en la Base de Datos. Esa Categoría ya existe.\n\n" + ex.Message);
+                return;
+            }
+            
         }
 
         // Eliminar categoría
         public void deleteCategoria(int id)
         {
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                CategoriaDeServicio categoriaDeServicio = db.CategoriaDeServicios.Find(id); // Si buscamos Categoria por su id
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+                {
+                    CategoriaDeServicio categoriaDeServicio = db.CategoriaDeServicios.Find(id); // Si buscamos Categoria por su id
 
-                db.CategoriaDeServicios.Remove(categoriaDeServicio);
-                db.SaveChanges();
+                    db.CategoriaDeServicios.Remove(categoriaDeServicio);
+                    db.SaveChanges();
 
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al borrar Categoría.\n\n" + ex.Message);
+                return;
+            }
+            
         }
 
         // Actualizar categoría
         public void updateCategoria(CategoriaDeServicio categoriaDeServicio)
         {
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-
-
-                db.Entry(categoriaDeServicio).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+                {
+                    db.Entry(categoriaDeServicio).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha podido actualizar la Categoría.\n\n" + ex.Message);
+                return;
+            }
+            
         }
 
         // Mostrar una categoría
         public CategoriaDeServicio getCategoria(int id)
         {
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                CategoriaDeServicio categoriaDeServicio = db.CategoriaDeServicios.Find(id);
-                return categoriaDeServicio;
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+                {
+                    CategoriaDeServicio categoriaDeServicio = db.CategoriaDeServicios.Find(id);
+                    return categoriaDeServicio;
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Categoría no encontrada.\n\n" + ex.Message);
+                return null;
+            }
+            
         }
 
 
