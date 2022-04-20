@@ -88,7 +88,6 @@ namespace CapaDatos
                 MessageBox.Show("Categoría no encontrada.\n\n" + ex.Message);
                 return null;
             }
-            
         }
 
 
@@ -106,7 +105,6 @@ namespace CapaDatos
                     list.Add(categoriaDeServicio);
                 }
             }
-
             return list;
         }
 
