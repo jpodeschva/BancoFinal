@@ -52,7 +52,7 @@ namespace Capa_Presentacion
             this.importBtn.Name = "importBtn";
             this.importBtn.Size = new System.Drawing.Size(114, 40);
             this.importBtn.TabIndex = 4;
-            this.importBtn.Text = "Import XML";
+            this.importBtn.Text = "Import Data";
             this.importBtn.UseVisualStyleBackColor = true;
             this.importBtn.Click += new System.EventHandler(this.importBtn_Click);
             // 
