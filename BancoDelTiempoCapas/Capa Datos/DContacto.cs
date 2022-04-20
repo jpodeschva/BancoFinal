@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Collections;
+using System.Windows.Forms;
 
 namespace CapaDatos
 {
@@ -15,17 +16,24 @@ namespace CapaDatos
         public void addMensaje(Contacto contacto)
         {
 
-
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                db.Contactos.Add(contacto);
-                db.SaveChanges();
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+                {
+                    db.Contactos.Add(contacto);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex){
+                MessageBox.Show("No se ha podido añadir mensaje. \n\n" + ex.Message);
+                return;
             }
         }
 
         // Eliminar mensaje
         public void deleteMensaje(int id)
         {
+            try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
                 Contacto contacto = db.Contactos.Find(id); // Si buscamos el mensaje por su id
@@ -34,11 +42,18 @@ namespace CapaDatos
                 db.SaveChanges();
 
             }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha podido eliminar el mensaje. \n\n" + ex.Message);
+                return;
+            }
         }
 
         // Actualizar mensaje
         public void updateMensaje(Contacto contacto)
         {
+            try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
 
@@ -46,15 +61,28 @@ namespace CapaDatos
                 db.Entry(contacto).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
             }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha podido actualizar el mensaje. \n\n" + ex.Message);
+                return;
+            }
         }
 
         // Mostrar un mensaje
         public Contacto getMensaje(int id)
         {
+            try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
                 Contacto contacto = db.Contactos.Find(id);
                 return contacto;
+            }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha podido encontrar el mensaje. \n\n" + ex.Message);
+                return null;
             }
         }
 
@@ -62,7 +90,7 @@ namespace CapaDatos
         public ArrayList listMensajes()
         {
             ArrayList list = new ArrayList();
-
+            try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
                 var lst = db.Contactos;
@@ -72,7 +100,12 @@ namespace CapaDatos
                     list.Add(mensaje);
                 }
             }
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se han podido encontrar mensajes. \n\n" + ex.Message);
+                return null;
+            }
             return list;
         }
 
@@ -80,7 +113,7 @@ namespace CapaDatos
         public ArrayList listMensajesPorEmisor(int idEmisor)
         {
             ArrayList list = new ArrayList();
-
+            try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
                 var lst = db.Contactos;
@@ -94,6 +127,12 @@ namespace CapaDatos
 
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se han podido encontrar mensaje de este usuario. \n\n" + ex.Message);
+                return null;
+            }
 
             return list;
         }
@@ -102,7 +141,7 @@ namespace CapaDatos
         public ArrayList listMensajesPorReceptor(int idEmisor, int idReceptor)
         {
             ArrayList list = new ArrayList();
-
+            try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
                 var lst = db.Contactos;
@@ -118,6 +157,12 @@ namespace CapaDatos
                     }
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se han podido encontrar mensajes para este receptor. \n\n" + ex.Message);
+                return null;
+            }
 
             return list;
         }
@@ -126,7 +171,7 @@ namespace CapaDatos
         public ArrayList listMensajesPorPalabra(int idEmisor, String palabraBuscada)
         {
             ArrayList list = new ArrayList();
-
+            try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
                 var lst = db.Contactos;
@@ -141,6 +186,12 @@ namespace CapaDatos
                         }
                     }
                 }
+            }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha podido encontrar mensaje con esta palabra. \n\n" + ex.Message);
+                return null;
             }
 
             return list;
