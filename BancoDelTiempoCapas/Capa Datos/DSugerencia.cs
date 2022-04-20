@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace CapaDatos
 {
@@ -12,47 +13,78 @@ namespace CapaDatos
     {
 
         // Añadir sugerencia
-        public void addSugerencia(Sugerencia sugerencia) { 
-       
+        public void addSugerencia(Sugerencia sugerencia) {
 
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                db.Sugerencias.Add(sugerencia);
-                db.SaveChanges();
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+                {
+                    db.Sugerencias.Add(sugerencia);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha podido agregar la sugerencia.\n\n" + ex.Message);
+                return;
             }
         }
 
         // Eliminar sugerencia
         public void deleteSugerencia(int id)
         {
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                Sugerencia sugerencia = db.Sugerencias.Find(id); // Si buscamos dugerencia por su id
-                
-                db.Sugerencias.Remove(sugerencia);
-                db.SaveChanges();
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+                {
+                    Sugerencia sugerencia = db.Sugerencias.Find(id); // Si buscamos dugerencia por su id
 
+                    db.Sugerencias.Remove(sugerencia);
+                    db.SaveChanges();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha podido eliminar la sugerencia.\n\n" + ex.Message);
+                return;
             }
         }
 
         // Actualizar sugerencia
         public void updateSugerencia(Sugerencia sugerencia)
         {
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
-            { 
+            try
+            {
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+                {
 
-                db.Entry(sugerencia).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
+                    db.Entry(sugerencia).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("La sugerencia no se ha actualizado.\n\n" + ex.Message);
+                return;
             }
         }
 
         // Mostrar una sugerencia
         public Sugerencia getSugerencia(int id)
         {
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                Sugerencia sugerencia = db.Sugerencias.Find(id);
-                return sugerencia;
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+                {
+                    Sugerencia sugerencia = db.Sugerencias.Find(id);
+                    return sugerencia;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha encontrado ninguna sugerencia con esta id.\n\n" + ex.Message);
+                return null;
             }
         }
 
@@ -62,14 +94,22 @@ namespace CapaDatos
         {
             ArrayList list = new ArrayList();
 
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                var lst = db.Sugerencias;
-                foreach (var sugerencia in lst)
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
                 {
-                    //Console.WriteLine(sugerencia.ToString());
-                    list.Add(sugerencia);
+                    var lst = db.Sugerencias;
+                    foreach (var sugerencia in lst)
+                    {
+                        //Console.WriteLine(sugerencia.ToString());
+                        list.Add(sugerencia);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("no hay sugerencias.\n\n" + ex.Message);
+                return null;
             }
 
             return list;
@@ -79,18 +119,25 @@ namespace CapaDatos
         public ArrayList listSugerenciasPorUsuario(int idUsuario)
         {
             ArrayList list = new ArrayList();
-
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                var lst = db.Sugerencias;
-                foreach (var sugerencia in lst)
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
                 {
-                    if (sugerencia.idUsuario == idUsuario)
+                    var lst = db.Sugerencias;
+                    foreach (var sugerencia in lst)
                     {
-                        //Console.WriteLine(sugerencia.ToString());
-                        list.Add(sugerencia);
+                        if (sugerencia.idUsuario == idUsuario)
+                        {
+                            //Console.WriteLine(sugerencia.ToString());
+                            list.Add(sugerencia);
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No existen sugerencias para este usuario.\n\n" + ex.Message);
+                return null;
             }
 
             return list;
@@ -101,17 +148,26 @@ namespace CapaDatos
         {
             ArrayList list = new ArrayList();
 
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                var lst = db.Sugerencias;
-                foreach (var sugerencia in lst)
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
                 {
-                    if (sugerencia.fechaHora == fecha) 
+                    var lst = db.Sugerencias;
+                    foreach (var sugerencia in lst)
                     {
-                        //Console.WriteLine(sugerencia.ToString());
-                        list.Add(sugerencia);
+                        if (sugerencia.fechaHora == fecha)
+                        {
+                            //Console.WriteLine(sugerencia.ToString());
+                            list.Add(sugerencia);
+                        }
                     }
                 }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("No hay sugerencias en estas fechas.\n\n" + ex.Message);
+                return null;
             }
 
             return list;
@@ -122,18 +178,26 @@ namespace CapaDatos
         {
             ArrayList list = new ArrayList();
 
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                var lst = db.Sugerencias;
-                foreach (var sugerencia in lst)
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
                 {
-                    if (sugerencia.descripcion.StartsWith(palabra, System.StringComparison.CurrentCultureIgnoreCase))
+                    var lst = db.Sugerencias;
+                    foreach (var sugerencia in lst)
                     {
-                        //Console.WriteLine(sugerencia.ToString());
-                        list.Add(sugerencia);
+                        if (sugerencia.descripcion.StartsWith(palabra, System.StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            //Console.WriteLine(sugerencia.ToString());
+                            list.Add(sugerencia);
+                        }
+
                     }
-                    
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No hay sugerencias con esta palabra.\n\n" + ex.Message);
+                return null;
             }
 
             return list;
