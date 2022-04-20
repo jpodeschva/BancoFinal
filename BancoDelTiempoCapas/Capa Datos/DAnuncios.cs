@@ -13,6 +13,7 @@ using System.Data.SqlClient;
 //enlazamos con CapaEntidades
 using CapaEntidades;
 using System.Collections;
+using System.Windows.Forms;
 
 namespace CapaDatos
 {
@@ -24,17 +25,24 @@ namespace CapaDatos
         public void addAnuncio(Anuncio anuncio)
         {
 
-
+            try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
                 db.Anuncios.Add(anuncio);
                 db.SaveChanges();
+            }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha podido añadir el anuncio. \n\n" + ex.Message);
+                return;
             }
         }
 
         // Eliminar anuncio
         public void deleteAnuncio(int id)
         {
+            try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
                 Anuncio anuncio = db.Anuncios.Find(id); // Si buscamos el anuncio por su id
@@ -43,11 +51,18 @@ namespace CapaDatos
                 db.SaveChanges();
 
             }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha podido borrar el anuncio. \n\n" + ex.Message);
+                return;
+            }
         }
 
         // Actualizar anuncio
         public void updateAnuncio(Anuncio anuncio)
         {
+            try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
 
@@ -55,15 +70,28 @@ namespace CapaDatos
                 db.Entry(anuncio).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
             }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha podido actualizar el anuncio. \n\n" + ex.Message);
+                return;
+            }
         }
 
         // Mostrar un anuncio
         public Anuncio getAnuncio(int id)
         {
+            try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
                 Anuncio anuncio = db.Anuncios.Find(id);
                 return anuncio;
+            }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha podido mostrar el anuncio. \n\n" + ex.Message);
+                return null;
             }
         }
 
@@ -72,7 +100,7 @@ namespace CapaDatos
         public ArrayList listAnuncios()
         {
             ArrayList list = new ArrayList();
-
+            try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
                 var lst = db.Anuncios;
@@ -82,6 +110,12 @@ namespace CapaDatos
                     list.Add(anuncio);
                 }
             }
+        }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No hay anuncios por mostrar. \n\n" + ex.Message);
+                return null;
+            }
 
             return list;
         }
@@ -90,7 +124,7 @@ namespace CapaDatos
         public ArrayList listAnunciosPorCategoria(int idCategoria)
         {
             ArrayList list = new ArrayList();
-
+            try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
                 var lst = db.Anuncios;
@@ -104,6 +138,12 @@ namespace CapaDatos
                     
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha podido mostrar el anuncio por esta categoria. \n\n" + ex.Message);
+                return null;
+            }
 
             return list;
         }
@@ -112,7 +152,7 @@ namespace CapaDatos
         public ArrayList listAnunciosPorLocalidad(String localidad)
         {
             ArrayList list = new ArrayList();
-
+            try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
                 var lst = db.Anuncios;
@@ -126,7 +166,12 @@ namespace CapaDatos
 
                 }
             }
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No hay anuncios por mostrar. \n\n" + ex.Message);
+                return null;
+            }
             return list;
         }
 
@@ -134,7 +179,7 @@ namespace CapaDatos
         public ArrayList listAnunciosPorUsuario(int idUsuario)
         {
             ArrayList list = new ArrayList();
-
+            try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
                 var lst = db.Anuncios;
@@ -148,6 +193,12 @@ namespace CapaDatos
 
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha podido mostrar anuncios. \n\n" + ex.Message);
+                return null;
+            }
 
             return list;
         }
@@ -156,7 +207,7 @@ namespace CapaDatos
         public Boolean checkAnuncio(int idAnuncio)
         {
             bool existe = false;
-
+            try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
                 var lst = db.Anuncios;
@@ -168,6 +219,12 @@ namespace CapaDatos
                     }
                 }
             }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha podido mostrar anuncio con su id. \n\n" + ex.Message);
+                return false;
+            }
             return existe;
         }
 
@@ -175,7 +232,7 @@ namespace CapaDatos
         public ArrayList listAnunciosPorFecha(DateTime fechaInicio, DateTime fechaFin)
         {
             ArrayList list = new ArrayList();
-
+            try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
                 var lst = db.Anuncios;
@@ -188,6 +245,12 @@ namespace CapaDatos
                     }
 
                 }
+            }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha podido mostrar el anuncio por estas fechas. \n\n" + ex.Message);
+                return null;
             }
 
             return list;
