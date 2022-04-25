@@ -27,6 +27,7 @@ namespace CapaDatos
                 {
                     db.Usuarios.Add(usuario);
                     db.SaveChanges();
+                    MessageBox.Show("Usuario añadido correctamente.");
                 }
             }
             catch (Exception ex)

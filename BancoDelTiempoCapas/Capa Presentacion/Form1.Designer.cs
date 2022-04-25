@@ -43,12 +43,13 @@ namespace Capa_Presentacion
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(618, 230);
+            this.dataGridView1.Size = new System.Drawing.Size(618, 271);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // importBtn
             // 
-            this.importBtn.Location = new System.Drawing.Point(444, 346);
+            this.importBtn.Location = new System.Drawing.Point(444, 367);
             this.importBtn.Name = "importBtn";
             this.importBtn.Size = new System.Drawing.Size(114, 40);
             this.importBtn.TabIndex = 4;
@@ -58,7 +59,7 @@ namespace Capa_Presentacion
             // 
             // exportBtn
             // 
-            this.exportBtn.Location = new System.Drawing.Point(586, 346);
+            this.exportBtn.Location = new System.Drawing.Point(586, 367);
             this.exportBtn.Name = "exportBtn";
             this.exportBtn.Size = new System.Drawing.Size(114, 40);
             this.exportBtn.TabIndex = 3;
@@ -68,11 +69,11 @@ namespace Capa_Presentacion
             // 
             // addUserBtn
             // 
-            this.addUserBtn.Location = new System.Drawing.Point(82, 346);
+            this.addUserBtn.Location = new System.Drawing.Point(82, 367);
             this.addUserBtn.Name = "addUserBtn";
             this.addUserBtn.Size = new System.Drawing.Size(114, 40);
             this.addUserBtn.TabIndex = 5;
-            this.addUserBtn.Text = "Añadir a BD";
+            this.addUserBtn.Text = "Test DB";
             this.addUserBtn.UseVisualStyleBackColor = true;
             this.addUserBtn.Click += new System.EventHandler(this.addUserBtn_Click);
             // 
