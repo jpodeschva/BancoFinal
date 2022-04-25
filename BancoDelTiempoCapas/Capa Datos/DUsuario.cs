@@ -106,6 +106,7 @@ namespace CapaDatos
         {
             ArrayList list = new ArrayList();
 
+
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
                 var lst = db.Usuarios;
