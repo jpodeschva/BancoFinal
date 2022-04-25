@@ -23,16 +23,27 @@ namespace CapaPresentacion2
         public MainWindow()
         {
             InitializeComponent();
+            Main.Content = new Menu();
         }
 
         private void loginBtnClick(object sender, RoutedEventArgs e)
         {
-            Main.Content = new Page1();
+            Main.Content = new Login();
         }
 
         private void registroBtnClick(object sender, RoutedEventArgs e)
         {
-            Main.Content = new Page2();
+            Main.Content = new Registro();
+        }
+
+        private void menuBtnClick(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new Menu();
+        }
+
+        private void nosotrosBtnClick(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

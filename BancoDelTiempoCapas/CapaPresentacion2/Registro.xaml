@@ -1,0 +1,15 @@
+﻿<Page x:Class="CapaPresentacion2.Registro"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CapaPresentacion2"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Registro">
+
+    <Grid>
+        <Label Content="Estas en Page2" HorizontalAlignment="Left" Margin="372,207,0,0" VerticalAlignment="Top" Background="#FFF34040"/>
+
+    </Grid>
+</Page>

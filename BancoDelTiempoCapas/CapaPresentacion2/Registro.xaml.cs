@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace CapaPresentacion2
 {
     /// <summary>
-    /// Lógica de interacción para Page1.xaml
+    /// Lógica de interacción para Page2.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class Registro : Page
     {
-        public Page1()
+        public Registro()
         {
             InitializeComponent();
         }
