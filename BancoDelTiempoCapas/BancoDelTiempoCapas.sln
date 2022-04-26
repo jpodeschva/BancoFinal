@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30907.101
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDatos", "Capa Datos\CapaDatos.csproj", "{75FD000F-4724-4FC6-BA15-C42A583B9009}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaPresentacion", "Capa Presentacion\CapaPresentacion.csproj", "{8124BA32-71E3-41F1-8014-4B479F3BDAD9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaEntidades", "Capa Entidades\CapaEntidades.csproj", "{D53E9CCA-E91C-4FCB-B3E5-42F4B79671E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaPresentacion2", "CapaPresentacion2\CapaPresentacion2.csproj", "{870BD94A-8907-45D9-9968-89F993EAAF5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D53E9CCA-E91C-4FCB-B3E5-42F4B79671E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D53E9CCA-E91C-4FCB-B3E5-42F4B79671E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D53E9CCA-E91C-4FCB-B3E5-42F4B79671E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{870BD94A-8907-45D9-9968-89F993EAAF5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{870BD94A-8907-45D9-9968-89F993EAAF5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{870BD94A-8907-45D9-9968-89F993EAAF5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{870BD94A-8907-45D9-9968-89F993EAAF5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
