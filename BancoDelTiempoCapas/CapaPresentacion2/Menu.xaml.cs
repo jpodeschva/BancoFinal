@@ -20,6 +20,8 @@ namespace CapaPresentacion2
     /// </summary>
     public partial class Menu : Page
     {
+
+        MainWindow mainWindow;
         public Menu()
         {
             InitializeComponent();
@@ -30,5 +32,7 @@ namespace CapaPresentacion2
         {
             Content = new Categorias();
         }
+
+      
     }
 }

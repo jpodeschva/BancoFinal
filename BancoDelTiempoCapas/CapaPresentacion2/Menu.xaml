@@ -10,7 +10,8 @@
 
     <Grid>
         <Image HorizontalAlignment="Center" Margin="0" Stretch="Fill" VerticalAlignment="Center" Source="/fondo.png"/>
-        <Button x:Name="Categorias" Content="Categorias" HorizontalAlignment="Left" Margin="554,111,0,0" VerticalAlignment="Top" Width="75" Visibility="Visible" Click="menuBtnCategoria" Background="#FFF8F4F4"/>
+        
+        <Button x:Name="Categorias" Content="Categorias" HorizontalAlignment="Left" Margin="585,88,0,0" VerticalAlignment="Top" Width="75" Visibility="Visible" Click="menuBtnCategoria" />
 
     </Grid>
 </Page>
