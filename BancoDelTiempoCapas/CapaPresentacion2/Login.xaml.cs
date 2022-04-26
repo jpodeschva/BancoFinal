@@ -20,14 +20,18 @@ namespace CapaPresentacion2
     /// </summary>
     public partial class Login : Page
     {
+        private TextBox passTextBox;
+
         public Login()
         {
             InitializeComponent();
+            
         }
 
         private void finalLoginBtnClick(object sender, RoutedEventArgs e)
         {
 
         }
+
     }
 }

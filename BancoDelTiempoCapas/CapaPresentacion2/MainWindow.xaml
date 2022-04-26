@@ -5,21 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CapaPresentacion2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Banco de Tiempo" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="9*"/>
-            <RowDefinition Height="208*"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Height="35" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.RowSpan="2" Width="800">
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel.Background>
-                <ImageBrush ImageSource="/menu_back2.png"/>
+                <ImageBrush ImageSource="/menu_back2.png" Stretch="UniformToFill"/>
             </StackPanel.Background>
             <Button x:Name="Menu" MinWidth="100" Margin="170,7,10,7" Visibility="Visible" Click="menuBtnClick" Content="Menu" />
             <Button x:Name="SobreNosotros" MinWidth="100" Margin="10,7,10,7" Visibility="Visible" Click="nosotrosBtnClick" Content="Sobre nosotros" />
             <Button x:Name="loginBtn" MinWidth="100" Margin="160,7,10,7" Visibility="Visible" Click="loginBtnClick" Content="Login" />
             <Button x:Name="registroBtn" Content="Registro" MinWidth="100" Margin="10,7,20,7" Click="registroBtnClick" />
         </StackPanel>
-        <Frame x:Name="Main" Margin="0,17,0,0" NavigationUIVisibility="Hidden" Grid.Row="1" />
+        <Frame x:Name="Main" Margin="0,0,0,0" NavigationUIVisibility="Hidden" Grid.Row="1" />
     </Grid>
 </Window>
