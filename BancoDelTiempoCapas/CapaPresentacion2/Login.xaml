@@ -10,6 +10,6 @@
 
     <Grid>
         <Image HorizontalAlignment="Center" Margin="0" Stretch="Fill" VerticalAlignment="Center" Source="/login.png"/>
-        <Button x:Name="finalLoginBtn" Content="Login" Width="100" Height="35" Margin="576,388,124,27" Click="finalLoginBtnClick" />
+        <Button x:Name="finalLoginBtn" Content="Login" Width="100" Height="35" Margin="576,388,124,27" Click="finalLoginBtnClick" RenderTransformOrigin="0.5,0.505" />
     </Grid>
 </Page>

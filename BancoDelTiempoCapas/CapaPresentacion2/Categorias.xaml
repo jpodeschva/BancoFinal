@@ -9,6 +9,11 @@
       Title="Categorias">
 
     <Grid>
-        
+        <Image HorizontalAlignment="Center" Margin="0" Stretch="Fill" VerticalAlignment="Center" Source="/fondo.png"/>
+        <TextBox x:Name="Buscar" HorizontalAlignment="Left" Height="23" Margin="629,252,0,0" TextWrapping="Wrap" Text="Buscar" VerticalAlignment="Top" Width="120" TextChanged="Buscar_TextChanged" RenderTransformOrigin="2.986,3.348"/>
+        <ListBox x:Name="ListaCategorias" HorizontalAlignment="Left" Height="74" Margin="517,30,0,0" VerticalAlignment="Top" Width="232" SelectionChanged="ListBox_SelectionChanged"/>
+        <TextBox x:Name="Añadir" HorizontalAlignment="Left" Height="23" Margin="629,305,0,0" TextWrapping="Wrap" Text="Añadir" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Volver" HorizontalAlignment="Left" Height="23" Margin="629,360,0,0" TextWrapping="Wrap" Text="Volver" VerticalAlignment="Top" Width="120"/>
+
     </Grid>
 </Page>

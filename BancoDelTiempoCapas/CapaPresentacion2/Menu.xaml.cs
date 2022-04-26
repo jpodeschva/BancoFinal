@@ -23,6 +23,12 @@ namespace CapaPresentacion2
         public Menu()
         {
             InitializeComponent();
+            
+        }
+
+        private void menuBtnCategoria(object sender, RoutedEventArgs e)
+        {
+            Content = new Categorias();
         }
     }
 }

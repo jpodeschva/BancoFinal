@@ -29,5 +29,10 @@ namespace CapaPresentacion2
         {
 
         }
+
+        private void Buscar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
