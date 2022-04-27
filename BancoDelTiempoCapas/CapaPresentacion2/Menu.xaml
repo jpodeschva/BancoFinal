@@ -11,7 +11,5 @@
     <Grid>
         <Image HorizontalAlignment="Center" Margin="0" Stretch="Fill" VerticalAlignment="Center" Source="/main_image.png"/>
         
-        <Button x:Name="Categorias" Content="Categorias" HorizontalAlignment="Left" Margin="585,88,0,0" VerticalAlignment="Top" Width="75" Visibility="Visible" Click="menuBtnCategoria" />
-
     </Grid>
 </Page>

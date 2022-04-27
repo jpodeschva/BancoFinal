@@ -28,11 +28,5 @@ namespace CapaPresentacion2
             
         }
 
-        private void menuBtnCategoria(object sender, RoutedEventArgs e)
-        {
-            Content = new Categorias();
-        }
-
-      
     }
 }
