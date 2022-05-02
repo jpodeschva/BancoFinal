@@ -5,11 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CapaPresentacion2"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="600" d:DesignWidth="900"
       Title="Menu">
 
     <Grid>
-        <Image HorizontalAlignment="Center" Margin="0" Stretch="Fill" VerticalAlignment="Center" Source="/main_image.png"/>
+        <Image HorizontalAlignment="Center" Margin="0" Stretch="Fill" VerticalAlignment="Center" Source="/images/main_image.png"/>
         
     </Grid>
 </Page>

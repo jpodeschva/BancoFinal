@@ -4,35 +4,36 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CapaPresentacion2"
+      xmlns:uc="clr-namespace:CapaPresentacion2.UserControls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Login">
+      Title="Login" Background="Transparent">
 
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/login.png" Stretch="Fill"/>
-        </Grid.Background>
+        
         
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="350"/>
         </Grid.ColumnDefinitions>
         
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="150"/>
+                <RowDefinition Height="100"/>
                 <RowDefinition Height="55"/>
                 <RowDefinition Height="55"/>
                 <RowDefinition Height="55"/>
                 <RowDefinition Height="55"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+
+            <Label Grid.Row="1" x:Name="usernameLabel" Content="Please enter username" HorizontalAlignment="Left" Margin="80,10,0,0" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" FontSize="14" Foreground="#f5f7f9"/>
+            <uc:MyTextBox Grid.Row="2" x:Name="usernameTextBox" Hint="username" Margin="100 0"/>
             
-            <Label Grid.Row="1" x:Name="usernameLabel" Content="Please enter username" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" FontSize="14" Foreground="#FF525156"/>
-            <TextBox Grid.Row="2" x:Name="usernameTextBox" HorizontalAlignment="Left" Margin="20,10,0,0" TextWrapping="Wrap" Text="username" VerticalAlignment="Top" Width="249" FontFamily="Cascadia Mono ExtraLight"/>
-            <Label Grid.Row="3" x:Name="passwordLabel" Content="Please enter password" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" FontSize="14" Foreground="#FF525156"/>
-            <PasswordBox Grid.Row="4" x:Name="passwordBox1" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="249" PasswordChar="●" Password="**********"/>
-            <Button Grid.Row="5" x:Name="finalLoginBtn" Content="Login" Width="100" Height="35" Margin="0" Click="finalLoginBtnClick" RenderTransformOrigin="0.5,0.505" />
+            <Label Grid.Row="3" x:Name="passwordLabel" Content="Please enter password" HorizontalAlignment="Left" Margin="80,10,0,0" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" FontSize="14" Foreground="#f5f7f9"/>
+            <PasswordBox Grid.Row="4" x:Name="passwordBox1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="280" PasswordChar="●" Password="**********" Style="{StaticResource passwordBox}"/>
+            
+            <Button Grid.Row="5" x:Name="finalLoginBtn" Content="Login" Width="60" Click="finalLoginBtnClick" Style="{StaticResource buttonMainGreen}" />
         </Grid>
 
 

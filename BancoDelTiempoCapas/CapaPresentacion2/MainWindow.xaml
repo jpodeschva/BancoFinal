@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:local="clr-namespace:CapaPresentacion2"
         mc:Ignorable="d"
-        Title="Banco de Tiempo" Height="450" Width="800">
+        Title="Banco de Tiempo" Height="600" Width="900">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
@@ -13,7 +14,7 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel.Background>
-                <ImageBrush ImageSource="/menu_back2.png" Stretch="UniformToFill"/>
+                <ImageBrush ImageSource="/images/menu_back2.png" Stretch="UniformToFill"/>
             </StackPanel.Background>
             <Button x:Name="Menu" MinWidth="100" Margin="170,5,0,7" Visibility="Visible" Click="menuBtnClick" Content="Menu" Style="{StaticResource buttonMenu}"/>
             <Button x:Name="Categorias" MinWidth="100" Content="Categorias" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="75" Visibility="Visible" Click="menuBtnCategoria" Style="{StaticResource buttonMenu}"/>
@@ -23,7 +24,7 @@
         </StackPanel>
         <Frame x:Name="Main" Margin="0,0,0,0" NavigationUIVisibility="Hidden" Grid.Row="1">
             <Frame.Background>
-                <ImageBrush ImageSource="/fondo.png" Stretch="Fill"/>
+                <ImageBrush ImageSource="/images/fondo.png" Stretch="Fill"/>
             </Frame.Background>
         </Frame>
     </Grid>
