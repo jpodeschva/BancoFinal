@@ -21,7 +21,6 @@ namespace CapaPresentacion2
     public partial class Menu : Page
     {
 
-        MainWindow mainWindow;
         public Menu()
         {
             InitializeComponent();
