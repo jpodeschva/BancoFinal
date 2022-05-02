@@ -159,5 +159,19 @@
   <ItemGroup>
     <Resource Include="images\fondo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Capa Datos\CapaDatos.csproj">
+      <Project>{75fd000f-4724-4fc6-ba15-c42a583b9009}</Project>
+      <Name>CapaDatos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Capa Entidades\CapaEntidades.csproj">
+      <Project>{d53e9cca-e91c-4fcb-b3e5-42f4b79671e9}</Project>
+      <Name>CapaEntidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Capa Negocio\CapaNegocio.csproj">
+      <Project>{36e9cc1c-556f-4de8-bfd3-c4ff0bbefc69}</Project>
+      <Name>CapaNegocio</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -11,7 +11,12 @@ namespace CapaNegocio
 {
     public class NAnuncios
     {
+        CapaDatos.DAnuncios anuncios = new CapaDatos.DAnuncios();
 
+        public void mostrarTodosLosAnuncios()
+        {
+            anuncios.listAnuncios();
+        }
    
     }
 }
