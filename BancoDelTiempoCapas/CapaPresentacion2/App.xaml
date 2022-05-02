@@ -69,6 +69,32 @@
             </Style.Triggers>
         </Style>
 
+        <Style x:Key="buttonMenuGreen" TargetType="Button">
+            <Setter Property="Background" Value="#5fe7c4" />
+            <Setter Property="Foreground" Value="#ffffff" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="MinWidth" Value="50"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5" Padding="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#4ec7a8"/>
+                    <Setter Property="Foreground" Value="#ffffff"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
         <Style TargetType="TextBox">
             <Setter Property="Background" Value="#f5f7f9" />
             <Setter Property="Foreground" Value="#767676" />

@@ -33,7 +33,7 @@
             <Label Grid.Row="3" x:Name="passwordLabel" Content="Please enter password" HorizontalAlignment="Left" Margin="80,10,0,0" VerticalAlignment="Top" FontFamily="Arial Rounded MT Bold" FontSize="14" Foreground="#f5f7f9"/>
             <PasswordBox Grid.Row="4" x:Name="passwordBox1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="280" PasswordChar="●" Password="**********" Style="{StaticResource passwordBox}"/>
             
-            <Button Grid.Row="5" x:Name="finalLoginBtn" Content="Login" Width="60" Click="finalLoginBtnClick" Style="{StaticResource buttonMainGreen}" />
+            <Button Grid.Row="5" x:Name="finalLoginBtn" Content="Login" Width="100" Click="finalLoginBtnClick" Style="{StaticResource buttonMainGreen}" />
         </Grid>
 
 

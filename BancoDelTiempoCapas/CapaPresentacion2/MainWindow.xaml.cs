@@ -48,7 +48,7 @@ namespace CapaPresentacion2
 
         private void menuBtnCategoria(object sender, RoutedEventArgs e)
         {
-
+            Main.Content = new Categorias();
         }
     }
 }
