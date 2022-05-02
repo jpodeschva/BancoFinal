@@ -58,6 +58,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UserControls\MyTextBox.xaml.cs">
+      <DependentUpon>MyTextBox.xaml</DependentUpon>
+    </Compile>
     <Page Include="Anuncio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -103,6 +106,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\MyTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Menu.xaml.cs">
@@ -141,16 +148,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="main_image.png" />
+    <Resource Include="images\main_image.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="menu_back2.png" />
+    <Resource Include="images\menu_back2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="login.png" />
+    <Resource Include="images\login.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="fondo.png" />
+    <Resource Include="images\fondo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
