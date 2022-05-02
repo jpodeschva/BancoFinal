@@ -1,25 +1,31 @@
-﻿using System;
+﻿using CapaNegocio;
+using CapaDatos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using System.Data;
-using System.Data.SqlClient;
-using CapaDatos;
 
-
-namespace CapaNegocio
+namespace CapaPresentacion2
 {
-    public class NAnuncios
+    public partial class Anuncio : Page
     {
-        CapaDatos.DAnuncios anuncios = new CapaDatos.DAnuncios();
-
-        public void mostrarTodosLosAnuncios()
+        public Anuncio()
         {
-            anuncios.listAnuncios();
+            InitializeComponent();
+            bindDataGrid();
         }
 
-        public void mostrarAnunciosPorLocalidad(String localidad)
+        private void buscarAnuncioBtn_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        // Muestra todos los anuncios de la base de datos al entrar a Anuncio
+        private void bindDataGrid()
         {
             BancoDelTiempoEntities db = new BancoDelTiempoEntities();
 
@@ -28,7 +34,7 @@ namespace CapaNegocio
 
             // Para mostrar sólo determinados campos de la tabla
             var data = db.Anuncios
-            .Where(x => x.localidad == localidad)  // Para buscar por alguna propiedad
+            //.Where(x => x.idCategoria == 1 && x.localidad == "Madrid")  // Para buscar por alguna propiedad
             .Select(x => new
             {
                 IdAnuncio = x.idAnuncio,
@@ -43,6 +49,7 @@ namespace CapaNegocio
 
             dataGridAnuncio.ItemsSource = data.ToList();
         }
-   
+
+
     }
 }

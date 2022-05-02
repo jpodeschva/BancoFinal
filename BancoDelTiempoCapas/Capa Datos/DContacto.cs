@@ -20,7 +20,7 @@ namespace CapaDatos
             {
                 using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
                 {
-                    db.Contactos.Add(contacto);
+                    db.Contactoes.Add(contacto);
                     db.SaveChanges();
                 }
             }
@@ -36,9 +36,9 @@ namespace CapaDatos
             try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
-                Contacto contacto = db.Contactos.Find(id); // Si buscamos el mensaje por su id
+                Contacto contacto = db.Contactoes.Find(id); // Si buscamos el mensaje por su id
 
-                db.Contactos.Remove(contacto);
+                db.Contactoes.Remove(contacto);
                 db.SaveChanges();
 
             }
@@ -75,7 +75,7 @@ namespace CapaDatos
             try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
-                Contacto contacto = db.Contactos.Find(id);
+                Contacto contacto = db.Contactoes.Find(id);
                 return contacto;
             }
             }
@@ -93,7 +93,7 @@ namespace CapaDatos
             try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
-                var lst = db.Contactos;
+                var lst = db.Contactoes;
                 foreach (var mensaje in lst)
                 {
                     //Console.WriteLine(contacto.ToString());
@@ -116,7 +116,7 @@ namespace CapaDatos
             try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
-                var lst = db.Contactos;
+                var lst = db.Contactoes;
                 foreach (var mensaje in lst)
                 {
                     if (mensaje.idEmisor == idEmisor)
@@ -144,7 +144,7 @@ namespace CapaDatos
             try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
-                var lst = db.Contactos;
+                var lst = db.Contactoes;
                 foreach (var mensaje in lst)
                 {
                     if (mensaje.idEmisor == idEmisor)
@@ -174,7 +174,7 @@ namespace CapaDatos
             try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
-                var lst = db.Contactos;
+                var lst = db.Contactoes;
                 foreach (var mensaje in lst)
                 {
                     if (mensaje.idEmisor == idEmisor)

@@ -3,6 +3,9 @@ using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Data.SqlClient;
+
+
 
 // La información general de un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
@@ -53,3 +56,11 @@ using System.Windows;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+internal static class MissingDllHack
+{
+    // Must reference a type in EntityFramework.SqlServer.dll so that this dll will be
+    // included in the output folder of referencing projects without requiring a direct 
+    // dependency on Entity Framework. See http://stackoverflow.com/a/22315164/1141360.
+    private static SqlProviderServices instance = SqlProviderServices.SingletonInstance;
+}

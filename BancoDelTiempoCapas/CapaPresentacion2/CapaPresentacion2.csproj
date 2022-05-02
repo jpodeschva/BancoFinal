@@ -35,8 +35,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,7 +60,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UserControls\MyTextBox.xaml.cs">
+      <DependentUpon>MyTextBox.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Anuncio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Categorias.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CuentaUsuario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -63,12 +79,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Anuncio.xaml.cs">
+      <DependentUpon>Anuncio.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Categorias.xaml.cs">
       <DependentUpon>Categorias.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CuentaUsuario.xaml.cs">
+      <DependentUpon>CuentaUsuario.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -83,6 +105,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Registro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\MyTextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -114,6 +140,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -123,16 +150,30 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="main_image.png" />
+    <Resource Include="images\main_image.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="menu_back2.png" />
+    <Resource Include="images\menu_back2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="login.png" />
+    <Resource Include="images\login.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="fondo.png" />
+    <Resource Include="images\fondo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Capa Datos\CapaDatos.csproj">
+      <Project>{75fd000f-4724-4fc6-ba15-c42a583b9009}</Project>
+      <Name>CapaDatos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Capa Entidades\CapaEntidades.csproj">
+      <Project>{d53e9cca-e91c-4fcb-b3e5-42f4b79671e9}</Project>
+      <Name>CapaEntidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Capa Negocio\CapaNegocio.csproj">
+      <Project>{36e9cc1c-556f-4de8-bfd3-c4ff0bbefc69}</Project>
+      <Name>CapaNegocio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

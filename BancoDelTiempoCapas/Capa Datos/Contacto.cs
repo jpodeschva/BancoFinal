@@ -15,12 +15,14 @@ namespace CapaDatos
     public partial class Contacto
     {
         public int idMensaje { get; set; }
-        public Nullable<int> idEmisor { get; set; }
-        public Nullable<int> idReceptor { get; set; }
+        public int idEmisor { get; set; }
+        public int idReceptor { get; set; }
         public string mensaje { get; set; }
         public Nullable<System.DateTime> fechaHora { get; set; }
         public Nullable<int> idAnuncio { get; set; }
     
         public virtual Anuncio Anuncio { get; set; }
+        public virtual Usuario Usuario { get; set; }
+        public virtual Usuario Usuario1 { get; set; }
     }
 }

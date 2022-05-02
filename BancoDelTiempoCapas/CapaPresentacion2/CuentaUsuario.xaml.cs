@@ -16,16 +16,13 @@ using System.Windows.Shapes;
 namespace CapaPresentacion2
 {
     /// <summary>
-    /// Lógica de interacción para Menu.xaml
+    /// Lógica de interacción para CuentaUsuario.xaml
     /// </summary>
-    public partial class Menu : Page
+    public partial class CuentaUsuario : Page
     {
-
-        public Menu()
+        public CuentaUsuario()
         {
             InitializeComponent();
-            
         }
-
     }
 }

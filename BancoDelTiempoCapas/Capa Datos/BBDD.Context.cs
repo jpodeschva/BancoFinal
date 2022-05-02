@@ -27,11 +27,21 @@ namespace CapaDatos
     
         public virtual DbSet<Anuncio> Anuncios { get; set; }
         public virtual DbSet<CategoriaDeServicio> CategoriaDeServicios { get; set; }
-        public virtual DbSet<Contacto> Contactos { get; set; }
-        public virtual DbSet<Registro> Registros { get; set; }
+        public virtual DbSet<Contacto> Contactoes { get; set; }
         public virtual DbSet<Sugerencia> Sugerencias { get; set; }
-        public virtual DbSet<Transaccion> Transacciones { get; set; }
+        public virtual DbSet<Transaccion> Transaccions { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
-        public virtual DbSet<Login> Logins { get; set; }
+
+        public void FixEfProviderServicesProblem()
+        {
+            //The Entity Framework provider type 'System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer'
+            //for the 'System.Data.SqlClient' ADO.NET provider could not be loaded. 
+            //Make sure the provider assembly is available to the running application. 
+            //See http://go.microsoft.com/fwlink/?LinkId=260882 for more information.
+
+            var instance = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
+        }
     }
+
+
 }
