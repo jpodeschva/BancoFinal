@@ -23,7 +23,8 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <DataGrid Name="dataGridAnuncio" Grid.Row="0" RowDetailsVisibilityMode="VisibleWhenSelected" EnableRowVirtualization="True" AutoGenerateColumns="False" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0 30 10 0"/>
+            <DataGrid Name="dataGridAnuncio" Grid.Row="0" RowDetailsVisibilityMode="VisibleWhenSelected" EnableRowVirtualization="True" AutoGenerateColumns="True" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0 30 10 0">
+            </DataGrid>
 
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>

@@ -7,40 +7,47 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-
+using System.Data;
 
 namespace CapaPresentacion2
 {
-    /// <summary>
-    /// Lógica de interacción para Anuncio.xaml
-    /// </summary>
     public partial class Anuncio : Page
     {
-        DataGrid dataGrid;
         public Anuncio()
         {
             InitializeComponent();
-            
+            bindDataGrid();
         }
 
         private void buscarAnuncioBtn_Click(object sender, RoutedEventArgs e)
         {
-            bindDataGrid();
-            //setUpGrid();
+            
         }
 
-        /*private void setUpGrid()
-        {
-            CapaDatos.BancoDelTiempoEntities context = new CapaDatos.BancoDelTiempoEntities();
-            dataGrid = new DataGrid();
-            context.Anuncios.ToList();
-            this.DataContext = context.Anuncios.Local;  // set the Window DataContext property
-        }*/
-
+        // Muestra todos los anuncios de la base de datos al entrar a Anuncio
         private void bindDataGrid()
         {
-            NAnuncios anuncios = new NAnuncios();
-            anuncios.mostrarTodosLosAnuncios();
+            BancoDelTiempoEntities db = new BancoDelTiempoEntities();
+
+            // Para mostrar todos los campos de la tabla
+            //var data = from d in db.Anuncios select d;
+
+            // Para mostrar sólo determinados campos de la tabla
+            var data = db.Anuncios
+            //.Where(x => x.idCategoria == 1 && x.localidad == "Madrid")  // Para buscar por alguna propiedad
+            .Select(x => new
+            {
+                IdAnuncio = x.idAnuncio,
+                TipoDeServicio = x.tipoServicio,
+                Descripcion = x.descripcion,
+                FechaDePublicacion = x.fechaPublicacion,
+                Localidad = x.localidad,
+                IdCategoria = x.idCategoria,
+                IdUsuario = x.idUsuario
+
+            }).ToList();
+
+            dataGridAnuncio.ItemsSource = data.ToList();
         }
 
 
