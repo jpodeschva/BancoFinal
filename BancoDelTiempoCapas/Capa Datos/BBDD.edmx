@@ -11,8 +11,8 @@
           </Key>
           <Property Name="idAnuncio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="descripcion" Type="varchar" MaxLength="1000" Nullable="false" />
-          <Property Name="fechaPublicacion" Type="date" Nullable="false" />
-          <Property Name="tipoServicio" Type="varchar" MaxLength="100" />
+          <Property Name="fechaPublicacion" Type="datetime" />
+          <Property Name="tipoServicio" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="localidad" Type="varchar" MaxLength="50" />
           <Property Name="idUsuario" Type="int" Nullable="false" />
           <Property Name="idCategoria" Type="int" Nullable="false" />
@@ -30,33 +30,11 @@
             <PropertyRef Name="idMensaje" />
           </Key>
           <Property Name="idMensaje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idEmisor" Type="int" />
-          <Property Name="idReceptor" Type="int" />
+          <Property Name="idEmisor" Type="int" Nullable="false" />
+          <Property Name="idReceptor" Type="int" Nullable="false" />
           <Property Name="mensaje" Type="varchar" MaxLength="1000" Nullable="false" />
           <Property Name="fechaHora" Type="datetime" />
           <Property Name="idAnuncio" Type="int" />
-        </EntityType>
-        <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'BancoDelTiempo.dbo.CuentaUsuario' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="CuentaUsuario">
-          <Property Name="balanceDeHoras" Type="int" />
-        </EntityType>-->
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'BancoDelTiempo.dbo.Login' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="Login">
-          <Key>
-            <PropertyRef Name="idUsername" />
-            <PropertyRef Name="idPassword" />
-          </Key>
-          <Property Name="idUsername" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="idPassword" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="idUsuario" Type="int" />
-        </EntityType>
-        <EntityType Name="Registro">
-          <Key>
-            <PropertyRef Name="idUsuario" />
-          </Key>
-          <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Sugerencias">
           <Key>
@@ -65,7 +43,7 @@ advertencia 6002: La tabla o vista 'BancoDelTiempo.dbo.Login' no tiene definida 
           <Property Name="idSugerencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="fechaHora" Type="datetime" />
-          <Property Name="idUsuario" Type="int" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Transaccion">
           <Key>
@@ -74,30 +52,33 @@ advertencia 6002: La tabla o vista 'BancoDelTiempo.dbo.Login' no tiene definida 
           <Property Name="idTransaccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="fechaSolicitud" Type="datetime" />
           <Property Name="fechaRealizacion" Type="datetime" />
-          <Property Name="idUsuarioSolicita" Type="int" />
-          <Property Name="idUsuarioProporciona" Type="int" />
-          <Property Name="numeroHoras" Type="int" />
-          <Property Name="idAnuncio" Type="int" />
+          <Property Name="idUsuarioSolicita" Type="int" Nullable="false" />
+          <Property Name="idUsuarioProporciona" Type="int" Nullable="false" />
+          <Property Name="numeroHoras" Type="int" Nullable="false" />
+          <Property Name="idAnuncio" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="idUsuario" />
           </Key>
-          <Property Name="idUsuario" Type="int" Nullable="false" />
+          <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="apellido1" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="apellido2" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="direccion" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="codigoPostal" Type="int" Nullable="false" />
+          <Property Name="apellido2" Type="varchar" MaxLength="50" />
+          <Property Name="direccion" Type="varchar" MaxLength="50" />
+          <Property Name="codigoPostal" Type="int" />
           <Property Name="localidad" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="provincia" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="telefono" Type="int" Nullable="false" />
+          <Property Name="telefono" Type="int" />
           <Property Name="idUsername" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="idPassword" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idPassword" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="balanceDeHoras" Type="int" />
         </EntityType>
         <Association Name="fkidAnuncio_AnuncioContacto">
-          <End Role="Anuncio" Type="Self.Anuncio" Multiplicity="0..1" />
+          <End Role="Anuncio" Type="Self.Anuncio" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Contacto" Type="Self.Contacto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Anuncio">
@@ -109,7 +90,7 @@ advertencia 6002: La tabla o vista 'BancoDelTiempo.dbo.Login' no tiene definida 
           </ReferentialConstraint>
         </Association>
         <Association Name="fkidAnuncio_AnuncioTransaccion">
-          <End Role="Anuncio" Type="Self.Anuncio" Multiplicity="0..1">
+          <End Role="Anuncio" Type="Self.Anuncio" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
@@ -123,7 +104,9 @@ advertencia 6002: La tabla o vista 'BancoDelTiempo.dbo.Login' no tiene definida 
           </ReferentialConstraint>
         </Association>
         <Association Name="fkidCategoria_AnuncioCategoriaDeServicio">
-          <End Role="CategoriaDeServicio" Type="Self.CategoriaDeServicio" Multiplicity="1" />
+          <End Role="CategoriaDeServicio" Type="Self.CategoriaDeServicio" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Anuncio" Type="Self.Anuncio" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CategoriaDeServicio">
@@ -134,11 +117,34 @@ advertencia 6002: La tabla o vista 'BancoDelTiempo.dbo.Login' no tiene definida 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errores durante la generación:
-advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no forman parte de la clave de la tabla en el lado principal de la relación. Se excluyó la relación.
-        <Association Name="fkidUsername_UsuarioLogin" />-->
-        <Association Name="fkidUsuario_AnuncioUsuario">
+        <Association Name="fkidEmisor_UsuarioContacto">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Contacto" Type="Self.Contacto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Contacto">
+              <PropertyRef Name="idEmisor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkidReceptor_UsuarioContacto">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Contacto" Type="Self.Contacto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Contacto">
+              <PropertyRef Name="idReceptor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkidUsuario_AnuncioUsuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Anuncio" Type="Self.Anuncio" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
@@ -149,34 +155,10 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fkidUsuario_UsuarioLogin">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
-          <End Role="Login" Type="Self.Login" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuario">
-              <PropertyRef Name="idUsuario" />
-            </Principal>
-            <Dependent Role="Login">
-              <PropertyRef Name="idUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fkidUsuario_UsuarioRegistro">
-          <End Role="Registro" Type="Self.Registro" Multiplicity="1">
+        <Association Name="fkidUsuario_UsuarioSugerencias">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Registro">
-              <PropertyRef Name="idUsuario" />
-            </Principal>
-            <Dependent Role="Usuario">
-              <PropertyRef Name="idUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fkidUsuario_UsuarioSugerencias">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
           <End Role="Sugerencias" Type="Self.Sugerencias" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
@@ -188,7 +170,7 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
           </ReferentialConstraint>
         </Association>
         <Association Name="fkidUsuarioProporciona_UsuarioTransaccion">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
@@ -200,9 +182,7 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
           </ReferentialConstraint>
         </Association>
         <Association Name="fkidUsuarioSolicita_UsuarioTransaccion">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
@@ -217,17 +197,9 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
           <EntitySet Name="Anuncio" EntityType="Self.Anuncio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CategoriaDeServicio" EntityType="Self.CategoriaDeServicio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contacto" EntityType="Self.Contacto" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Registro" EntityType="Self.Registro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sugerencias" EntityType="Self.Sugerencias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Transaccion" EntityType="Self.Transaccion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Login" EntityType="Self.Login" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Login].[idUsername] AS [idUsername], 
-    [Login].[idPassword] AS [idPassword], 
-    [Login].[idUsuario] AS [idUsuario]
-    FROM [dbo].[Login] AS [Login]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="fkidAnuncio_AnuncioContacto" Association="Self.fkidAnuncio_AnuncioContacto">
             <End Role="Anuncio" EntitySet="Anuncio" />
             <End Role="Contacto" EntitySet="Contacto" />
@@ -240,17 +212,17 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
             <End Role="CategoriaDeServicio" EntitySet="CategoriaDeServicio" />
             <End Role="Anuncio" EntitySet="Anuncio" />
           </AssociationSet>
+          <AssociationSet Name="fkidEmisor_UsuarioContacto" Association="Self.fkidEmisor_UsuarioContacto">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Contacto" EntitySet="Contacto" />
+          </AssociationSet>
+          <AssociationSet Name="fkidReceptor_UsuarioContacto" Association="Self.fkidReceptor_UsuarioContacto">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Contacto" EntitySet="Contacto" />
+          </AssociationSet>
           <AssociationSet Name="fkidUsuario_AnuncioUsuario" Association="Self.fkidUsuario_AnuncioUsuario">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Anuncio" EntitySet="Anuncio" />
-          </AssociationSet>
-          <AssociationSet Name="fkidUsuario_UsuarioLogin" Association="Self.fkidUsuario_UsuarioLogin">
-            <End Role="Usuario" EntitySet="Usuario" />
-            <End Role="Login" EntitySet="Login" />
-          </AssociationSet>
-          <AssociationSet Name="fkidUsuario_UsuarioRegistro" Association="Self.fkidUsuario_UsuarioRegistro">
-            <End Role="Registro" EntitySet="Registro" />
-            <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
           <AssociationSet Name="fkidUsuario_UsuarioSugerencias" Association="Self.fkidUsuario_UsuarioSugerencias">
             <End Role="Usuario" EntitySet="Usuario" />
@@ -275,8 +247,8 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
           </Key>
           <Property Name="idAnuncio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="descripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fechaPublicacion" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="tipoServicio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="fechaPublicacion" Type="DateTime" Precision="3" />
+          <Property Name="tipoServicio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="localidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="idUsuario" Type="Int32" Nullable="false" />
           <Property Name="idCategoria" Type="Int32" Nullable="false" />
@@ -299,19 +271,14 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
             <PropertyRef Name="idMensaje" />
           </Key>
           <Property Name="idMensaje" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idEmisor" Type="Int32" />
-          <Property Name="idReceptor" Type="Int32" />
+          <Property Name="idEmisor" Type="Int32" Nullable="false" />
+          <Property Name="idReceptor" Type="Int32" Nullable="false" />
           <Property Name="mensaje" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fechaHora" Type="DateTime" Precision="3" />
           <Property Name="idAnuncio" Type="Int32" />
           <NavigationProperty Name="Anuncio" Relationship="Self.fkidAnuncio_AnuncioContacto" FromRole="Contacto" ToRole="Anuncio" />
-        </EntityType>
-        <EntityType Name="Registro">
-          <Key>
-            <PropertyRef Name="idUsuario" />
-          </Key>
-          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Usuario" Relationship="Self.fkidUsuario_UsuarioRegistro" FromRole="Registro" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario" Relationship="BancoDelTiempoModel.fkidEmisor_UsuarioContacto" FromRole="Contacto" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="BancoDelTiempoModel.fkidReceptor_UsuarioContacto" FromRole="Contacto" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Sugerencia">
           <Key>
@@ -320,7 +287,7 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
           <Property Name="idSugerencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fechaHora" Type="DateTime" Precision="3" />
-          <Property Name="idUsuario" Type="Int32" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Usuario" Relationship="Self.fkidUsuario_UsuarioSugerencias" FromRole="Sugerencias" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Transaccion">
@@ -330,10 +297,10 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
           <Property Name="idTransaccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="fechaSolicitud" Type="DateTime" Precision="3" />
           <Property Name="fechaRealizacion" Type="DateTime" Precision="3" />
-          <Property Name="idUsuarioSolicita" Type="Int32" />
-          <Property Name="idUsuarioProporciona" Type="Int32" />
-          <Property Name="numeroHoras" Type="Int32" />
-          <Property Name="idAnuncio" Type="Int32" />
+          <Property Name="idUsuarioSolicita" Type="Int32" Nullable="false" />
+          <Property Name="idUsuarioProporciona" Type="Int32" Nullable="false" />
+          <Property Name="numeroHoras" Type="Int32" Nullable="false" />
+          <Property Name="idAnuncio" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Anuncio" Relationship="Self.fkidAnuncio_AnuncioTransaccion" FromRole="Transaccion" ToRole="Anuncio" />
           <NavigationProperty Name="Usuario" Relationship="Self.fkidUsuarioProporciona_UsuarioTransaccion" FromRole="Transaccion" ToRole="Usuario" />
           <NavigationProperty Name="Usuario1" Relationship="Self.fkidUsuarioSolicita_UsuarioTransaccion" FromRole="Transaccion" ToRole="Usuario" />
@@ -345,31 +312,22 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
           <Property Name="idUsuario" Type="Int32" Nullable="false" />
           <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="apellido1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="apellido2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="codigoPostal" Type="Int32" Nullable="false" />
+          <Property Name="apellido2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="codigoPostal" Type="Int32" />
           <Property Name="localidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="provincia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="telefono" Type="Int32" Nullable="false" />
+          <Property Name="telefono" Type="Int32" />
           <Property Name="idUsername" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="idPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idPassword" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Anuncios" Relationship="Self.fkidUsuario_AnuncioUsuario" FromRole="Usuario" ToRole="Anuncio" />
-          <NavigationProperty Name="Registro" Relationship="Self.fkidUsuario_UsuarioRegistro" FromRole="Usuario" ToRole="Registro" />
           <NavigationProperty Name="Sugerencias" Relationship="Self.fkidUsuario_UsuarioSugerencias" FromRole="Usuario" ToRole="Sugerencias" />
           <NavigationProperty Name="Transaccions" Relationship="Self.fkidUsuarioProporciona_UsuarioTransaccion" FromRole="Usuario" ToRole="Transaccion" />
           <NavigationProperty Name="Transaccions1" Relationship="Self.fkidUsuarioSolicita_UsuarioTransaccion" FromRole="Usuario" ToRole="Transaccion" />
-          <NavigationProperty Name="Logins" Relationship="BancoDelTiempoModel.fkidUsuario_UsuarioLogin" FromRole="Usuario" ToRole="Login" />
-        </EntityType>
-        <EntityType Name="Login">
-          <Key>
-            <PropertyRef Name="idUsername" />
-            <PropertyRef Name="idPassword" />
-          </Key>
-          <Property Name="idUsername" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="idPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="idUsuario" Type="Int32" />
-          <NavigationProperty Name="Usuario" Relationship="BancoDelTiempoModel.fkidUsuario_UsuarioLogin" FromRole="Login" ToRole="Usuario" />
+          <NavigationProperty Name="Contactoes" Relationship="BancoDelTiempoModel.fkidEmisor_UsuarioContacto" FromRole="Usuario" ToRole="Contacto" />
+          <NavigationProperty Name="Contactoes1" Relationship="BancoDelTiempoModel.fkidReceptor_UsuarioContacto" FromRole="Usuario" ToRole="Contacto" />
+          <Property Name="balanceDeHoras" Type="Int32" />
         </EntityType>
         <Association Name="fkidAnuncio_AnuncioContacto">
           <End Role="Anuncio" Type="Self.Anuncio" Multiplicity="0..1" />
@@ -384,7 +342,7 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
           </ReferentialConstraint>
         </Association>
         <Association Name="fkidAnuncio_AnuncioTransaccion">
-          <End Role="Anuncio" Type="Self.Anuncio" Multiplicity="0..1">
+          <End Role="Anuncio" Type="Self.Anuncio" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
@@ -421,22 +379,8 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fkidUsuario_UsuarioRegistro">
-          <End Role="Registro" Type="Self.Registro" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Registro">
-              <PropertyRef Name="idUsuario" />
-            </Principal>
-            <Dependent Role="Usuario">
-              <PropertyRef Name="idUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fkidUsuario_UsuarioSugerencias">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Sugerencias" Type="Self.Sugerencia" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
@@ -448,7 +392,7 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
           </ReferentialConstraint>
         </Association>
         <Association Name="fkidUsuarioProporciona_UsuarioTransaccion">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
@@ -460,7 +404,7 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
           </ReferentialConstraint>
         </Association>
         <Association Name="fkidUsuarioSolicita_UsuarioTransaccion">
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="Transaccion" Type="Self.Transaccion" Multiplicity="*" />
@@ -477,11 +421,9 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
           <EntitySet Name="Anuncios" EntityType="Self.Anuncio" />
           <EntitySet Name="CategoriaDeServicios" EntityType="Self.CategoriaDeServicio" />
           <EntitySet Name="Contactoes" EntityType="Self.Contacto" />
-          <EntitySet Name="Registroes" EntityType="Self.Registro" />
           <EntitySet Name="Sugerencias" EntityType="Self.Sugerencia" />
           <EntitySet Name="Transaccions" EntityType="Self.Transaccion" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
-          <EntitySet Name="Logins" EntityType="Self.Login" />
           <AssociationSet Name="fkidAnuncio_AnuncioContacto" Association="Self.fkidAnuncio_AnuncioContacto">
             <End Role="Anuncio" EntitySet="Anuncios" />
             <End Role="Contacto" EntitySet="Contactoes" />
@@ -498,10 +440,6 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
             <End Role="Usuario" EntitySet="Usuarios" />
             <End Role="Anuncio" EntitySet="Anuncios" />
           </AssociationSet>
-          <AssociationSet Name="fkidUsuario_UsuarioRegistro" Association="Self.fkidUsuario_UsuarioRegistro">
-            <End Role="Registro" EntitySet="Registroes" />
-            <End Role="Usuario" EntitySet="Usuarios" />
-          </AssociationSet>
           <AssociationSet Name="fkidUsuario_UsuarioSugerencias" Association="Self.fkidUsuario_UsuarioSugerencias">
             <End Role="Usuario" EntitySet="Usuarios" />
             <End Role="Sugerencias" EntitySet="Sugerencias" />
@@ -514,20 +452,36 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
             <End Role="Usuario" EntitySet="Usuarios" />
             <End Role="Transaccion" EntitySet="Transaccions" />
           </AssociationSet>
-          <AssociationSet Name="fkidUsuario_UsuarioLogin" Association="BancoDelTiempoModel.fkidUsuario_UsuarioLogin">
+          <AssociationSet Name="fkidEmisor_UsuarioContacto" Association="BancoDelTiempoModel.fkidEmisor_UsuarioContacto">
             <End Role="Usuario" EntitySet="Usuarios" />
-            <End Role="Login" EntitySet="Logins" />
+            <End Role="Contacto" EntitySet="Contactoes" />
+          </AssociationSet>
+          <AssociationSet Name="fkidReceptor_UsuarioContacto" Association="BancoDelTiempoModel.fkidReceptor_UsuarioContacto">
+            <End Role="Usuario" EntitySet="Usuarios" />
+            <End Role="Contacto" EntitySet="Contactoes" />
           </AssociationSet>
         </EntityContainer>
-        <Association Name="fkidUsuario_UsuarioLogin">
-          <End Type="BancoDelTiempoModel.Usuario" Role="Usuario" Multiplicity="0..1" />
-          <End Type="BancoDelTiempoModel.Login" Role="Login" Multiplicity="*" />
+        <Association Name="fkidEmisor_UsuarioContacto">
+          <End Type="BancoDelTiempoModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="BancoDelTiempoModel.Contacto" Role="Contacto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuario">
               <PropertyRef Name="idUsuario" />
             </Principal>
-            <Dependent Role="Login">
+            <Dependent Role="Contacto">
+              <PropertyRef Name="idEmisor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkidReceptor_UsuarioContacto">
+          <End Type="BancoDelTiempoModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="BancoDelTiempoModel.Contacto" Role="Contacto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
               <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="Contacto">
+              <PropertyRef Name="idReceptor" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -571,13 +525,6 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Registroes">
-            <EntityTypeMapping TypeName="BancoDelTiempoModel.Registro">
-              <MappingFragment StoreEntitySet="Registro">
-                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Sugerencias">
             <EntityTypeMapping TypeName="BancoDelTiempoModel.Sugerencia">
               <MappingFragment StoreEntitySet="Sugerencias">
@@ -604,6 +551,7 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
           <EntitySetMapping Name="Usuarios">
             <EntityTypeMapping TypeName="BancoDelTiempoModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="balanceDeHoras" ColumnName="balanceDeHoras" />
                 <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="apellido1" ColumnName="apellido1" />
@@ -614,15 +562,6 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
                 <ScalarProperty Name="provincia" ColumnName="provincia" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="telefono" ColumnName="telefono" />
-                <ScalarProperty Name="idUsername" ColumnName="idUsername" />
-                <ScalarProperty Name="idPassword" ColumnName="idPassword" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Logins">
-            <EntityTypeMapping TypeName="BancoDelTiempoModel.Login">
-              <MappingFragment StoreEntitySet="Login">
-                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
                 <ScalarProperty Name="idUsername" ColumnName="idUsername" />
                 <ScalarProperty Name="idPassword" ColumnName="idPassword" />
               </MappingFragment>
@@ -642,7 +581,7 @@ advertencia 6035: La relación 'fkidUsername_UsuarioLogin' tiene columnas que no
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />

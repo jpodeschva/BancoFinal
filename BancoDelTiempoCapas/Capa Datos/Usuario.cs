@@ -21,7 +21,8 @@ namespace CapaDatos
             this.Sugerencias = new HashSet<Sugerencia>();
             this.Transaccions = new HashSet<Transaccion>();
             this.Transaccions1 = new HashSet<Transaccion>();
-            this.Logins = new HashSet<Login>();
+            this.Contactoes = new HashSet<Contacto>();
+            this.Contactoes1 = new HashSet<Contacto>();
         }
     
         public int idUsuario { get; set; }
@@ -29,17 +30,17 @@ namespace CapaDatos
         public string apellido1 { get; set; }
         public string apellido2 { get; set; }
         public string direccion { get; set; }
-        public int codigoPostal { get; set; }
+        public Nullable<int> codigoPostal { get; set; }
         public string localidad { get; set; }
         public string provincia { get; set; }
         public string email { get; set; }
-        public int telefono { get; set; }
+        public Nullable<int> telefono { get; set; }
         public string idUsername { get; set; }
         public string idPassword { get; set; }
+        public Nullable<int> balanceDeHoras { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Anuncio> Anuncios { get; set; }
-        public virtual Registro Registro { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sugerencia> Sugerencias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -47,6 +48,8 @@ namespace CapaDatos
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Transaccion> Transaccions1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Login> Logins { get; set; }
+        public virtual ICollection<Contacto> Contactoes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Contacto> Contactoes1 { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace CapaDatos
         public int idSugerencia { get; set; }
         public string descripcion { get; set; }
         public Nullable<System.DateTime> fechaHora { get; set; }
-        public Nullable<int> idUsuario { get; set; }
+        public int idUsuario { get; set; }
     
         public virtual Usuario Usuario { get; set; }
     }

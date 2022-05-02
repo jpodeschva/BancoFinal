@@ -72,10 +72,10 @@
     <Compile Include="CategoriaDeServicio.cs">
       <DependentUpon>BBDD.tt</DependentUpon>
     </Compile>
-    <Compile Include="DConexion.cs" />
     <Compile Include="Contacto.cs">
       <DependentUpon>BBDD.tt</DependentUpon>
     </Compile>
+    <Compile Include="DConexion.cs" />
     <Compile Include="DAnuncios.cs" />
     <Compile Include="DCategoriaDeServicio.cs" />
     <Compile Include="DContacto.cs" />
@@ -84,17 +84,11 @@
     <Compile Include="DSugerencia.cs" />
     <Compile Include="DTransaccion.cs" />
     <Compile Include="DUsuario.cs" />
-    <Compile Include="Login.cs">
-      <DependentUpon>BBDD.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Registro.cs">
-      <DependentUpon>BBDD.tt</DependentUpon>
     </Compile>
     <Compile Include="Sugerencia.cs">
       <DependentUpon>BBDD.tt</DependentUpon>

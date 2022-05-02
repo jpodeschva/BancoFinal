@@ -27,11 +27,9 @@ namespace CapaDatos
     
         public virtual DbSet<Anuncio> Anuncios { get; set; }
         public virtual DbSet<CategoriaDeServicio> CategoriaDeServicios { get; set; }
-        public virtual DbSet<Contacto> Contactos { get; set; }
-        public virtual DbSet<Registro> Registros { get; set; }
+        public virtual DbSet<Contacto> Contactoes { get; set; }
         public virtual DbSet<Sugerencia> Sugerencias { get; set; }
-        public virtual DbSet<Transaccion> Transacciones { get; set; }
+        public virtual DbSet<Transaccion> Transaccions { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
-        public virtual DbSet<Login> Logins { get; set; }
     }
 }

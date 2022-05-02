@@ -17,10 +17,10 @@ namespace CapaDatos
         public int idTransaccion { get; set; }
         public Nullable<System.DateTime> fechaSolicitud { get; set; }
         public Nullable<System.DateTime> fechaRealizacion { get; set; }
-        public Nullable<int> idUsuarioSolicita { get; set; }
-        public Nullable<int> idUsuarioProporciona { get; set; }
-        public Nullable<int> numeroHoras { get; set; }
-        public Nullable<int> idAnuncio { get; set; }
+        public int idUsuarioSolicita { get; set; }
+        public int idUsuarioProporciona { get; set; }
+        public int numeroHoras { get; set; }
+        public int idAnuncio { get; set; }
     
         public virtual Anuncio Anuncio { get; set; }
         public virtual Usuario Usuario { get; set; }

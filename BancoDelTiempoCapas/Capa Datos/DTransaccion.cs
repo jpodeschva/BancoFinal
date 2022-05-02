@@ -20,7 +20,7 @@ namespace CapaDatos
             try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
-                db.Transacciones.Add(transaccion);
+                db.Transaccions.Add(transaccion);
                 db.SaveChanges();
             }
             }
@@ -37,9 +37,9 @@ namespace CapaDatos
             try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
-                Transaccion transaccion = db.Transacciones.Find(id); // Si buscamos la transaccion por su id
+                Transaccion transaccion = db.Transaccions.Find(id); // Si buscamos la transaccion por su id
                
-                db.Transacciones.Remove(transaccion);
+                db.Transaccions.Remove(transaccion);
                 db.SaveChanges();
 
             }
@@ -76,7 +76,7 @@ namespace CapaDatos
             {
                 using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
                 {
-                    Transaccion transaccion = db.Transacciones.Find(id);
+                    Transaccion transaccion = db.Transaccions.Find(id);
                     return transaccion;
                 }
             }
@@ -97,7 +97,7 @@ namespace CapaDatos
 
                 using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
                 {
-                    var lst = db.Transacciones;
+                    var lst = db.Transaccions;
                     foreach (var transaccion in lst)
                     {
                         //Console.WriteLine(transaccion.ToString());
@@ -124,7 +124,7 @@ namespace CapaDatos
             {
                 using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
                 {
-                    var lst = db.Transacciones;
+                    var lst = db.Transaccions;
                     foreach (var transaccion in lst)
                     {
                         if (transaccion.idUsuarioSolicita == idUsuario)
@@ -153,7 +153,7 @@ namespace CapaDatos
             {
                 using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
                 {
-                    var lst = db.Transacciones;
+                    var lst = db.Transaccions;
                     foreach (var transaccion in lst)
                     {
                         if (transaccion.idUsuarioSolicita == idUsuario)
@@ -186,7 +186,7 @@ namespace CapaDatos
             try { 
             using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
             {
-                var lst = db.Transacciones;
+                var lst = db.Transaccions;
                 foreach (var transaccion in lst)
                 {
                     if (transaccion.idUsuarioSolicita == idUsuario)

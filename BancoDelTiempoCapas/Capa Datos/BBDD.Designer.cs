@@ -1,4 +1,4 @@
-﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\jordi\OneDrive\Escritorio\DAM\4rt Semestre\P6. Técnicas de persistencia de datos con .NET\Fase 3\BancoCapas\BancoDelTiempoCapas\Capa Datos\BBDD.edmx'. 
+﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\lauri\OneDrive\Documents\GitHub\LesPersistances\BancoDelTiempoCapas\Capa Datos\BBDD.edmx'. 
 // Para habilitar la generación de código heredada, cambie el valor de la propiedad del diseñador 'Estrategia de generación de código'
 // por 'ObjectContext heredado'. Esta propiedad está disponible en la ventana Propiedades cuando se abre
 // el modelo en el diseñador.

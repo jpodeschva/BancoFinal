@@ -43,7 +43,7 @@ namespace CapaPresentacion2
 
         private void nosotrosBtnClick(object sender, RoutedEventArgs e)
         {
-
+            Main.Content = new Anuncio();
         }
 
         private void menuBtnCategoria(object sender, RoutedEventArgs e)
