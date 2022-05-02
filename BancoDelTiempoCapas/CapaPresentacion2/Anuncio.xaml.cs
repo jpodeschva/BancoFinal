@@ -1,4 +1,5 @@
 ﻿using CapaNegocio;
+using CapaDatos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,21 +16,33 @@ namespace CapaPresentacion2
     /// </summary>
     public partial class Anuncio : Page
     {
+        DataGrid dataGrid;
         public Anuncio()
         {
             InitializeComponent();
-            bindDataGrid();
+            
         }
 
         private void buscarAnuncioBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+            bindDataGrid();
+            //setUpGrid();
         }
+
+        /*private void setUpGrid()
+        {
+            CapaDatos.BancoDelTiempoEntities context = new CapaDatos.BancoDelTiempoEntities();
+            dataGrid = new DataGrid();
+            context.Anuncios.ToList();
+            this.DataContext = context.Anuncios.Local;  // set the Window DataContext property
+        }*/
 
         private void bindDataGrid()
         {
             NAnuncios anuncios = new NAnuncios();
             anuncios.mostrarTodosLosAnuncios();
         }
+
+
     }
 }
