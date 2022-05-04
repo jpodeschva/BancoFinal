@@ -14,8 +14,12 @@ namespace CapaPresentacion2
 {
     public partial class Anuncio : Page
     {
-        String palabraBuscar;
         NAnuncios nAnuncios;
+
+        String palabraBuscar;
+
+        CapaDatos.Anuncio anuncioSeleccionado;
+        int idSeleccion;
 
         public Anuncio()
         {
@@ -40,7 +44,12 @@ namespace CapaPresentacion2
 
         private void eliminarAnuncioBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            anuncioSeleccionado = (CapaDatos.Anuncio)dataGridAnuncio.SelectedItem;
+            idSeleccion = anuncioSeleccionado.idAnuncio;
+            // Llama al método de la CapaNegocio que pasará la orden de eliminar el anuncio
+            nAnuncios.eliminarAnuncio(idSeleccion);
+            // Llama al método que vuelve a listar todos los anuncios
+            dataGridAnuncio.ItemsSource = nAnuncios.buscarSegunPalabra(palabraBuscar);
         }
 
 

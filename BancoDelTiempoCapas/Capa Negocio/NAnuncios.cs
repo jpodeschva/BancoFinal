@@ -58,8 +58,9 @@ namespace CapaNegocio
             //dataGridAnuncio.ItemsSource = data.ToList();
         }
 
-        
-
-        
+        public void eliminarAnuncio(int idSeleccion)
+        {
+            dAnuncios.deleteAnuncio(idSeleccion);
+        }
     }
 }
