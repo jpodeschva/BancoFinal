@@ -19,8 +19,9 @@
         <Grid Grid.Column="1">
             
             <Grid.RowDefinitions>
-                <RowDefinition Height="350"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="330"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
             <DataGrid Name="dataGridAnuncio" Grid.Row="0" RowDetailsVisibilityMode="VisibleWhenSelected" EnableRowVirtualization="True" AutoGenerateColumns="True" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0 30 10 0">
@@ -35,9 +36,19 @@
                 <TextBlock Grid.Column="0" Text="Introduzca la localidad a buscar" FontFamily="Arial Rounded MT Bold" FontSize="14" FontWeight="SemiBold" Foreground="#f5f7f9" Margin="60 50 0 0" />
                 <uc:MyTextBox x:Name="textBoxBuscar" Grid.Column="0" Hint="Dejar en blanco para mostrar todos" Margin="60,70,0,0" />
 
-                <Button x:Name="buscarAnuncioBtn" Grid.Column="1" Content="Buscar" HorizontalAlignment="Center" Margin="0,60,0,0" VerticalAlignment="Top" Style="{StaticResource buttonMain}" Click="buscarAnuncioBtn_Click" />
+                <Button x:Name="buscarAnuncioBtn" Grid.Column="1" Content="Buscar" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Style="{StaticResource buttonMain}" Click="buscarAnuncioBtn_Click" />
             </Grid>
 
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="285"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="eliminarAnuncioBtn" Grid.Column="0" Content="Eliminar anuncio" HorizontalAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Top" Style="{StaticResource buttonMain}" Click="eliminarAnuncioBtn_Click" />
+                <Button x:Name="addAnuncioBtn" Grid.Column="1" Content="Añadir anuncio" HorizontalAlignment="Left" Margin="0,25,0,0" VerticalAlignment="Top" Style="{StaticResource buttonMainGreen}" Click="addAnuncioBtn_Click" />
+
+            </Grid>
 
         </Grid>
             
