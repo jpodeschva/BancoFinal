@@ -28,12 +28,12 @@
 
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="275"/>
+                    <ColumnDefinition Width="285"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="0" Text="Introduzca la palabra a buscar" FontFamily="Arial Rounded MT Bold" FontSize="14" FontWeight="SemiBold" Foreground="#f5f7f9" Margin="60 50 0 0" />
-                <uc:MyTextBox Grid.Column="0" Hint="Dejar en blanco para mostrar todos" Margin="60,70,0,0" />
+                <TextBlock Grid.Column="0" Text="Introduzca la localidad a buscar" FontFamily="Arial Rounded MT Bold" FontSize="14" FontWeight="SemiBold" Foreground="#f5f7f9" Margin="60 50 0 0" />
+                <uc:MyTextBox x:Name="textBoxBuscar" Grid.Column="0" Hint="Dejar en blanco para mostrar todos" Margin="60,70,0,0" />
 
                 <Button x:Name="buscarAnuncioBtn" Grid.Column="1" Content="Buscar" HorizontalAlignment="Center" Margin="0,60,0,0" VerticalAlignment="Top" Style="{StaticResource buttonMain}" Click="buscarAnuncioBtn_Click" />
             </Grid>
