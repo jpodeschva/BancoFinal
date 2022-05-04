@@ -6,22 +6,36 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using CapaDatos;
-
+using System.Collections;
 
 namespace CapaNegocio
 {
     public class NAnuncios
     {
-        CapaDatos.DAnuncios anuncios = new CapaDatos.DAnuncios();
+        CapaDatos.DAnuncios dAnuncios = new CapaDatos.DAnuncios();
 
-        public void mostrarTodosLosAnuncios()
+        public ArrayList buscarSegunPalabra(String palabraBuscar)
         {
-            anuncios.listAnuncios();
+            if (palabraBuscar == "")
+            {
+                return mostrarTodosLosAnuncios();
+            }
+            else
+            {
+                return mostrarAnunciosPorLocalidad(palabraBuscar);
+            }
         }
 
-        public void mostrarAnunciosPorLocalidad(String localidad)
+        public ArrayList mostrarTodosLosAnuncios()
         {
-            BancoDelTiempoEntities db = new BancoDelTiempoEntities();
+            return dAnuncios.listAnuncios();
+        }
+
+        public ArrayList mostrarAnunciosPorLocalidad(String localidad)
+        {
+            return dAnuncios.listAnunciosPorLocalidad(localidad);
+
+            /*BancoDelTiempoEntities db = new BancoDelTiempoEntities();
 
             // Para mostrar todos los campos de la tabla
             //var data = from d in db.Anuncios select d;
@@ -39,10 +53,13 @@ namespace CapaNegocio
                 IdCategoria = x.idCategoria,
                 IdUsuario = x.idUsuario
 
-            }).ToList();
+            }).ToList();*/
 
-            dataGridAnuncio.ItemsSource = data.ToList();
+            //dataGridAnuncio.ItemsSource = data.ToList();
         }
-   
+
+        
+
+        
     }
 }

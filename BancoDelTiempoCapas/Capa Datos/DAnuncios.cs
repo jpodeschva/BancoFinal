@@ -120,6 +120,7 @@ namespace CapaDatos
             return list;
         }
 
+
         // Mostrar todos los anuncios de una categoría concreta
         public ArrayList listAnunciosPorCategoria(int idCategoria)
         {
