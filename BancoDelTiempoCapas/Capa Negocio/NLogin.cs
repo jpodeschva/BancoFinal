@@ -10,22 +10,30 @@ namespace CapaNegocio
 {
     public class NLogin
     {
-        String username;
-        String password;
-
-        public void login(String username, String password)
+        
+        public bool login(String username, String password)
         {
             DUsuario user = new DUsuario();
+            bool correcto = false;
             bool existe = user.checkUsuario(username);
             if (existe)
             {
-                user.checkPassword(username, password);
+                correcto = user.checkPassword(username, password);
+                if (correcto)
+                {
+                    //login ok
+                    return true;
+                }
+                else
+                {
+                    // login fallido
+                    return false;
+                }
             }
             else
             {
-                MessageBox.Show("No existe ese usuario en la base de datos.");
+                return false;
             }
         }
-
     }
 }

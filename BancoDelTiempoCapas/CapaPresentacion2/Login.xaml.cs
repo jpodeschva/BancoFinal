@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaNegocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,17 +21,37 @@ namespace CapaPresentacion2
     /// </summary>
     public partial class Login : Page
     {
-        private TextBox passTextBox;
+        String username, password;
+        bool isLoggedIn = false;
+
+        NLogin nLogin;
 
         public Login()
         {
             InitializeComponent();
+            nLogin = new NLogin();
             
         }
 
         private void finalLoginBtnClick(object sender, RoutedEventArgs e)
         {
+            // Asignamos los valores introducidos por el usuario a las variables
+            username = usernameTextBox.textBox.Text;
+            password = passwordBox1.Password.ToString();
 
+            // Llamamos al método de la CapaNegocio que validará el usuario y, si es correcto, logueará al usuario
+            isLoggedIn = nLogin.login(username, password);
+
+            if (isLoggedIn)
+            {
+                //TODO: Permite entrar a pantallas, acceder a botones, etc.
+                MessageBox.Show("Login correcto!");
+            }
+            else
+            {
+                //TODO: Bloquea algo? Mensaje de Registro?
+                MessageBox.Show("Error al intentar acceder. Compruebe los datos introducidos o Regístrese.");
+            }
         }
 
     }
