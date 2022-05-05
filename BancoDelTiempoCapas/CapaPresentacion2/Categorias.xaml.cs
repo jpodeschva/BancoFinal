@@ -62,10 +62,29 @@ namespace CapaPresentacion2
 
         }
 
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+        private void buttonBuscar(object sender, RoutedEventArgs e)
+        {
+            buscar = txtBuscar.Text;  // Coge la palabra que el usuario escribe en el TextBox
+            //MessageBox.Show(palabraBuscar);
+
+            // Llama al método que analiza la palabra (en CapaNegocio) y lo asigna al DataGridView
+            dataGridCategorias.ItemsSource = nCategoria.buscarSegunPalabra(buscar);
+
+        }
+        private void buttonAñadir(object sender, RoutedEventArgs e)
         {
 
-            Buscar.DataContext = nCategoria.listarCategorias();
+        }
+        private void buttonVolver(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+          
+           
 
         }
     }
