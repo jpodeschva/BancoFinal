@@ -7,14 +7,16 @@ using System.Data;
 using System.Data.SqlClient;
 using CapaDatos;
 using CapaEntidades;
+using System.Collections;
+using System.ComponentModel;
 
 namespace CapaNegocio
 {
     public class NCategoriaDeServicio
     {
+        CapaDatos.DCategoriaDeServicio dCategoriaDeServicio = new CapaDatos.DCategoriaDeServicio();
 
-
-        public List<CategoriaDeServicio> listarCategorias()
+        public BindingList<CategoriaDeServicio> listarCategorias()
         {
 
             try
@@ -30,8 +32,8 @@ namespace CapaNegocio
                                      descripcion = n.descripcion
 
                                  }).ToList();
-
-                    return Query;
+                    BindingList<CategoriaDeServicio> Result = new BindingList<CategoriaDeServicio>(Query);
+                    return Result;
 
                 }
 
@@ -43,6 +45,25 @@ namespace CapaNegocio
             }
 
         }
+        public ArrayList buscarSegunPalabra(String palabra)
+        {
+            if (palabra == "")
+            {
+                return mostrarTodasLasCategorias();
+            }
+            else
+            {
+                return mostrarCategoriaPorNombre(palabra);
+            }
+        }
+        public ArrayList mostrarTodasLasCategorias()
+        {
+            return dCategoriaDeServicio.listCategoriasDeServicio();
+        }
 
-    }
+        public ArrayList mostrarCategoriaPorNombre(String palabra)
+        {
+            return dCategoriaDeServicio.listCategoriasDeServicioQueContiene(palabra);
+        }
+        }
 }
