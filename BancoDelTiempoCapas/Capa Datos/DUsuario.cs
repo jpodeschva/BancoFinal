@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using CapaEntidades;
 using System.Collections;
 using System.Windows.Forms;
+using System.Data.Entity.Validation;
 
 namespace CapaDatos
 {
@@ -26,13 +27,26 @@ namespace CapaDatos
                 using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
                 {
                     db.Usuarios.Add(usuario);
-                    db.SaveChanges();
-                    MessageBox.Show("Usuario añadido correctamente.");
+                    try
+                    {
+                        db.SaveChanges();
+                        MessageBox.Show("Usuario añadido correctamente.");
+                    }
+                    catch (DbEntityValidationException ex)
+                    {
+                        foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                        {
+                            foreach (var validationError in entityValidationErrors.ValidationErrors)
+                            {
+                                MessageBox.Show("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Entrada duplicada en la Base de Datos. Ese Usuario ya existe.\n\n" + ex.Message);
+                MessageBox.Show("Error al intentar registrar al usuario.\n\n" + ex.Message);
                 return;
             }
 

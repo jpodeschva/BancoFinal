@@ -9,7 +9,20 @@ using System.Data.SqlClient;
 namespace CapaNegocio
 {
     public class NRegistro
+
     {
-     
+        CapaDatos.Usuario nuevoUsuario;
+        CapaDatos.DUsuario dUsuario = new CapaDatos.DUsuario();
+
+        public void guardaRegistro(String nombre, String apellido1, String apellido2, String direccion, String localidad,
+                String provincia, String email, String username, String password, int codigoPostal, int telefono)
+        {
+            // Creamos el nuevo usuario con los datos introducidos
+            nuevoUsuario = new CapaDatos.Usuario(nombre, apellido1, apellido2, direccion, localidad, provincia, email,
+                username, password, codigoPostal, telefono);
+
+            // Llamamos al método addUsuario() de DUsuario (CapaDatos) y le pasamos el usuario creado
+            dUsuario.addUsuario(nuevoUsuario);
+        }
     }
 }

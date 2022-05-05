@@ -24,6 +24,23 @@ namespace CapaDatos
             this.Contactoes = new HashSet<Contacto>();
             this.Contactoes1 = new HashSet<Contacto>();
         }
+
+        public Usuario(String nombre, String apellido1, String apellido2, String direccion, String localidad,
+                String provincia, String email, String username, String password, int codigoPostal, int telefono)
+        {
+            this.nombre = nombre;
+            this.apellido1 = apellido1;
+            this.apellido2 = apellido2;
+            this.direccion = direccion;
+            this.localidad = localidad;
+            this.provincia = provincia;
+            this.email = email;
+            this.idUsername = username;
+            this.idPassword = password;
+            this.codigoPostal = codigoPostal;
+            this.telefono = telefono;
+            this.balanceDeHoras = 1;  // Damos 1 hora de regalo por darse de alta en la app para poder probar
+        }
     
         public int idUsuario { get; set; }
         public string nombre { get; set; }
