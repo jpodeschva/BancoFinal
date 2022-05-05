@@ -15,14 +15,28 @@ using System.Windows.Shapes;
 
 namespace CapaPresentacion2
 {
-    /// <summary>
-    /// Lógica de interacción para CuentaUsuario.xaml
-    /// </summary>
     public partial class CuentaUsuario : Page
     {
+        //MainWindow main;
         public CuentaUsuario()
         {
             InitializeComponent();
+            //main = new MainWindow();
+        }
+
+        // Botón Editar cuenta
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            // Carga la vista de Registro
+            this.NavigationService.Navigate(new Uri("Registro.xaml", UriKind.Relative));
+
+            //TODO: Carga los datos en los TextBox ?? O se crea página nueva?
+        }
+
+        // Botón Eliminar cuenta
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO: Elimina Usuario de la base de datos
         }
     }
 }

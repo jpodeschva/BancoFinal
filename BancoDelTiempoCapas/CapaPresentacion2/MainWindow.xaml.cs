@@ -50,5 +50,10 @@ namespace CapaPresentacion2
         {
             Main.Content = new Categorias();
         }
+
+        private void cuentaBtnClick(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new CuentaUsuario();
+        }
     }
 }
