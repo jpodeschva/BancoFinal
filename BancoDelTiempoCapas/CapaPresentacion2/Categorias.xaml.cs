@@ -25,11 +25,15 @@ namespace CapaPresentacion2
     {
         NCategoriaDeServicio nCategoria = new NCategoriaDeServicio();
         BancoDelTiempoEntities bancoDB = new BancoDelTiempoEntities();
+        String buscar;
+
+        CapaDatos.CategoriaDeServicio categoriaSeleccionada;
+        int idSelCategoria;
         
         public Categorias()
         {
             InitializeComponent();
-
+            nCategoria = new NCategoriaDeServicio();
             
         }
 

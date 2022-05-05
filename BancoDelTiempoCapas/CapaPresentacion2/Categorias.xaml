@@ -10,12 +10,11 @@
       Title="Categorias" Background="Transparent">
 
     <Grid>
-        <TextBox x:Name="Buscar" HorizontalAlignment="Left" Height="23" Margin="629,252,0,0" TextWrapping="Wrap" Text="Buscar" VerticalAlignment="Top" Width="46" TextChanged="Buscar_TextChanged" RenderTransformOrigin="2.986,3.348"/>
-        <TextBox x:Name="Añadir" HorizontalAlignment="Left" Height="23" Margin="629,305,0,0" TextWrapping="Wrap" Text="Añadir" VerticalAlignment="Top" Width="46"/>
-        <TextBox x:Name="Volver" HorizontalAlignment="Left" Height="23" Margin="629,360,0,0" TextWrapping="Wrap" Text="Volver" VerticalAlignment="Top" Width="46"/>
-        <TextBox x:Name="txtBuscar" HorizontalAlignment="Left" Height="23" Margin="726,252,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" TextChanged="txtBuscar_TextChanged"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="726,305,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" TextChanged="TextBox_TextChanged"/>
-        <DataGrid HorizontalAlignment="Left" Height="162" Margin="469,36,0,0" VerticalAlignment="Top" Width="400" SelectionChanged="DataGrid_SelectionChanged"/>
+        <TextBox x:Name="Buscar" HorizontalAlignment="Left" Height="23" Margin="546,241,0,0" TextWrapping="Wrap" Text="Buscar" VerticalAlignment="Top" Width="46" TextChanged="Buscar_TextChanged" RenderTransformOrigin="2.986,3.348"/>
+        <TextBox x:Name="Añadir" HorizontalAlignment="Left" Height="23" Margin="629,241,0,0" TextWrapping="Wrap" Text="Añadir" VerticalAlignment="Top" Width="46"/>
+        <TextBox x:Name="Volver" HorizontalAlignment="Left" Height="23" Margin="708,241,0,0" TextWrapping="Wrap" Text="Volver" VerticalAlignment="Top" Width="46"/>
+        <TextBox x:Name="txtBuscar" HorizontalAlignment="Left" Height="23" Margin="546,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="323" TextChanged="txtBuscar_TextChanged"/>
+        <DataGrid HorizontalAlignment="Left" Height="162" Margin="546,0,0,0" VerticalAlignment="Top" Width="354" SelectionChanged="DataGrid_SelectionChanged"/>
 
     </Grid>
 </Page>

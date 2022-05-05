@@ -72,6 +72,13 @@ namespace CapaDatos
             
         }
 
+        public ArrayList listCategoriaPorNombre(string nombreCategoria)
+        {
+            throw new NotImplementedException();
+        }
+
+ 
+
         // Mostrar una categoría
         public CategoriaDeServicio getCategoria(int id)
         {
