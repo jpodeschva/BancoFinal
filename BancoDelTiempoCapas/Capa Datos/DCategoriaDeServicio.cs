@@ -12,6 +12,7 @@ namespace CapaDatos
 {
     public class DCategoriaDeServicio
     {
+
         // Añadir categoría
         public void addCategoria(CategoriaDeServicio categoriaDeServicio)
         {
@@ -102,15 +103,23 @@ namespace CapaDatos
         public ArrayList listCategoriasDeServicio()
         {
             ArrayList list = new ArrayList();
-
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                var lst = db.CategoriaDeServicios;
-                foreach (var categoriaDeServicio in lst)
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
                 {
-                    //Console.WriteLine(categoriaDeServicio.ToString());
-                    list.Add(categoriaDeServicio);
+                    var lst = db.CategoriaDeServicios;
+                    foreach (var categoriaDeServicio in lst)
+                    {
+                        //Console.WriteLine(categoriaDeServicio.ToString());
+                        list.Add(categoriaDeServicio);
+                    }
                 }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No hay categorias por mostrar. \n\n" + ex.Message);
+                return null;
             }
             return list;
         }

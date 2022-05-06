@@ -25,7 +25,7 @@ namespace CapaPresentacion2
     {
         NCategoriaDeServicio nCategoria = new NCategoriaDeServicio();
         BancoDelTiempoEntities bancoDB = new BancoDelTiempoEntities();
-        String buscar;
+        String buscar, nombre, descripcion;
 
         CapaDatos.CategoriaDeServicio categoriaSeleccionada;
         int idSelCategoria;
@@ -37,22 +37,28 @@ namespace CapaPresentacion2
             
         }
 
-        
-        private void Buscar_TextChanged(object sender, TextChangedEventArgs e)
+        private void btnBuscar_Click(object sender, RoutedEventArgs e)
         {
+            buscar = txtBuscar.Text;
 
+            dataGridCategorias.ItemsSource = nCategoria.buscarSegunPalabra(buscar);
+        }
 
+        private void btnAñadir_Click(object sender, RoutedEventArgs e)
+        {
+            nombre = txtNombre.Text;
+            descripcion = txtNombre.Text;
+
+            nCategoria.guardarCategoria(nombre, descripcion);
 
         }
 
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void txtNombre_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
-
 
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtDescripcion_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
@@ -62,24 +68,11 @@ namespace CapaPresentacion2
 
         }
 
-
-        private void buttonBuscar(object sender, RoutedEventArgs e)
-        {
-            buscar = txtBuscar.Text;  // Coge la palabra que el usuario escribe en el TextBox
-            //MessageBox.Show(palabraBuscar);
-
-            // Llama al método que analiza la palabra (en CapaNegocio) y lo asigna al DataGridView
-            dataGridCategorias.ItemsSource = nCategoria.buscarSegunPalabra(buscar);
-
-        }
-        private void buttonAñadir(object sender, RoutedEventArgs e)
+        private void btnVolver_Click(object sender, RoutedEventArgs e)
         {
 
         }
-        private void buttonVolver(object sender, RoutedEventArgs e)
-        {
 
-        }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
