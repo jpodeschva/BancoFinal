@@ -19,20 +19,29 @@ namespace CapaPresentacion2
 {
     public partial class CuentaUsuario : Page
     {
-        bool isLoggedIn = false;
+        //bool isLoggedIn = false;
+        String username = "";
         NUsuario nUsuario;
         Usuario usuario;
 
         public CuentaUsuario(bool isLoggedIn, String username)
         {
             InitializeComponent();
-            
-            nUsuario = new NUsuario();
 
+            this.username = username;
+            nUsuario = new NUsuario();
+            usuario = new Usuario();
+
+            loadUsuario(isLoggedIn, username);
+        }
+
+        private void loadUsuario(bool isLoggedIn, string username)
+        {
             if (isLoggedIn)
             {
                 // Busca al usuario logueado por su username
                 usuario = nUsuario.cargarCuentaUsuario(username);
+                //MessageBox.Show(usuario.ToString());
 
                 // Carga todos los datos del usuario en la pantalla
                 boxNombre.Text = usuario.nombre;
@@ -53,7 +62,17 @@ namespace CapaPresentacion2
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             // Carga la vista de Registro
-            this.NavigationService.Navigate(new Uri("Registro.xaml", UriKind.Relative));
+            //this.NavigationService.Navigate(new Uri("Registro.xaml", UriKind.Relative));
+            if (username != "")
+            {
+                this.NavigationService.Navigate(new Registro(username));
+            }
+            else
+            {
+                this.NavigationService.Navigate(new Registro());
+            }
+            
+
 
             //TODO: Carga los datos en los TextBox ?? O se crea página nueva?
         }

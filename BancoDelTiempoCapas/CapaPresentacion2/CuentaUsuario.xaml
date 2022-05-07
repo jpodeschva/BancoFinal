@@ -48,18 +48,18 @@
                 <TextBlock Grid.Row="8" Text="Teléfono" FontFamily="Arial Rounded MT Bold" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center" Foreground="#f5f7f9" Margin="0 0 25 0" />
                 <TextBlock Grid.Row="9" Text="Username" FontFamily="Arial Rounded MT Bold" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center" Foreground="#f5f7f9" Margin="0 0 25 0" />
                 <TextBlock Grid.Row="10" Text="Password" FontFamily="Arial Rounded MT Bold" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center" Foreground="#f5f7f9" Margin="0 0 25 0" />
-                
-                <TextBlock Grid.Column="1" Grid.Row="0" x:Name="boxNombre" Background="LightGray" Margin="0,5,0,0"/>
-                <TextBlock Grid.Column="1" Grid.Row="1" x:Name="boxApellido1" Background="LightGray" Margin="0,5,0,0"/>
-                <TextBlock Grid.Column="1" Grid.Row="2" x:Name="boxApellido2" Background="LightGray" Margin="0,5,0,0"/>
-                <TextBlock Grid.Column="1" Grid.Row="3" x:Name="boxDireccion" Background="LightGray" Margin="0,5,0,0"/>
-                <TextBlock Grid.Column="1" Grid.Row="4" x:Name="boxCP" Background="LightGray" Margin="0,5,0,0"/>
-                <TextBlock Grid.Column="1" Grid.Row="5" x:Name="boxLocalidad" Background="LightGray" Margin="0,5,0,0"/>
-                <TextBlock Grid.Column="1" Grid.Row="6" x:Name="boxProvincia" Background="LightGray" Margin="0,5,0,0"/>
-                <TextBlock Grid.Column="1" Grid.Row="7" x:Name="boxEmail" Background="LightGray" Margin="0,5,0,0"/>
-                <TextBlock Grid.Column="1" Grid.Row="8" x:Name="boxTelefono" Background="LightGray" Margin="0,5,0,0"/>
-                <TextBlock Grid.Column="1" Grid.Row="9" x:Name="boxUsername" Background="LightGray" Margin="0,5,0,0"/>
-                <TextBlock Grid.Column="1" Grid.Row="10" x:Name="boxPassword" Background="LightGray" Margin="0,5,0,0"/>
+
+                <TextBlock Grid.Column="1" Grid.Row="0" x:Name="boxNombre" Background="LightGray" Margin="0,5,0,0" Padding="10 2" FontFamily="Arial Rounded"/>
+                <TextBlock Grid.Column="1" Grid.Row="1" x:Name="boxApellido1" Background="LightGray" Margin="0,5,0,0" Padding="10 2" FontFamily="Arial Rounded"/>
+                <TextBlock Grid.Column="1" Grid.Row="2" x:Name="boxApellido2" Background="LightGray" Margin="0,5,0,0" Padding="10 2" FontFamily="Arial Rounded"/>
+                <TextBlock Grid.Column="1" Grid.Row="3" x:Name="boxDireccion" Background="LightGray" Margin="0,5,0,0" Padding="10 2" FontFamily="Arial Rounded"/>
+                <TextBlock Grid.Column="1" Grid.Row="4" x:Name="boxCP" Background="LightGray" Margin="0,5,0,0" Padding="10 2" FontFamily="Arial Rounded"/>
+                <TextBlock Grid.Column="1" Grid.Row="5" x:Name="boxLocalidad" Background="LightGray" Margin="0,5,0,0" Padding="10 2" FontFamily="Arial Rounded"/>
+                <TextBlock Grid.Column="1" Grid.Row="6" x:Name="boxProvincia" Background="LightGray" Margin="0,5,0,0" Padding="10 2" FontFamily="Arial Rounded"/>
+                <TextBlock Grid.Column="1" Grid.Row="7" x:Name="boxEmail" Background="LightGray" Margin="0,5,0,0" Padding="10 2" FontFamily="Arial Rounded"/>
+                <TextBlock Grid.Column="1" Grid.Row="8" x:Name="boxTelefono" Background="LightGray" Margin="0,5,0,0" Padding="10 2" FontFamily="Arial Rounded"/>
+                <TextBlock Grid.Column="1" Grid.Row="9" x:Name="boxUsername" Background="LightGray" Margin="0,5,0,0" Padding="10 2" FontFamily="Arial Rounded"/>
+                <TextBlock Grid.Column="1" Grid.Row="10" x:Name="boxPassword" Background="LightGray" Margin="0,5,0,0" Padding="10 2" FontFamily="Arial Rounded"/>
 
                 <Grid Grid.Row="11" Grid.Column="1" Margin="0,25,0,0">
                     <Button x:Name="editarUsuarioBtn" Content="Editar" Margin="10,0,0,0" Grid.Column="0" Style="{StaticResource buttonMain}" Click="Button_Click_1"/>

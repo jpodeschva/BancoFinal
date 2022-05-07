@@ -76,16 +76,33 @@ namespace CapaDatos
         }
 
         // Actualizar usuario
-        public void updateUsuario(Usuario usuario)
+        public void updateUsuario(String username, Usuario usuarioActualizado)
         {
             try
             {
                 using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
                 {
                     //Usuario usuario = db.Usuarios.Find(id);
+                    Usuario usuario = getUsuarioByUsername(username);
+
+                    db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
+
+                    // Modificamos los parámetros
+                    usuario.nombre = usuarioActualizado.nombre;
+                    usuario.apellido1 = usuarioActualizado.apellido1;
+                    usuario.apellido2 = usuarioActualizado.apellido2;
+                    usuario.direccion = usuarioActualizado.direccion;
+                    usuario.codigoPostal = usuarioActualizado.codigoPostal;
+                    usuario.localidad = usuarioActualizado.localidad;
+                    usuario.provincia = usuarioActualizado.provincia;
+                    usuario.email = usuarioActualizado.email;
+                    usuario.telefono = usuarioActualizado.telefono;
+                    usuario.idUsername = usuarioActualizado.idUsername;
+                    usuario.idPassword = usuarioActualizado.idPassword;
 
                     db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
+                    MessageBox.Show("Usuario actualizado correctamente.");
                 }
             }
             catch (Exception ex)
@@ -118,12 +135,21 @@ namespace CapaDatos
         // Buscar un usuario por su username
         public Usuario getUsuarioByUsername(String username)
         {
+            Usuario usuarioEncontrado = null;
+
             try
             {
                 using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
                 {
-                    Usuario usuario = db.Usuarios.Find(username);
-                    return usuario;
+                    var lst = db.Usuarios;
+                    foreach (var usuario in lst)
+                    {
+                        if (usuario.idUsername == username)
+                        {
+                            usuarioEncontrado = usuario;
+                        }
+                    }
+                    return usuarioEncontrado;
                 }
             }
             catch (Exception ex)

@@ -15,17 +15,23 @@ using System.Windows.Shapes;
 
 namespace CapaPresentacion2
 {
-    /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
-    /// </summary>
+    
     public partial class MainWindow : Window
     {
         bool isLoggedIn = false;
+        String username = "";
 
         public MainWindow()
         {
             InitializeComponent();
             Main.Content = new Menu();
+        }
+
+        public MainWindow(bool isLoggedIn, String username)
+        {
+            InitializeComponent();
+            //Main.Content = new Menu();
+            Main.Content = new CuentaUsuario(isLoggedIn, username);
         }
 
         private void loginBtnClick(object sender, RoutedEventArgs e)
@@ -56,7 +62,15 @@ namespace CapaPresentacion2
         private void cuentaBtnClick(object sender, RoutedEventArgs e)
         {
             //TODO: Bloquear este botón si isLoggedIn == false
-            Main.Content = new CuentaUsuario(isLoggedIn, "");
+
+            if(isLoggedIn)
+            {
+                Main.Content = new CuentaUsuario(isLoggedIn, username);
+            }
+            else
+            {
+                MessageBox.Show("Debe registrarse o loguear para poder acceder a su cuenta de usuario.");
+            }
         }
     }
 }

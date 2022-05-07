@@ -46,7 +46,15 @@ namespace CapaPresentacion2
                 MessageBox.Show("Login correcto!");
 
                 // Entra a la pantalla CuentaUsuario
-                mainWindow.Main.Content = new CuentaUsuario(isLoggedIn, username);
+                //this.mainWindow.Content = new CuentaUsuario(isLoggedIn, username);
+
+                this.NavigationService.Navigate(new CuentaUsuario(isLoggedIn, username));
+
+                //mainWindow = new MainWindow(isLoggedIn, username);
+                //mainWindow.Show();
+
+                //this.mainWindow.Close();
+                //mainWindow.Main.Content = new CuentaUsuario(isLoggedIn, username);
 
                 // Entra a la pantalla Anuncios
                 //mainWindow.Main.Content = new Anuncio(isLoggedIn);

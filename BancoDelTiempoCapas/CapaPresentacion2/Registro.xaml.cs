@@ -1,4 +1,5 @@
-﻿using CapaNegocio;
+﻿using CapaDatos;
+using CapaNegocio;
 using CapaPresentacion2.UserControls;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,35 @@ namespace CapaPresentacion2
         {
             InitializeComponent();
             nRegistro = new NRegistro();
+        }
+
+        public Registro(String username)
+        {
+            InitializeComponent();
+            nRegistro = new NRegistro();
+            this.username = username;
+
+            cargarDatosUsuario(username);
+        }
+
+        private void cargarDatosUsuario(String username)
+        {
+            NUsuario nUsuario = new NUsuario();
+            Usuario usuario = new Usuario();
+            usuario = nUsuario.cargarCuentaUsuario(username);
+
+            // Carga datos del usuario en los TextBox
+            textBoxNombre.textBox.Text = usuario.nombre;
+            textBoxApellido1.textBox.Text = usuario.apellido1;
+            textBoxApellido2.textBox.Text = usuario.apellido2;
+            textBoxDireccion.textBox.Text = usuario.direccion;
+            textBoxCP.textBox.Text = usuario.codigoPostal.ToString();
+            textBoxLocalidad.textBox.Text = usuario.localidad;
+            textBoxProvincia.textBox.Text = usuario.provincia;
+            textBoxEmail.textBox.Text = usuario.email;
+            textBoxTelefono.textBox.Text = usuario.telefono.ToString();
+            textBoxUsername.textBox.Text = usuario.idUsername;
+            textBoxPassword.textBox.Text = usuario.idPassword;
         }
 
         // Cancelar Registro Btn
@@ -60,9 +90,21 @@ namespace CapaPresentacion2
             codigoPostal = int.Parse(textBoxCP.textBox.Text);
             telefono = int.Parse(textBoxTelefono.textBox.Text);
 
-            // Llama al método de la CapaNegocio que guarda el registro del usuario y le pasa los datos
-            nRegistro.guardaRegistro(nombre, apellido1, apellido2, direccion, localidad, provincia, email, 
-                username, password, codigoPostal, telefono);
+            if (username == null)  // Nuevo usuario
+            {
+                // Llama al método de la CapaNegocio que guarda el registro del usuario y le pasa los datos
+                nRegistro.guardaRegistro(nombre, apellido1, apellido2, direccion, localidad, provincia, email,
+                    username, password, codigoPostal, telefono);
+            }
+            else  // Actualiza usuario
+            {
+                // Llama al método de la CapaNegocio que actualiza el usuario y le pasa los datos
+                nRegistro.actualizaRegistro(nombre, apellido1, apellido2, direccion, localidad, provincia, email,
+                    username, password, codigoPostal, telefono);
+                // Lleva a la página del Menú
+                this.NavigationService.Navigate(new Menu());
+            }
+
         }
 
     }
