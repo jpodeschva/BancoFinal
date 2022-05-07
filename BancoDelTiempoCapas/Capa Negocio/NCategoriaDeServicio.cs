@@ -14,13 +14,14 @@ namespace CapaNegocio
 {
     public class NCategoriaDeServicio
     {
+        CapaDatos.CategoriaDeServicio nuevaCategoria;
         CapaDatos.DCategoriaDeServicio dCategoriaDeServicio = new CapaDatos.DCategoriaDeServicio();
+        
 
-        public BindingList<CategoriaDeServicio> listarCategorias()
-        {
-
-            try
-            {
+       public ArrayList listarCategorias()
+     {
+            return dCategoriaDeServicio.listCategoriasDeServicio();
+           /* {
                 using (BancoDelTiempoEntities bd = new BancoDelTiempoEntities())
                 {
                     var Query = (from n in bd.CategoriaDeServicios
@@ -43,7 +44,7 @@ namespace CapaNegocio
 
                 throw;
             }
-
+          */
         }
         public ArrayList buscarSegunPalabra(String palabra)
         {
@@ -65,5 +66,13 @@ namespace CapaNegocio
         {
             return dCategoriaDeServicio.listCategoriasDeServicioQueContiene(palabra);
         }
+        public void guardarCategoria(String nombreCategoria, String descripcion) {
+
+            // Creamos el nuevo usuario con los datos introducidos
+            nuevaCategoria = new CapaDatos.CategoriaDeServicio(nombreCategoria, descripcion);
+            // Llamamos al método addUsuario() de DUsuario (CapaDatos) y le pasamos el usuario creado
+            dCategoriaDeServicio.addCategoria(nuevaCategoria);
+            }
         }
 }
+

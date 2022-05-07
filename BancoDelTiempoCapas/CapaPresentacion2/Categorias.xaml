@@ -10,11 +10,13 @@
       Title="Categorias" Background="Transparent">
 
     <Grid x:Name="Grid">
-        <TextBox x:Name="txtBuscar" HorizontalAlignment="Left" Height="23" Margin="546,470,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="323" TextChanged="txtBuscar_TextChanged" RenderTransformOrigin="0.502,0.5"/>
+        <TextBox x:Name="txtBuscar" HorizontalAlignment="Left" Height="37" Margin="618,427,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="272" TextChanged="txtBuscar_TextChanged" RenderTransformOrigin="0.502,0.5"/>
         <DataGrid x:Name="dataGridCategorias" HorizontalAlignment="Left" Height="422" Margin="517,0,0,0" VerticalAlignment="Top" Width="383" SelectionChanged="DataGrid_SelectionChanged"/>
-        <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="546,498,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.547,-1.21" Height="37"/>
-        <Button x:Name="btnAñadir" Content="Añadir" HorizontalAlignment="Left" Margin="650,498,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.507,-1" Height="38"/>
-        <Button x:Name="btnVolver" Content="Volver" HorizontalAlignment="Left" Margin="835,498,-10,0" VerticalAlignment="Top" Width="75" Height="37"/>
+        <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Margin="517,427,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.502,0.387" Height="37" Click="btnBuscar_Click"/>
+        <Button x:Name="btnAñadir" Content="Añadir" HorizontalAlignment="Left" Margin="517,474,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.476,0.544" Height="38" Click="btnAñadir_Click"/>
+        <Button x:Name="btnVolver" Content="Volver" HorizontalAlignment="Left" Margin="517,538,0,0" VerticalAlignment="Top" Width="75" Height="37" Click="btnVolver_Click"/>
+        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="31" Margin="618,481,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="81" Text="(nombre)" TextChanged="txtNombre_TextChanged"/>
+        <TextBox x:Name="txtDescripcion" HorizontalAlignment="Left" Height="31" Margin="722,481,0,0" TextWrapping="Wrap" Text="(descripcion)" VerticalAlignment="Top" Width="168" TextChanged="txtDescripcion_TextChanged"/>
 
     </Grid>
 </Page>
