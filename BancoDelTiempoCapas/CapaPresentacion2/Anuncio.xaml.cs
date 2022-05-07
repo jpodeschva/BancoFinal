@@ -9,6 +9,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Data;
 using System.Windows.Documents;
+using Microsoft.Win32;
+using System.Windows.Forms;
+using System.Collections;
+using DocumentFormat.OpenXml.Wordprocessing;
+using SaveFileDialog = Microsoft.Win32.SaveFileDialog;
 
 namespace CapaPresentacion2
 {
@@ -21,7 +26,7 @@ namespace CapaPresentacion2
         CapaDatos.Anuncio anuncioSeleccionado;
         int idSeleccion;
 
-        public Anuncio()
+        public Anuncio(bool isLoggedIn)
         {
             InitializeComponent();
             nAnuncios = new NAnuncios();
@@ -52,6 +57,63 @@ namespace CapaPresentacion2
             dataGridAnuncio.ItemsSource = nAnuncios.buscarSegunPalabra(palabraBuscar);
         }
 
+        private void exportarAnuncioBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+            dt.TableName = "Anuncio";
+
+            dt.Columns.Add("idAnuncio");
+            dt.Columns.Add("tipoServicio");
+            dt.Columns.Add("descripcion");
+            dt.Columns.Add("fechaPublicacion");
+            dt.Columns.Add("localidad");
+            dt.Columns.Add("idUsuario");
+            dt.Columns.Add("idCategoria");
+
+            ds.Tables.Add(dt);
+
+            ArrayList rowList = new ArrayList();
+
+            for (int i = 0; i < dataGridAnuncio.Items.Count; i++)
+            {
+                DataGridRow r = (DataGridRow)dataGridAnuncio.ItemContainerGenerator.ContainerFromIndex(i);
+
+                rowList.Add(r);
+            }
+
+            foreach (DataGridRow r in rowList)
+            {
+                /*DataRow row = ds.Tables["Anuncio"].NewRow();
+                row["idAnuncio"] = r.Cells[0].Value;
+                row["tipoServicio"] = r.Cells[1].Value;
+                row["descripcion"] = r.Cells[2].Value;
+                row["fechaPublicacion"] = r.Cells[3].Value;
+                row["localidad"] = r.Cells[4].Value;
+                row["idUsuario"] = r.Cells[5].Value;
+                row["idCategoria"] = r.Cells[6].Value;
+                
+                ds.Tables["Anuncio"].Rows.Add(row);*/
+            }
+
+            // Abre ventana para elegir dónde guardar el archivo
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "XML|*.xml";
+            if (sfd.ShowDialog().Equals(DialogResult.OK)) 
+            {
+                try
+                {
+                    ds.WriteXml(sfd.FileName);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+            }
+            System.Windows.MessageBox.Show("EXPORTADO");
+
+        }
+
 
         // Muestra todos los anuncios de la base de datos
         /*private void bindDataGrid()
@@ -80,4 +142,6 @@ namespace CapaPresentacion2
         }*/
 
     }
+
+    
 }

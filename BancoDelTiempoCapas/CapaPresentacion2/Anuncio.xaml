@@ -16,6 +16,11 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <Grid Grid.Column="0">
+            <Button x:Name="exportarAnuncioBtn" Grid.Column="1" Content="Exportar anuncios" Background="LightCoral" HorizontalAlignment="Center" Margin="220,455,0,0" VerticalAlignment="Top" Style="{StaticResource buttonMain}" Click="exportarAnuncioBtn_Click" />
+
+        </Grid>
+
         <Grid Grid.Column="1">
             
             <Grid.RowDefinitions>

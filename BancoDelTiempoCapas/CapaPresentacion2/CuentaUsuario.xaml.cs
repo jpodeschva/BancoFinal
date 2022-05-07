@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CapaDatos;
+using CapaNegocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +19,34 @@ namespace CapaPresentacion2
 {
     public partial class CuentaUsuario : Page
     {
-        //MainWindow main;
-        public CuentaUsuario()
+        bool isLoggedIn = false;
+        NUsuario nUsuario;
+        Usuario usuario;
+
+        public CuentaUsuario(bool isLoggedIn, String username)
         {
             InitializeComponent();
-            //main = new MainWindow();
+            
+            nUsuario = new NUsuario();
+
+            if (isLoggedIn)
+            {
+                // Busca al usuario logueado por su username
+                usuario = nUsuario.cargarCuentaUsuario(username);
+
+                // Carga todos los datos del usuario en la pantalla
+                boxNombre.Text = usuario.nombre;
+                boxApellido1.Text = usuario.apellido1;
+                boxApellido2.Text = usuario.apellido2;
+                boxDireccion.Text = usuario.direccion;
+                boxCP.Text = usuario.codigoPostal.ToString();
+                boxLocalidad.Text = usuario.localidad;
+                boxProvincia.Text = usuario.provincia;
+                boxEmail.Text = usuario.email;
+                boxTelefono.Text = usuario.telefono.ToString();
+                boxUsername.Text = usuario.idUsername;
+                boxPassword.Text = usuario.idPassword;
+            }
         }
 
         // Botón Editar cuenta

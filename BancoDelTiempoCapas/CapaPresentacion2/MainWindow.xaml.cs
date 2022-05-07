@@ -20,6 +20,8 @@ namespace CapaPresentacion2
     /// </summary>
     public partial class MainWindow : Window
     {
+        bool isLoggedIn = false;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -43,7 +45,7 @@ namespace CapaPresentacion2
 
         private void nosotrosBtnClick(object sender, RoutedEventArgs e)
         {
-            Main.Content = new Anuncio();
+            Main.Content = new Anuncio(isLoggedIn);
         }
 
         private void menuBtnCategoria(object sender, RoutedEventArgs e)
@@ -53,7 +55,8 @@ namespace CapaPresentacion2
 
         private void cuentaBtnClick(object sender, RoutedEventArgs e)
         {
-            Main.Content = new CuentaUsuario();
+            //TODO: Bloquear este botón si isLoggedIn == false
+            Main.Content = new CuentaUsuario(isLoggedIn, "");
         }
     }
 }

@@ -115,6 +115,25 @@ namespace CapaDatos
             
         }
 
+        // Buscar un usuario por su username
+        public Usuario getUsuarioByUsername(String username)
+        {
+            try
+            {
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+                {
+                    Usuario usuario = db.Usuarios.Find(username);
+                    return usuario;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Usuario no encontrado.\n\n" + ex.Message);
+                return null;
+            }
+
+        }
+
 
         // Mostrar todos los usuarios
         public ArrayList listUsuarios()

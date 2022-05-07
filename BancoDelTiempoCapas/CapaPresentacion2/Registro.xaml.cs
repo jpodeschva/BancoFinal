@@ -31,8 +31,17 @@ namespace CapaPresentacion2
         {
             // Limpiar formulario
             textBoxNombre.textBox.Text = String.Empty;
-            //foreach (TextBox textBox in UserControls.OfType<MyTextBox>()) // TODO: foreach para limpiar todos???????
-              //  textBox.Text = "";
+            textBoxApellido1.textBox.Text = String.Empty;
+            textBoxApellido2.textBox.Text = String.Empty;
+            textBoxDireccion.textBox.Text = String.Empty;
+            textBoxCP.textBox.Text = String.Empty;
+            textBoxLocalidad.textBox.Text = String.Empty;
+            textBoxProvincia.textBox.Text = String.Empty;
+            textBoxEmail.textBox.Text = String.Empty;
+            textBoxTelefono.textBox.Text = String.Empty;
+            textBoxUsername.textBox.Text = String.Empty;
+            textBoxPassword.textBox.Text = String.Empty;
+
         }
 
         // Guardar Registro Btn

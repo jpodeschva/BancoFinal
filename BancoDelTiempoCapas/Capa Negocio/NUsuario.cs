@@ -14,8 +14,15 @@ namespace CapaNegocio
 {
     public class NUsuario
     {
-        
+        DUsuario dUsuario = new DUsuario();
+        Usuario usuarioEncontrado;
 
+        public Usuario cargarCuentaUsuario(String username)
+        {
+            // Recupera los datos del usuario de la base de datos
+            usuarioEncontrado = dUsuario.getUsuarioByUsername(username);
+            return usuarioEncontrado;
+        }
     }
 
 

@@ -16,21 +16,19 @@ using System.Windows.Shapes;
 
 namespace CapaPresentacion2
 {
-    /// <summary>
-    /// Lógica de interacción para Page1.xaml
-    /// </summary>
     public partial class Login : Page
     {
         String username, password;
         bool isLoggedIn = false;
 
         NLogin nLogin;
+        MainWindow mainWindow;
 
         public Login()
         {
             InitializeComponent();
+            mainWindow = new MainWindow();
             nLogin = new NLogin();
-            
         }
 
         private void finalLoginBtnClick(object sender, RoutedEventArgs e)
@@ -46,6 +44,12 @@ namespace CapaPresentacion2
             {
                 //TODO: Permite entrar a pantallas, acceder a botones, etc.
                 MessageBox.Show("Login correcto!");
+
+                // Entra a la pantalla CuentaUsuario
+                mainWindow.Main.Content = new CuentaUsuario(isLoggedIn, username);
+
+                // Entra a la pantalla Anuncios
+                //mainWindow.Main.Content = new Anuncio(isLoggedIn);
             }
             else
             {
