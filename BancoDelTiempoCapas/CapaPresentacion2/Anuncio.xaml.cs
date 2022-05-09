@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using System.Collections;
 using DocumentFormat.OpenXml.Wordprocessing;
 using SaveFileDialog = Microsoft.Win32.SaveFileDialog;
+using System.Windows.Controls.Primitives;
 
 namespace CapaPresentacion2
 {
@@ -26,7 +27,7 @@ namespace CapaPresentacion2
         CapaDatos.Anuncio anuncioSeleccionado;
         int idSeleccion;
 
-        public Anuncio(bool isLoggedIn)
+        public Anuncio()
         {
             InitializeComponent();
             nAnuncios = new NAnuncios();
@@ -73,45 +74,46 @@ namespace CapaPresentacion2
 
             ds.Tables.Add(dt);
 
-            ArrayList rowList = new ArrayList();
-
-            for (int i = 0; i < dataGridAnuncio.Items.Count; i++)
+            for (int i = 0; i < (dataGridAnuncio.Items.Count -1); i++)
             {
                 DataGridRow r = (DataGridRow)dataGridAnuncio.ItemContainerGenerator.ContainerFromIndex(i);
 
-                rowList.Add(r);
-            }
+                CapaDatos.Anuncio anuncio = (CapaDatos.Anuncio)r.Item;
+                //string value = anuncio.localidad;
+                //System.Windows.MessageBox.Show("Value: " + value);
 
-            foreach (DataGridRow r in rowList)
-            {
-                /*DataRow row = ds.Tables["Anuncio"].NewRow();
-                row["idAnuncio"] = r.Cells[0].Value;
-                row["tipoServicio"] = r.Cells[1].Value;
-                row["descripcion"] = r.Cells[2].Value;
-                row["fechaPublicacion"] = r.Cells[3].Value;
-                row["localidad"] = r.Cells[4].Value;
-                row["idUsuario"] = r.Cells[5].Value;
-                row["idCategoria"] = r.Cells[6].Value;
+                DataRow row = ds.Tables["Anuncio"].NewRow();
+                row["idAnuncio"] = anuncio.idAnuncio;
+                row["tipoServicio"] = anuncio.tipoServicio;
+                row["descripcion"] = anuncio.descripcion;
+                row["fechaPublicacion"] = anuncio.fechaPublicacion;
+                row["localidad"] = anuncio.localidad;
+                row["idUsuario"] = anuncio.idUsuario;
+                row["idCategoria"] = anuncio.idCategoria;
                 
-                ds.Tables["Anuncio"].Rows.Add(row);*/
+                ds.Tables["Anuncio"].Rows.Add(row);
             }
 
             // Abre ventana para elegir dónde guardar el archivo
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "XML|*.xml";
-            if (sfd.ShowDialog().Equals(DialogResult.OK)) 
+            // Show save file dialog box
+            Nullable<bool> result = sfd.ShowDialog();
+            // Process save file dialog box results
+            if (result == true)
             {
+                // Save document
                 try
                 {
                     ds.WriteXml(sfd.FileName);
+                    System.Windows.MessageBox.Show("EXPORTADO");
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex);
+                    System.Windows.MessageBox.Show("Error\n" + ex);
                 }
             }
-            System.Windows.MessageBox.Show("EXPORTADO");
-
         }
 
 

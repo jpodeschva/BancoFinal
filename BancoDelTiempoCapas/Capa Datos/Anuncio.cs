@@ -30,10 +30,10 @@ namespace CapaDatos
         public int idCategoria { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [System.ComponentModel.Browsable(false)] public virtual ICollection<Contacto> Contactoes { get; set; }
+        public virtual ICollection<Contacto> Contactoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [System.ComponentModel.Browsable(false)] public virtual ICollection<Transaccion> Transaccions { get; set; }
-        [System.ComponentModel.Browsable(false)] public virtual CategoriaDeServicio CategoriaDeServicio { get; set; }
-        [System.ComponentModel.Browsable(false)] public virtual Usuario Usuario { get; set; }
+        public virtual ICollection<Transaccion> Transaccions { get; set; }
+        public virtual CategoriaDeServicio CategoriaDeServicio { get; set; }
+        public virtual Usuario Usuario { get; set; }
     }
 }
