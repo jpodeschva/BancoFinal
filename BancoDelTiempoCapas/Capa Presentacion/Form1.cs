@@ -161,7 +161,7 @@ namespace Capa_Presentacion
             Usuario user3 = usuario.getUsuario(14);
             user3.localidad = "Manresa";
 
-            usuario.updateUsuario(user3);
+            //usuario.updateUsuario(user3);
 
 
         }

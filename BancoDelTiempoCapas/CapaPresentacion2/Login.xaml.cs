@@ -19,7 +19,7 @@ namespace CapaPresentacion2
     public partial class Login : Page
     {
         String username, password;
-        bool isLoggedIn = false;
+        //bool isLoggedIn = false;
 
         NLogin nLogin;
         MainWindow mainWindow;
@@ -38,7 +38,9 @@ namespace CapaPresentacion2
             password = passwordBox1.Password.ToString();
 
             // Llamamos al método de la CapaNegocio que validará el usuario y, si es correcto, logueará al usuario
-            isLoggedIn = nLogin.login(username, password);
+            bool isLoggedIn = nLogin.login(username, password);
+            SessionManager.Instance.isLoggedIn = isLoggedIn;
+            SessionManager.Instance.username = username;
 
             if (isLoggedIn)
             {
@@ -48,7 +50,7 @@ namespace CapaPresentacion2
                 // Entra a la pantalla CuentaUsuario
                 //this.mainWindow.Content = new CuentaUsuario(isLoggedIn, username);
 
-                this.NavigationService.Navigate(new CuentaUsuario(isLoggedIn, username));
+                this.NavigationService.Navigate(new CuentaUsuario());
 
                 //mainWindow = new MainWindow(isLoggedIn, username);
                 //mainWindow.Show();

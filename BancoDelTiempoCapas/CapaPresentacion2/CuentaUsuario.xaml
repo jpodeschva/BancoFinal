@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:CapaPresentacion2"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="900"
-      Title="CuentaUsuario" Background="Transparent">
+      Title="CuentaUsuario" Background="Transparent"
+      Loaded="Page_Load">
   
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>

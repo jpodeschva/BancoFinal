@@ -19,19 +19,24 @@ namespace CapaPresentacion2
 {
     public partial class CuentaUsuario : Page
     {
-        //bool isLoggedIn = false;
+        bool isLoggedIn;
         String username = "";
         NUsuario nUsuario;
         Usuario usuario;
 
-        public CuentaUsuario(bool isLoggedIn, String username)
+        public CuentaUsuario()
         {
             InitializeComponent();
 
-            this.username = username;
             nUsuario = new NUsuario();
             usuario = new Usuario();
+        }
 
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            this.username = SessionManager.Instance.username;
+            this.isLoggedIn = SessionManager.Instance.isLoggedIn;
+            MessageBox.Show("Loaded");
             loadUsuario(isLoggedIn, username);
         }
 

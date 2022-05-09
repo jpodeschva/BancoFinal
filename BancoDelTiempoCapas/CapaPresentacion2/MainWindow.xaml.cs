@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaNegocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,20 +19,11 @@ namespace CapaPresentacion2
     
     public partial class MainWindow : Window
     {
-        bool isLoggedIn = false;
-        String username = "";
-
+        
         public MainWindow()
         {
             InitializeComponent();
             Main.Content = new Menu();
-        }
-
-        public MainWindow(bool isLoggedIn, String username)
-        {
-            InitializeComponent();
-            //Main.Content = new Menu();
-            Main.Content = new CuentaUsuario(isLoggedIn, username);
         }
 
         private void loginBtnClick(object sender, RoutedEventArgs e)
@@ -51,7 +43,7 @@ namespace CapaPresentacion2
 
         private void nosotrosBtnClick(object sender, RoutedEventArgs e)
         {
-            Main.Content = new Anuncio(isLoggedIn);
+            Main.Content = new Anuncio();
         }
 
         private void menuBtnCategoria(object sender, RoutedEventArgs e)
@@ -61,11 +53,10 @@ namespace CapaPresentacion2
 
         private void cuentaBtnClick(object sender, RoutedEventArgs e)
         {
-            //TODO: Bloquear este botón si isLoggedIn == false
-
-            if(isLoggedIn)
+            
+            if(SessionManager.Instance.isLoggedIn)
             {
-                Main.Content = new CuentaUsuario(isLoggedIn, username);
+                Main.Content = new CuentaUsuario();
             }
             else
             {
