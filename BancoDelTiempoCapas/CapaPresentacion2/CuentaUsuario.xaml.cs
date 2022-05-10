@@ -36,7 +36,7 @@ namespace CapaPresentacion2
         {
             this.username = SessionManager.Instance.username;
             this.isLoggedIn = SessionManager.Instance.isLoggedIn;
-            MessageBox.Show("Loaded");
+            //MessageBox.Show("Loaded");
             loadUsuario(isLoggedIn, username);
         }
 

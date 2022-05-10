@@ -13,6 +13,7 @@ namespace CapaNegocio
     public class NAnuncios
     {
         CapaDatos.DAnuncios dAnuncios = new CapaDatos.DAnuncios();
+        CapaDatos.DUsuario dUsuario = new CapaDatos.DUsuario();
 
         public ArrayList buscarSegunPalabra(String palabraBuscar)
         {
@@ -56,6 +57,32 @@ namespace CapaNegocio
             }).ToList();*/
 
             //dataGridAnuncio.ItemsSource = data.ToList();
+        }
+
+        public int getIdUsuarioFromUsername()
+        {
+            Usuario usuario = dUsuario.getUsuarioByUsername(SessionManager.Instance.username);
+            int idUsuario = usuario.idUsuario;
+            return idUsuario;
+
+        }
+
+        public void addAnuncio(String tipoServicio, String descripcion, String localidad, int idCategoria, int idUsuario, DateTime fecha)
+        {
+            // Crea un nuevo objeto de tipo anuncio
+            CapaDatos.Anuncio nuevoAnuncio = new CapaDatos.Anuncio();
+            // Le añade los atributos
+            nuevoAnuncio.tipoServicio = tipoServicio;
+            nuevoAnuncio.descripcion = descripcion;
+            nuevoAnuncio.localidad = localidad;
+            nuevoAnuncio.idCategoria = idCategoria;
+            nuevoAnuncio.idUsuario = idUsuario;
+            nuevoAnuncio.fechaPublicacion = fecha;
+            // Le asigna también el idUsuario sacado de SessionManager
+            nuevoAnuncio.idUsuario = getIdUsuarioFromUsername();
+
+            // Llama al método de la CapaDatos que añadirá el anuncio a la base de datos
+            dAnuncios.addAnuncio(nuevoAnuncio);
         }
 
         public void eliminarAnuncio(int idSeleccion)

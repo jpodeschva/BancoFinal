@@ -49,8 +49,6 @@ namespace CapaDatos
                 MessageBox.Show("Error al intentar registrar al usuario.\n\n" + ex.Message);
                 return;
             }
-
-            
         }
 
         // Eliminar usuario

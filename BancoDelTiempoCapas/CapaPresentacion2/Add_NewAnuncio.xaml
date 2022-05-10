@@ -1,0 +1,60 @@
+﻿<Window x:Class="CapaPresentacion2.Add_NewAnuncio"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CapaPresentacion2"
+        mc:Ignorable="d"
+        Title="Añadir nuevo anuncio" Height="350" Width="500">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <Label>ID usuario:</Label>
+        <TextBox x:Name="textBoxIdUsuario" Grid.Column="1" Margin="0,0,0,10" Focusable="False"/>
+        
+        <Label Grid.Row="1">Tipo de servicio:</Label>
+        <TextBox x:Name="textBoxTipoServicio" Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" />
+        
+        <Label Grid.Row="2">Categoría:</Label>
+        <StackPanel  Grid.Column="1"
+             Grid.Row="2">
+            <ComboBox Name="comboBoxCategorias"
+            Text="Seleccione una categoría de la lista..." IsEditable="True">
+                <ComboBoxItem Name="Seleccionar" Content="Seleccione una categoría de la lista..."/>
+                <ComboBoxItem Name="limpieza" Content="Limpieza"/>
+                <ComboBoxItem Name="musica" Content="Música"/>
+                <ComboBoxItem Name="deporte" Content="Deporte"/>
+                <ComboBoxItem Name="bricolaje" Content="Bricolaje"/>
+                <ComboBoxItem Name="idiomas" Content="Idiomas"/>
+                <ComboBoxItem Name="transporte" Content="Transporte"/>
+                <ComboBoxItem Name="compras" Content="Compras"/>
+            </ComboBox>
+
+        </StackPanel>
+        <!--TextBox x:Name="textBoxCategoria" Grid.Row="2" Grid.Column="1"  /-->
+        
+        <Label Grid.Row="3">Localidad:</Label>
+        <TextBox x:Name="textBoxLocalidad" Grid.Row="3" Grid.Column="1"  />
+        
+        <Label Grid.Row="4">Fecha de publicación:</Label>
+        <DatePicker x:Name="datePickerAnuncio" Grid.Row="4" Grid.Column="1" />
+        
+        <Label Grid.Row="5">Descripción:</Label>
+        <TextBox x:Name="textBoxDescripcion" Grid.Row="5" Grid.Column="1" AcceptsReturn="True" VerticalAlignment="Top" MinLines="4" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
+
+        <Button Grid.Row="6" Grid.Column="1" Content="Añadir" HorizontalAlignment="Center" Margin="0,15,0,7" VerticalAlignment="Top" Style="{StaticResource buttonMainGreen}" Click="crearAnuncioBtn_Click" />
+
+    </Grid>
+</Window>

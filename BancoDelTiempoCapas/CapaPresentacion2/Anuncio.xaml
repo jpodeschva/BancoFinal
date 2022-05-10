@@ -17,7 +17,8 @@
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0">
-            <Button x:Name="exportarAnuncioBtn" Grid.Column="1" Content="Exportar anuncios" Background="LightCoral" HorizontalAlignment="Center" Margin="220,455,0,0" VerticalAlignment="Top" Style="{StaticResource buttonMain}" Click="exportarAnuncioBtn_Click" />
+            <Button x:Name="addAnuncioBtn" Grid.Column="1" Content="Añadir anuncio" HorizontalAlignment="Left" Margin="248,375,0,0" VerticalAlignment="Top" Style="{StaticResource buttonMainGreen}" Click="addAnuncioBtn_Click" />
+            <Button x:Name="eliminarAnuncioBtn" Grid.Column="1" Content="Eliminar anuncio" HorizontalAlignment="Center" Margin="220,455,0,0" VerticalAlignment="Top" Style="{StaticResource buttonMainRed}" Click="eliminarAnuncioBtn_Click" />
 
         </Grid>
 
@@ -46,12 +47,12 @@
 
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="285"/>
+                    <ColumnDefinition Width="275"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="eliminarAnuncioBtn" Grid.Column="0" Content="Eliminar anuncio" HorizontalAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Top" Style="{StaticResource buttonMain}" Click="eliminarAnuncioBtn_Click" />
-                <Button x:Name="addAnuncioBtn" Grid.Column="1" Content="Añadir anuncio" HorizontalAlignment="Left" Margin="0,25,0,0" VerticalAlignment="Top" Style="{StaticResource buttonMainGreen}" Click="addAnuncioBtn_Click" />
+                <Button x:Name="exportarAnuncioBtn" Grid.Column="0" Content="Exportar a XML" Background="PaleGoldenrod" HorizontalAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Top" Style="{StaticResource buttonMain}" Click="exportarAnuncioBtn_Click" />
+                <Button x:Name="seleccionarAnuncioBtn" Grid.Column="1" Content="Seleccionar anuncio" HorizontalAlignment="Left" Margin="0,25,0,0" VerticalAlignment="Top" Style="{StaticResource buttonMainGreen}" Click="seleccionarAnuncioBtn_Click" />
 
             </Grid>
 

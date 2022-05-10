@@ -14,6 +14,7 @@ using System.Data.SqlClient;
 using CapaEntidades;
 using System.Collections;
 using System.Windows.Forms;
+using System.Data.Entity.Validation;
 
 namespace CapaDatos
 {
@@ -25,12 +26,27 @@ namespace CapaDatos
         public void addAnuncio(Anuncio anuncio)
         {
 
-            try { 
-            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            try
             {
-                db.Anuncios.Add(anuncio);
-                db.SaveChanges();
-            }
+                using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+                {
+                    db.Anuncios.Add(anuncio);
+                    try
+                    {
+                        db.SaveChanges();
+                        MessageBox.Show("Anuncio añadido correctamente.");
+                    }
+                    catch (DbEntityValidationException ex)
+                    {
+                        foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                        {
+                            foreach (var validationError in entityValidationErrors.ValidationErrors)
+                            {
+                                MessageBox.Show("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                            }
+                        }
+                    }  
+                }
             }
             catch (Exception ex)
             {

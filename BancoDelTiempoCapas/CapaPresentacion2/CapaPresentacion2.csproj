@@ -64,9 +64,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Add_NewAnuncio.xaml.cs">
+      <DependentUpon>Add_NewAnuncio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Categories.cs" />
     <Compile Include="UserControls\MyTextBox.xaml.cs">
       <DependentUpon>MyTextBox.xaml</DependentUpon>
     </Compile>
+    <Page Include="Add_NewAnuncio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Anuncio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

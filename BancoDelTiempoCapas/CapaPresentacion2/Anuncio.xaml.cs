@@ -15,6 +15,7 @@ using System.Collections;
 using DocumentFormat.OpenXml.Wordprocessing;
 using SaveFileDialog = Microsoft.Win32.SaveFileDialog;
 using System.Windows.Controls.Primitives;
+using MessageBox = System.Windows.MessageBox;
 
 namespace CapaPresentacion2
 {
@@ -45,7 +46,22 @@ namespace CapaPresentacion2
 
         private void addAnuncioBtn_Click(object sender, RoutedEventArgs e)
         {
+            // Sólo se pueden añadir anuncios si se está logueado
+            if (SessionManager.Instance.username != "")
+            {
+                // Muestra ventana con formulario para añadir anuncio
+                var window = new Add_NewAnuncio();
+                //window.Owner = this;
+                window.ShowDialog();
 
+                // Llama al método que vuelve a listar todos los anuncios
+                dataGridAnuncio.ItemsSource = nAnuncios.buscarSegunPalabra(palabraBuscar);
+            }
+            else
+            {
+                MessageBox.Show("Debes estar logueado para poder añadir un anuncio.");
+            }
+            
         }
 
         private void eliminarAnuncioBtn_Click(object sender, RoutedEventArgs e)
@@ -79,9 +95,7 @@ namespace CapaPresentacion2
                 DataGridRow r = (DataGridRow)dataGridAnuncio.ItemContainerGenerator.ContainerFromIndex(i);
 
                 CapaDatos.Anuncio anuncio = (CapaDatos.Anuncio)r.Item;
-                //string value = anuncio.localidad;
-                //System.Windows.MessageBox.Show("Value: " + value);
-
+               
                 DataRow row = ds.Tables["Anuncio"].NewRow();
                 row["idAnuncio"] = anuncio.idAnuncio;
                 row["tipoServicio"] = anuncio.tipoServicio;
@@ -97,7 +111,7 @@ namespace CapaPresentacion2
             // Abre ventana para elegir dónde guardar el archivo
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "XML|*.xml";
-            // Show save file dialog box
+            // Muestra el dialog box
             Nullable<bool> result = sfd.ShowDialog();
             // Process save file dialog box results
             if (result == true)
@@ -114,6 +128,11 @@ namespace CapaPresentacion2
                     System.Windows.MessageBox.Show("Error\n" + ex);
                 }
             }
+        }
+
+        private void seleccionarAnuncioBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
 
