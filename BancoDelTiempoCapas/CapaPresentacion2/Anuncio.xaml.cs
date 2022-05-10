@@ -22,7 +22,7 @@ namespace CapaPresentacion2
     public partial class Anuncio : Page
     {
         NAnuncios nAnuncios;
-
+        
         String palabraBuscar;
 
         CapaDatos.Anuncio anuncioSeleccionado;
@@ -132,7 +132,10 @@ namespace CapaPresentacion2
 
         private void seleccionarAnuncioBtn_Click(object sender, RoutedEventArgs e)
         {
+            anuncioSeleccionado = (CapaDatos.Anuncio)dataGridAnuncio.SelectedItem;
+            idSeleccion = anuncioSeleccionado.idAnuncio;
 
+            this.NavigationService.Navigate(new Transaccion(idSeleccion));
         }
 
 

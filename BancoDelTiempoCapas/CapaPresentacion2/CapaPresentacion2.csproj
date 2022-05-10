@@ -68,6 +68,9 @@
       <DependentUpon>Add_NewAnuncio.xaml</DependentUpon>
     </Compile>
     <Compile Include="Categories.cs" />
+    <Compile Include="Transaccion.xaml.cs">
+      <DependentUpon>Transaccion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MyTextBox.xaml.cs">
       <DependentUpon>MyTextBox.xaml</DependentUpon>
     </Compile>
@@ -117,6 +120,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Registro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Transaccion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
