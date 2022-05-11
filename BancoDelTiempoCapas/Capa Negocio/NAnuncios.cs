@@ -89,5 +89,13 @@ namespace CapaNegocio
         {
             dAnuncios.deleteAnuncio(idSeleccion);
         }
+
+        public ArrayList buscarAnuncioPorId(int idAnuncio)
+        {
+            ArrayList lista = new ArrayList();
+            Anuncio anuncio = dAnuncios.getAnuncio(idAnuncio);
+            lista.Add(anuncio);
+            return lista;
+        }
     }
 }

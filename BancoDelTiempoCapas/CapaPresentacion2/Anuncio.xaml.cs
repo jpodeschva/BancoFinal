@@ -110,10 +110,9 @@ namespace CapaPresentacion2
 
             // Abre ventana para elegir dónde guardar el archivo
             SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "XML|*.xml";
-            // Muestra el dialog box
-            Nullable<bool> result = sfd.ShowDialog();
-            // Process save file dialog box results
+            sfd.Filter = "XML|*.xml";  // Filtra los resultados con extensión .xml
+            Nullable<bool> result = sfd.ShowDialog();  // Muestra el dialog box
+            // Procesa el resultado del dialog box
             if (result == true)
             {
                 // Save document

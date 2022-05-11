@@ -32,6 +32,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -52,6 +53,8 @@
                 <TextBlock Grid.Row="9" Text="Teléfono" FontFamily="Arial Rounded MT Bold" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center" Foreground="#f5f7f9" Margin="0 0 25 0" />
                 <TextBlock Grid.Row="10" Text="Username" FontFamily="Arial Rounded MT Bold" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center" Foreground="#f5f7f9" Margin="0 0 25 0" />
                 <TextBlock Grid.Row="11" Text="Password" FontFamily="Arial Rounded MT Bold" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center" Foreground="#f5f7f9" Margin="0 0 25 0" />
+                <TextBlock Grid.Row="12" Text="Horas disponibles" FontFamily="Arial Rounded MT Bold" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center" Foreground="#f5f7f9" Margin="0 0 25 0" />
+
 
                 <TextBlock Grid.Column="1" Grid.Row="1" x:Name="boxNombre" Background="LightGray" Margin="0,5,0,0" Padding="10 2" FontFamily="Arial Rounded"/>
                 <TextBlock Grid.Column="1" Grid.Row="2" x:Name="boxApellido1" Background="LightGray" Margin="0,5,0,0" Padding="10 2" FontFamily="Arial Rounded"/>
@@ -64,12 +67,14 @@
                 <TextBlock Grid.Column="1" Grid.Row="9" x:Name="boxTelefono" Background="LightGray" Margin="0,5,0,0" Padding="10 2" FontFamily="Arial Rounded"/>
                 <TextBlock Grid.Column="1" Grid.Row="10" x:Name="boxUsername" Background="LightGray" Margin="0,5,0,0" Padding="10 2" FontFamily="Arial Rounded"/>
                 <TextBlock Grid.Column="1" Grid.Row="11" x:Name="boxPassword" Background="LightGray" Margin="0,5,0,0" Padding="10 2" FontFamily="Arial Rounded"/>
+                <TextBlock Grid.Column="1" Grid.Row="12" x:Name="boxHorasDisponibles" Background="#5fe7c4" Margin="0,5,0,0" Padding="10 2" FontFamily="Arial Rounded"/>
 
-                <Grid Grid.Row="12" Grid.Column="1" Margin="0,35,0,0">
+
+                <Grid Grid.Row="13" Grid.Column="1" Margin="0,35,0,0">
                     <Button x:Name="editarUsuarioBtn" Content="Editar" Margin="10,0,0,0" Grid.Column="0" Style="{StaticResource buttonMain}" Click="Button_Click_1"/>
                 </Grid>
 
-                <Grid Grid.Row="12" Grid.Column="0" Margin="0,35,0,0">
+                <Grid Grid.Row="13" Grid.Column="0" Margin="0,35,0,0">
                     <Button x:Name="eliminarCuentaBtn" Content="Eliminar cuenta" Margin="0,0,10,0" Style="{StaticResource buttonMainRed}" Click="Button_Click" Height="Auto"/>
 
                 </Grid>

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CapaDatos;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,26 +17,29 @@ using System.Windows.Shapes;
 
 namespace CapaPresentacion2
 {
-    /// <summary>
-    /// Lógica de interacción para Transaccion.xaml
-    /// </summary>
+    
     public partial class Transaccion : Page
     {
         private int _numValue = 0;
+        int idAnuncioSeleccionado;
+        CapaNegocio.NAnuncios nAnuncios;
 
         public Transaccion()
         {
             InitializeComponent();
             txtNum.Text = _numValue.ToString();
+            nAnuncios = new CapaNegocio.NAnuncios();
         }
 
         public Transaccion(int idAnuncio)
         {
             InitializeComponent();
             txtNum.Text = _numValue.ToString();
+            nAnuncios = new CapaNegocio.NAnuncios();
+            idAnuncioSeleccionado = idAnuncio;
 
             // Carga los datos del anuncio seleccionado
-
+            dataGridAnuncioSeleccionado.ItemsSource = (System.Collections.IEnumerable)nAnuncios.buscarAnuncioPorId(idAnuncio);
         }
 
         public int NumValue
@@ -71,6 +76,40 @@ namespace CapaPresentacion2
         private void pagarTransaccionBtn_Click(object sender, RoutedEventArgs e)
         {
 
+
+
+
+            // Asignar la fecha actual en la columna "Fecha solicitud"
+            DateTime now = DateTime.Now;
+
+            try
+            {
+                BancoDelTiempoEntities db = new BancoDelTiempoEntities();
+                var data = db.Anuncios
+                .Where(x => x.idAnuncio == idAnuncioSeleccionado)
+                .Select(x => new
+                {
+                    IdAnuncio = x.idAnuncio,
+                    Actividad = x.tipoServicio,
+                    HorasPagadas = 0,
+                    FechaSolicitud = now,
+
+                }).ToList();
+
+                dataGridAnuncioPagado.ItemsSource = data.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            /*DataRowView rowView = (dataGridAnuncioPagado.Items[0] as DataRowView); //Get RowView
+            rowView.BeginEdit();
+            rowView[2] = now;
+            rowView.EndEdit();
+            dataGridAnuncioPagado.Items.Refresh(); // Refresh table*/
+
+            //dataGridAnuncioPagado.ItemsSource = null;
         }
     }
 }
