@@ -39,5 +39,9 @@ namespace CapaNegocio
             dUsuario.updateUsuario(username, nuevoUsuario);
         }
 
+        public bool comprobarUsername(string username)
+        {
+            return dUsuario.checkUsuario(username);
+        }
     }
 }

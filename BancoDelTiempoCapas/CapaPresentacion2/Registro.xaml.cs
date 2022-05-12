@@ -90,11 +90,14 @@ namespace CapaPresentacion2
             codigoPostal = int.Parse(textBoxCP.textBox.Text);
             telefono = int.Parse(textBoxTelefono.textBox.Text);
 
-            if (username == null)  // Nuevo usuario
+            // Comprueba si el username ya existe o es un nuevo usuario
+            bool existe = nRegistro.comprobarUsername(username);
+            if (!existe)  // Nuevo usuario
             {
                 // Llama al método de la CapaNegocio que guarda el registro del usuario y le pasa los datos
                 nRegistro.guardaRegistro(nombre, apellido1, apellido2, direccion, localidad, provincia, email,
                     username, password, codigoPostal, telefono);
+                this.NavigationService.Navigate(new Login());
             }
             else  // Actualiza usuario
             {
