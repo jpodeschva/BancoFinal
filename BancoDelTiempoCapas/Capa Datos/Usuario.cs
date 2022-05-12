@@ -39,7 +39,7 @@ namespace CapaDatos
             this.idPassword = password;
             this.codigoPostal = codigoPostal;
             this.telefono = telefono;
-            this.balanceDeHoras = 1;  // Damos 1 hora de regalo por darse de alta en la app para poder probar
+            this.balanceDeHoras = 3;  // Damos 3 horas de regalo por darse de alta en la app para poder probar
         }
     
         public int idUsuario { get; set; }
