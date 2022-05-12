@@ -87,6 +87,7 @@ namespace CapaPresentacion2
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //TODO: Elimina Usuario de la base de datos
+            nUsuario.borrarCuentaUsuario(username);
         }
     }
 }
