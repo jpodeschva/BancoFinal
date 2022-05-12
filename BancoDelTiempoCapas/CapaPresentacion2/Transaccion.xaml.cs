@@ -75,22 +75,28 @@ namespace CapaPresentacion2
 
         private void pagarTransaccionBtn_Click(object sender, RoutedEventArgs e)
         {
+            DateTime now = DateTime.Now;  // Asigna la fecha y hora actual a la variable now
+
+            CapaDatos.Anuncio anuncio = (CapaDatos.Anuncio)nAnuncios.buscarAnuncioPorId(idAnuncioSeleccionado)[0];
+            // Asigna los valores correspondientes en cada TextBox
+            boxIdAnuncio.Text = idAnuncioSeleccionado.ToString();
+            boxTipoServicio.Text = anuncio.tipoServicio;
+            boxHorasPagadas.Text = this.NumValue.ToString();
+            boxFechaSolicitud.Text = now.ToString();
+
+            // TODO: Restar el número de horas seleccionadas del balance de horas del usuario
 
 
-
-
-            // Asignar la fecha actual en la columna "Fecha solicitud"
-            DateTime now = DateTime.Now;
-
-            try
+            
+            /*try
             {
                 BancoDelTiempoEntities db = new BancoDelTiempoEntities();
                 var data = db.Anuncios
                 .Where(x => x.idAnuncio == idAnuncioSeleccionado)
                 .Select(x => new
                 {
-                    IdAnuncio = x.idAnuncio,
-                    Actividad = x.tipoServicio,
+                    IdAnuncio = 1,//x.idAnuncio,
+                    Actividad = "Piano",//x.tipoServicio,
                     HorasPagadas = 0,
                     FechaSolicitud = now,
 
@@ -101,7 +107,7 @@ namespace CapaPresentacion2
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
+            }*/
 
             /*DataRowView rowView = (dataGridAnuncioPagado.Items[0] as DataRowView); //Get RowView
             rowView.BeginEdit();

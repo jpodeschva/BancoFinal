@@ -60,6 +60,7 @@ namespace CapaPresentacion2
                 boxTelefono.Text = usuario.telefono.ToString();
                 boxUsername.Text = usuario.idUsername;
                 boxPassword.Text = usuario.idPassword;
+                boxHorasDisponibles.Text = usuario.balanceDeHoras.ToString();
             }
         }
 

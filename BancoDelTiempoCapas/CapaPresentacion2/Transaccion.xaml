@@ -57,15 +57,42 @@
 
             </Grid>
 
-            <TextBlock Grid.Row="3" Text="Ha realizado la siguiente transacción:" FontFamily="Arial Rounded MT Bold" FontSize="13" FontWeight="SemiBold" Foreground="#f5f7f9" Padding="60,0,0,0" Margin="0,20,0,0"/>
-            <DataGrid Grid.Row="3" Name="dataGridAnuncioPagado" RowDetailsVisibilityMode="VisibleWhenSelected" EnableRowVirtualization="True" AutoGenerateColumns="False" d:ItemsSource="{Binding Source=Anuncio}" Margin="0 50 10 0">
+            <Grid Grid.Row="3" Margin="0,20,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Ha realizado la siguiente transacción:" FontFamily="Arial Rounded MT Bold" FontSize="14" FontWeight="SemiBold" Foreground="#f5f7f9" Margin="60,0,0,0"/>
+                
+                <TextBlock Grid.Row="1" Text="ID del anuncio" FontFamily="Arial Rounded MT Bold" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center" Foreground="#f5f7f9" Margin="90 10 25 0" />
+                <TextBlock Grid.Row="2" Text="Tipo de servicio" FontFamily="Arial Rounded MT Bold" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center" Foreground="#f5f7f9" Margin="90 10 25 0" />
+                <TextBlock Grid.Row="3" Text="Horas pagadas" FontFamily="Arial Rounded MT Bold" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center" Foreground="#f5f7f9" Margin="90 10 25 0" />
+                <TextBlock Grid.Row="4" Text="Fecha de solicitud" FontFamily="Arial Rounded MT Bold" FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center" Foreground="#f5f7f9" Margin="90 10 25 0" />
+
+                <TextBlock Grid.Column="1" Grid.Row="1" x:Name="boxIdAnuncio" Background="LightGray" Margin="0,10,60,0" Padding="10 2" FontFamily="Arial Rounded"/>
+                <TextBlock Grid.Column="1" Grid.Row="2" x:Name="boxTipoServicio" Background="LightGray" Margin="0,10,60,0" Padding="10 2" FontFamily="Arial Rounded"/>
+                <TextBlock Grid.Column="1" Grid.Row="3" x:Name="boxHorasPagadas" Background="LightGray" Margin="0,10,60,0" Padding="10 2" FontFamily="Arial Rounded"/>
+                <TextBlock Grid.Column="1" Grid.Row="4" x:Name="boxFechaSolicitud" Background="LightGray" Margin="0,10,60,0" Padding="10 2" FontFamily="Arial Rounded"/>
+
+            </Grid>
+            
+            <!--DataGrid Grid.Row="3" Name="dataGridAnuncioPagado" RowDetailsVisibilityMode="VisibleWhenSelected" EnableRowVirtualization="True" AutoGenerateColumns="False"  Margin="0 50 10 0">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding idAnuncio}" Header="IdAnuncio" IsReadOnly="True" Width="*"/>
                     <DataGridTextColumn Binding="{Binding tipoServicio}" Header="Actividad" IsReadOnly="True" Width="*"/>
                     <DataGridTextColumn Header="HorasPagadas" IsReadOnly="True" Width="*"/>
                     <DataGridTextColumn Header="FechaSolicitud" IsReadOnly="True" Width="*"/>
                 </DataGrid.Columns>
-            </DataGrid>
+            </DataGrid-->
 
         </Grid>
 
