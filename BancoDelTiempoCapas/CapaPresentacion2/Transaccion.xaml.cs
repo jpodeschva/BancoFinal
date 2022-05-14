@@ -1,4 +1,5 @@
 ﻿using CapaDatos;
+using CapaNegocio;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -22,7 +23,8 @@ namespace CapaPresentacion2
     {
         private int _numValue = 0;
         int idAnuncioSeleccionado;
-        CapaNegocio.NAnuncios nAnuncios;
+        NAnuncios nAnuncios;
+        NTransaccion nTransaccion;
 
         public Transaccion()
         {
@@ -36,6 +38,7 @@ namespace CapaPresentacion2
             InitializeComponent();
             txtNum.Text = _numValue.ToString();
             nAnuncios = new CapaNegocio.NAnuncios();
+            nTransaccion = new NTransaccion();
             idAnuncioSeleccionado = idAnuncio;
 
             // Carga los datos del anuncio seleccionado
@@ -85,7 +88,10 @@ namespace CapaPresentacion2
             boxFechaSolicitud.Text = now.ToString();
 
             // TODO: Restar el número de horas seleccionadas del balance de horas del usuario
-
+            int horasPagadas = Int32.Parse(boxHorasPagadas.Text);
+            String username = SessionManager.Instance.username;
+            //MessageBox.Show("Usuario: " + username);
+            nTransaccion.restarHorasDelBalance(username, horasPagadas);
 
             
             /*try

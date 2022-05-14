@@ -222,6 +222,37 @@ namespace CapaDatos
         }
 
 
+        public void substractHoursFromUser(Usuario usuarioParaActualizar, int horasPagadas)
+        {
+            //String username = usuarioParaActualizar.idUsername;
+            //usuarioParaActualizar.balanceDeHoras = usuarioParaActualizar.balanceDeHoras - horasPagadas;
+            //updateUsuario(username, usuarioParaActualizar);
+
+            using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
+            {
+                var lst = db.Usuarios;
+                foreach (var usuario in lst)
+                {
+                    if (usuario.idUsuario == usuarioParaActualizar.idUsuario)
+                    {
+                        try
+                        {
+                            db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
+                            usuarioParaActualizar.balanceDeHoras = (usuarioParaActualizar.balanceDeHoras - horasPagadas);
+                            db.Entry(usuario).State = System.Data.Entity.EntityState.Modified;
+                            db.SaveChanges();
+                            MessageBox.Show("Balance de horas actualizado.");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("No se ha podido actualizar el balance de horas del usuario.");
+                        }
+                         
+                    }
+                }
+            }
+        }
+
         /*public DataTable MostrarClientes() {
             DConexion dc = new DConexion();
             dc.pruebaConexion();
@@ -233,7 +264,7 @@ namespace CapaDatos
             return dt;
         
         }*/
-        
+
 
 
     }
