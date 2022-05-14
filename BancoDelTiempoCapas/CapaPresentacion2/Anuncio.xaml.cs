@@ -131,6 +131,7 @@ namespace CapaPresentacion2
 
         private void seleccionarAnuncioBtn_Click(object sender, RoutedEventArgs e)
         {
+            //TODO: hacer excepcion de errores
             anuncioSeleccionado = (CapaDatos.Anuncio)dataGridAnuncio.SelectedItem;
             idSeleccion = anuncioSeleccionado.idAnuncio;
 
