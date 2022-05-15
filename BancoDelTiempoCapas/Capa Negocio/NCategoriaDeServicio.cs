@@ -9,6 +9,7 @@ using CapaDatos;
 using CapaEntidades;
 using System.Collections;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace CapaNegocio
 {
@@ -74,7 +75,8 @@ namespace CapaNegocio
             nuevaCategoria.descripcion = descripcion;
             // Llamamos al método addUsuario() de DUsuario (CapaDatos) y le pasamos el usuario creado
             dCategoriaDeServicio.addCategoria(nuevaCategoria);
-            }
+            MessageBox.Show("Categoria añadida correctamente.");
+        }
         
     }
 

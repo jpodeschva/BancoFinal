@@ -22,6 +22,8 @@ namespace CapaDatos
                 {
                     db.CategoriaDeServicios.Add(categoriaDeServicio);
                     db.SaveChanges();
+                    MessageBox.Show("¡Enhorabuena! Se ha introducido la categoria.\n\n");
+                    return;
                 }
             }
             catch (Exception ex)
@@ -154,11 +156,11 @@ namespace CapaDatos
                 var lst = db.CategoriaDeServicios;
                 foreach (var categoriaDeServicio in lst)
                 {
-                    if (categoriaDeServicio.descripcion.StartsWith(palabra, System.StringComparison.CurrentCultureIgnoreCase))
-                    {
-                        //Console.WriteLine(categoriaDeServicio.ToString());
+                   // if (categoriaDeServicio.nombreCategoria.Equals(categoriaDeServicio))
+                    //{
+                        //Console.WriteLine(anuncio.ToString());
                         list.Add(categoriaDeServicio);
-                    }
+                    //}
                 }
             }
 

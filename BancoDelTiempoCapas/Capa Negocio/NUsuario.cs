@@ -39,7 +39,7 @@ namespace CapaNegocio
                 }
                 catch (Exception ex)
                 {
-                    System.Windows.Forms.MessageBox.Show("La cuenta de usuario no se pudo borrar.");
+                    System.Windows.Forms.MessageBox.Show("La cuenta de usuario no se pudo borrar." +ex.Message);
                 }
             }
         }
