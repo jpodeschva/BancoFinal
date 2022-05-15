@@ -23,6 +23,8 @@ namespace CapaDatos
         public CategoriaDeServicio(string nombreCategoria, String descripcion)
         {
             this.Anuncios = new HashSet<Anuncio>();
+            this.nombreCategoria = nombreCategoria;
+            this.descripcion = descripcion;
         }
 
         public int idCategoria { get; set; }
