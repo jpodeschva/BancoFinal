@@ -70,9 +70,14 @@ namespace CapaNegocio
 
             // Creamos el nuevo usuario con los datos introducidos
             nuevaCategoria = new CapaDatos.CategoriaDeServicio(nombreCategoria, descripcion);
+            nuevaCategoria.nombreCategoria = nombreCategoria;
+            nuevaCategoria.descripcion = descripcion;
             // Llamamos al método addUsuario() de DUsuario (CapaDatos) y le pasamos el usuario creado
             dCategoriaDeServicio.addCategoria(nuevaCategoria);
             }
-        }
+        
+    }
+
+
 }
 

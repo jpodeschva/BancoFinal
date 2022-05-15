@@ -103,8 +103,7 @@ namespace CapaDatos
         public ArrayList listCategoriasDeServicio()
         {
             ArrayList list = new ArrayList();
-            try
-            {
+            try {
                 using (BancoDelTiempoEntities db = new BancoDelTiempoEntities())
                 {
                     var lst = db.CategoriaDeServicios;
