@@ -23,7 +23,7 @@ namespace CapaPresentacion2
     /// </summary>
     public partial class Categorias : Page
     {
-        NCategoriaDeServicio nCategoria = new NCategoriaDeServicio();
+        NCategoriaDeServicio nCategoria;
         BancoDelTiempoEntities bancoDB = new BancoDelTiempoEntities();
         String buscar, nombre, descripcion;
 

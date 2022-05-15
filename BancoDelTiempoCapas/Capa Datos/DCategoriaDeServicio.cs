@@ -156,11 +156,11 @@ namespace CapaDatos
                 var lst = db.CategoriaDeServicios;
                 foreach (var categoriaDeServicio in lst)
                 {
-                   // if (categoriaDeServicio.nombreCategoria.Equals(categoriaDeServicio))
-                    //{
+                   if (categoriaDeServicio.nombreCategoria.Contains(palabra))
+                    {
                         //Console.WriteLine(anuncio.ToString());
                         list.Add(categoriaDeServicio);
-                    //}
+                    }
                 }
             }
 

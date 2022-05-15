@@ -15,11 +15,16 @@ namespace CapaDatos
     public partial class CategoriaDeServicio
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CategoriaDeServicio()
+        {
+            this.Anuncios = new HashSet<Anuncio>();
+        }
+
         public CategoriaDeServicio(string nombreCategoria, String descripcion)
         {
             this.Anuncios = new HashSet<Anuncio>();
         }
-    
+
         public int idCategoria { get; set; }
         public string nombreCategoria { get; set; }
         public string descripcion { get; set; }
