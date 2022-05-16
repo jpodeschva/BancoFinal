@@ -47,7 +47,7 @@ namespace CapaPresentacion2
         private void btnAñadir_Click(object sender, RoutedEventArgs e)
         {
             nombre = txtNombre.Text;
-            descripcion = txtNombre.Text;
+            descripcion = txtDescripcion.Text;
 
             nCategoria.guardarCategoria(nombre, descripcion);
 

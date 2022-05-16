@@ -21,7 +21,7 @@ namespace TestProject
         public void GetNombreCategoriaTest()
         {
             //Arrange  
-
+             
             String nombreCategoria = "Bailes";
             String descripcion = "Clases de tango";
             CategoriaDeServicio categoria1 = new CategoriaDeServicio(nombreCategoria, descripcion);
@@ -43,6 +43,21 @@ namespace TestProject
             bool result = dUsuario.checkPassword("pgrillo", "1234");
             Assert.AreEqual(true, result);
         }*/
+        [TestMethod]
+        public void GetContactoTest()
+        {
+            //Arrange  
+            String mensaje = "Me encanta esta aplicación. Sois los mejores";
+            Contacto contacto1 = new Contacto(mensaje);           
+            String expected = "Me encanta esta aplicación. Sois los mejores";
+            String actual;
+            //Actual  
+            actual = contacto1.mensaje;
+            //Assert  
+            Assert.AreEqual(expected, actual);
+           
+        }
+
 
     }
 }
