@@ -33,16 +33,29 @@ namespace TestProject
             Assert.AreEqual(expected, actual);
         }
 
-        //[TestMethod]
-        /*public void TestLoginTrue()
+        /*[TestMethod]
+        public void GetUsuario()
         {
-            Usuario usuario = new Usuario();
-            usuario.idUsername = "pgrillo";
-            usuario.idPassword = "1234";
             DUsuario dUsuario = new DUsuario();
-            bool result = dUsuario.checkPassword("pgrillo", "1234");
-            Assert.AreEqual(true, result);
+            Usuario userPgrillo;
+
+            userPgrillo = dUsuario.getUsuarioByUsername("pgrillo");
+            //Assert.IsInstanceOfType(userPgrillo, typeof(Usuario));
+
+            String expected = userPgrillo.idUsername;
+            Assert.AreEqual("pgrillo", expected);
         }*/
 
-    }
+            //[TestMethod]
+            /*public void TestLoginTrue()
+            {
+                Usuario usuario = new Usuario();
+                usuario.idUsername = "pgrillo";
+                usuario.idPassword = "1234";
+                DUsuario dUsuario = new DUsuario();
+                bool result = dUsuario.checkPassword("pgrillo", "1234");
+                Assert.AreEqual(true, result);
+            }*/
+
+        }
 }
