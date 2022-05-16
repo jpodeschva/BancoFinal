@@ -133,9 +133,16 @@ namespace CapaPresentacion2
         {
             //TODO: hacer excepcion de errores
             anuncioSeleccionado = (CapaDatos.Anuncio)dataGridAnuncio.SelectedItem;
-            idSeleccion = anuncioSeleccionado.idAnuncio;
 
-            this.NavigationService.Navigate(new Transaccion(idSeleccion));
+            if(anuncioSeleccionado != null)
+            {
+                idSeleccion = anuncioSeleccionado.idAnuncio;
+                this.NavigationService.Navigate(new Transaccion(idSeleccion));
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un anuncio.");
+            }
         }
 
 
