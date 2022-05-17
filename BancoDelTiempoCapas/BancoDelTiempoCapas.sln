@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.1.32319.34
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32413.511
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDatos", "Capa Datos\CapaDatos.csproj", "{75FD000F-4724-4FC6-BA15-C42A583B9009}"
 EndProject
@@ -13,7 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaEntidades", "Capa Entid
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaPresentacion2", "CapaPresentacion2\CapaPresentacion2.csproj", "{870BD94A-8907-45D9-9968-89F993EAAF5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{1BDC3297-0E7D-4AED-B95C-731D769CC6FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject", "TestProject\TestProject.csproj", "{1BDC3297-0E7D-4AED-B95C-731D769CC6FC}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "BancodelTiempo", "BancodelTiempo\BancodelTiempo.vdproj", "{A8F25B7F-46FA-4271-8C03-3223DB93A2BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +23,8 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{75FD000F-4724-4FC6-BA15-C42A583B9009}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{75FD000F-4724-4FC6-BA15-C42A583B9009}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75FD000F-4724-4FC6-BA15-C42A583B9009}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{75FD000F-4724-4FC6-BA15-C42A583B9009}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{75FD000F-4724-4FC6-BA15-C42A583B9009}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75FD000F-4724-4FC6-BA15-C42A583B9009}.Release|Any CPU.Build.0 = Release|Any CPU
 		{36E9CC1C-556F-4DE8-BFD3-C4FF0BBEFC69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -45,6 +47,8 @@ Global
 		{1BDC3297-0E7D-4AED-B95C-731D769CC6FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BDC3297-0E7D-4AED-B95C-731D769CC6FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BDC3297-0E7D-4AED-B95C-731D769CC6FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8F25B7F-46FA-4271-8C03-3223DB93A2BE}.Debug|Any CPU.ActiveCfg = Debug
+		{A8F25B7F-46FA-4271-8C03-3223DB93A2BE}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
